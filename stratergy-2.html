@@ -1,0 +1,1751 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stratergy 2</title>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<style>
+body {
+    margin:0;
+    font-family:'Segoe UI';
+    background:#f1f5f9;
+}
+
+.container {
+    display:flex;
+}
+
+.sidebar {
+    width:260px;
+    background:#0f172a;
+    color:white;
+    height:100vh;
+    padding:20px;
+}
+
+.sidebar a {
+    display:block;
+    color:#cbd5f5;
+    padding:10px;
+    text-decoration:none;
+}
+
+.sidebar a:hover {
+    background:#1e293b;
+}
+
+.content {
+    flex:1;
+    padding:20px;
+}
+
+.dashboard {
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.stat {
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.stat h3 {
+    margin:0;
+    font-size:14px;
+    color:#64748b;
+}
+
+.stat p {
+    margin:5px 0 0;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.green { color:green; }
+.red { color:red; }
+
+.card {
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+</style>
+
+<script>
+$(document).ready(function () {
+    $('table').DataTable();
+});
+</script>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="sidebar">
+<h2>📊 JSON Files</h2>
+<a href="bajfinance_strategy_log.html">Bajaj Finance Strategy</a><a href="stratergy-1.html">Stratergy 1</a><a href="stratergy-2.html">Stratergy 2</a><a href="trades_log.html">Traffic Light</a>
+</div>
+
+<div class="content">
+
+<h1>Stratergy 2</h1>
+
+<div class="dashboard">
+
+<div class="stat">
+<h3>Total Trades</h3>
+<p>106</p>
+</div>
+
+<div class="stat">
+<h3>Total P&L</h3>
+<p class="red">-2487.0</p>
+</div>
+
+<div class="stat">
+<h3>Win Rate</h3>
+<p>32.08%</p>
+</div>
+
+<div class="stat">
+<h3>Winners</h3>
+<p class="green">34</p>
+</div>
+
+<div class="stat">
+<h3>Losers</h3>
+<p class="red">19</p>
+</div>
+
+</div>
+
+<div class="card">
+<table border="1" class="dataframe display">
+  <thead>
+    <tr style="text-align: right;">
+      <th>id</th>
+      <th>date</th>
+      <th>time</th>
+      <th>contract</th>
+      <th>symbol</th>
+      <th>action</th>
+      <th>price</th>
+      <th>qty</th>
+      <th>pnl</th>
+      <th>total_pnl</th>
+      <th>order_id</th>
+      <th>mode</th>
+      <th>reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>30-04-2026</td>
+      <td>10:33:11</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>158.10</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹164.00 dropped ₹5.90 to ₹158.10  |  Trend: DOWNTREND  EMA5=164.31  EMA10=166.71</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>30-04-2026</td>
+      <td>10:33:19</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>162.40</td>
+      <td>20</td>
+      <td>86.0</td>
+      <td>86.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹158.10 → Sell ₹162.40 (+₹4.30) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>30-04-2026</td>
+      <td>10:34:28</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>160.05</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>86.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹164.00 dropped ₹3.95 to ₹160.05  |  Trend: DOWNTREND  EMA5=164.31  EMA10=166.71</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>30-04-2026</td>
+      <td>10:34:34</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>163.95</td>
+      <td>20</td>
+      <td>78.0</td>
+      <td>164.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹160.05 → Sell ₹163.95 (+₹3.90) in 1 candles</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>30-04-2026</td>
+      <td>10:34:49</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>156.10</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>164.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹160.30 dropped ₹4.20 to ₹156.10  |  Trend: DOWNTREND  EMA5=162.91  EMA10=165.91</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>30-04-2026</td>
+      <td>10:35:32</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>140.30</td>
+      <td>20</td>
+      <td>-316.0</td>
+      <td>-152.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹156.10 → Exit ₹140.30 (-₹15.80)</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>30-04-2026</td>
+      <td>10:35:34</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>138.75</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-152.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹151.65 dropped ₹12.90 to ₹138.75  |  Trend: DOWNTREND  EMA5=159.10  EMA10=164.31</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>30-04-2026</td>
+      <td>10:36:47</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>143.20</td>
+      <td>20</td>
+      <td>89.0</td>
+      <td>-63.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹138.75 → Sell ₹143.20 (+₹4.45) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>30-04-2026</td>
+      <td>10:40:06</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>129.30</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-63.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹132.95 dropped ₹3.65 to ₹129.30  |  Trend: DOWNTREND  EMA5=139.22  EMA10=150.85</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>30-04-2026</td>
+      <td>10:40:13</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>133.00</td>
+      <td>20</td>
+      <td>74.0</td>
+      <td>11.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹129.30 → Sell ₹133.00 (+₹3.70) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>30-04-2026</td>
+      <td>10:41:13</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>135.80</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>11.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹139.35 dropped ₹3.55 to ₹135.80  |  Trend: DOWNTREND  EMA5=139.20  EMA10=147.45</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>30-04-2026</td>
+      <td>10:41:17</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>139.55</td>
+      <td>20</td>
+      <td>75.0</td>
+      <td>86.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹135.80 → Sell ₹139.55 (+₹3.75) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>30-04-2026</td>
+      <td>10:42:30</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>153.60</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>86.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹158.05 dropped ₹4.45 to ₹153.60  |  Trend: DOWNTREND  EMA5=145.87  EMA10=147.51</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>30-04-2026</td>
+      <td>10:42:36</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>156.70</td>
+      <td>20</td>
+      <td>62.0</td>
+      <td>148.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹153.60 → Sell ₹156.70 (+₹3.10) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>30-04-2026</td>
+      <td>11:00:03</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>203.30</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>148.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹210.30 dropped ₹7.00 to ₹203.30  |  Trend: DOWNTREND  EMA5=219.00  EMA10=219.34</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>30-04-2026</td>
+      <td>11:02:10</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>188.00</td>
+      <td>20</td>
+      <td>-306.0</td>
+      <td>-158.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹203.30 → Exit ₹188.00 (-₹15.30)</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>30-04-2026</td>
+      <td>11:02:12</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>189.65</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-158.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹194.55 dropped ₹4.90 to ₹189.65  |  Trend: DOWNTREND  EMA5=206.31  EMA10=218.94</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>30-04-2026</td>
+      <td>11:02:14</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>193.75</td>
+      <td>20</td>
+      <td>82.0</td>
+      <td>-76.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹189.65 → Sell ₹193.75 (+₹4.10) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>30-04-2026</td>
+      <td>11:02:19</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>188.30</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-76.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹194.55 dropped ₹6.25 to ₹188.30  |  Trend: DOWNTREND  EMA5=206.31  EMA10=218.94</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>30-04-2026</td>
+      <td>11:03:40</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>191.50</td>
+      <td>20</td>
+      <td>64.0</td>
+      <td>-12.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹188.30 → Sell ₹191.50 (+₹3.20) in 1 candles</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>30-04-2026</td>
+      <td>11:05:06</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>205.75</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-12.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹208.85 dropped ₹3.10 to ₹205.75  |  Trend: DOWNTREND  EMA5=202.37  EMA10=211.10</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>30-04-2026</td>
+      <td>11:05:49</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>190.75</td>
+      <td>20</td>
+      <td>-300.0</td>
+      <td>-312.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹205.75 → Exit ₹190.75 (-₹15.00)</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>30-04-2026</td>
+      <td>11:05:51</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>191.35</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-312.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹208.85 dropped ₹17.50 to ₹191.35  |  Trend: DOWNTREND  EMA5=202.37  EMA10=211.10</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>30-04-2026</td>
+      <td>11:07:49</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>175.60</td>
+      <td>20</td>
+      <td>-315.0</td>
+      <td>-627.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹191.35 → Exit ₹175.60 (-₹15.75)</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>30-04-2026</td>
+      <td>11:09:15</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>191.75</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-627.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹198.40 dropped ₹6.65 to ₹191.75  |  Trend: DOWNTREND  EMA5=193.02  EMA10=194.81</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>30-04-2026</td>
+      <td>11:09:21</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>197.95</td>
+      <td>20</td>
+      <td>124.0</td>
+      <td>-503.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹191.75 → Sell ₹197.95 (+₹6.20) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>30-04-2026</td>
+      <td>11:09:34</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>192.60</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-503.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹198.40 dropped ₹5.80 to ₹192.60  |  Trend: DOWNTREND  EMA5=193.02  EMA10=194.81</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>30-04-2026</td>
+      <td>11:10:00</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>176.20</td>
+      <td>20</td>
+      <td>-328.0</td>
+      <td>-831.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹192.60 → Exit ₹176.20 (-₹16.40)</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>30-04-2026</td>
+      <td>11:26:05</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>194.85</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-831.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹198.70 dropped ₹3.85 to ₹194.85  |  Trend: DOWNTREND  EMA5=204.51  EMA10=205.47</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>30-04-2026</td>
+      <td>11:26:35</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>198.50</td>
+      <td>20</td>
+      <td>73.0</td>
+      <td>-758.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹194.85 → Sell ₹198.50 (+₹3.65) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>30-04-2026</td>
+      <td>11:26:44</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>194.30</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-758.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹198.70 dropped ₹4.40 to ₹194.30  |  Trend: DOWNTREND  EMA5=204.51  EMA10=205.47</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>30-04-2026</td>
+      <td>11:28:01</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>198.45</td>
+      <td>20</td>
+      <td>83.0</td>
+      <td>-675.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹194.30 → Sell ₹198.45 (+₹4.15) in 2 candles</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>30-04-2026</td>
+      <td>11:29:14</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>194.20</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-675.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹198.45 dropped ₹4.25 to ₹194.20  |  Trend: DOWNTREND  EMA5=200.69  EMA10=206.69</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>30-04-2026</td>
+      <td>11:29:52</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>176.75</td>
+      <td>20</td>
+      <td>-349.0</td>
+      <td>-1024.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹194.20 → Exit ₹176.75 (-₹17.45)</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>30-04-2026</td>
+      <td>11:29:54</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>174.30</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1024.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹192.80 dropped ₹18.50 to ₹174.30  |  Trend: DOWNTREND  EMA5=198.29  EMA10=206.28</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>30-04-2026</td>
+      <td>11:32:44</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>179.25</td>
+      <td>20</td>
+      <td>99.0</td>
+      <td>-925.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹174.30 → Sell ₹179.25 (+₹4.95) in 3 candles</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>30-04-2026</td>
+      <td>11:33:08</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>180.15</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-925.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹183.60 dropped ₹3.45 to ₹180.15  |  Trend: DOWNTREND  EMA5=181.41  EMA10=190.20</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>30-04-2026</td>
+      <td>11:33:40</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>164.95</td>
+      <td>20</td>
+      <td>-304.0</td>
+      <td>-1229.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹180.15 → Exit ₹164.95 (-₹15.20)</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>30-04-2026</td>
+      <td>11:34:42</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>158.60</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1229.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹183.60 dropped ₹25.00 to ₹158.60  |  Trend: DOWNTREND  EMA5=181.41  EMA10=190.20</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>30-04-2026</td>
+      <td>11:36:29</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>137.90</td>
+      <td>20</td>
+      <td>-414.0</td>
+      <td>-1643.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹158.60 → Exit ₹137.90 (-₹20.70)</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>30-04-2026</td>
+      <td>11:36:42</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>134.95</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1643.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹138.35 dropped ₹3.40 to ₹134.95  |  Trend: DOWNTREND  EMA5=158.63  EMA10=173.96</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>30-04-2026</td>
+      <td>11:37:57</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>144.05</td>
+      <td>20</td>
+      <td>182.0</td>
+      <td>-1461.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹134.95 → Sell ₹144.05 (+₹9.10) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>30-04-2026</td>
+      <td>11:38:10</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>143.55</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1461.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹148.85 dropped ₹5.30 to ₹143.55  |  Trend: DOWNTREND  EMA5=152.03  EMA10=164.13</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>30-04-2026</td>
+      <td>11:38:12</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>147.00</td>
+      <td>20</td>
+      <td>69.0</td>
+      <td>-1392.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹143.55 → Sell ₹147.00 (+₹3.45) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>30-04-2026</td>
+      <td>11:38:31</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>145.00</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1392.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹148.85 dropped ₹3.85 to ₹145.00  |  Trend: DOWNTREND  EMA5=152.03  EMA10=164.13</td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>30-04-2026</td>
+      <td>11:38:36</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>149.95</td>
+      <td>20</td>
+      <td>99.0</td>
+      <td>-1293.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹145.00 → Sell ₹149.95 (+₹4.95) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>30-04-2026</td>
+      <td>11:39:04</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>154.40</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1293.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹158.45 dropped ₹4.05 to ₹154.40  |  Trend: DOWNTREND  EMA5=154.16  EMA10=160.70</td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>30-04-2026</td>
+      <td>11:39:08</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>158.25</td>
+      <td>20</td>
+      <td>77.0</td>
+      <td>-1216.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹154.40 → Sell ₹158.25 (+₹3.85) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>30-04-2026</td>
+      <td>11:39:10</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>154.85</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1216.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹158.45 dropped ₹3.60 to ₹154.85  |  Trend: DOWNTREND  EMA5=154.16  EMA10=160.70</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>30-04-2026</td>
+      <td>11:39:31</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>137.25</td>
+      <td>20</td>
+      <td>-352.0</td>
+      <td>-1568.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹154.85 → Exit ₹137.25 (-₹17.60)</td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>30-04-2026</td>
+      <td>11:39:34</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>137.20</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1568.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹158.45 dropped ₹21.25 to ₹137.20  |  Trend: DOWNTREND  EMA5=154.16  EMA10=160.70</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>30-04-2026</td>
+      <td>11:39:45</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>140.90</td>
+      <td>20</td>
+      <td>74.0</td>
+      <td>-1494.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹137.20 → Sell ₹140.90 (+₹3.70) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>30-04-2026</td>
+      <td>11:39:47</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>138.65</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1494.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹158.45 dropped ₹19.80 to ₹138.65  |  Trend: DOWNTREND  EMA5=154.16  EMA10=160.70</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>30-04-2026</td>
+      <td>11:40:49</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>156.45</td>
+      <td>20</td>
+      <td>356.0</td>
+      <td>-1138.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹138.65 → Sell ₹156.45 (+₹17.80) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>30-04-2026</td>
+      <td>11:40:56</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>154.05</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1138.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹157.50 dropped ₹3.45 to ₹154.05  |  Trend: DOWNTREND  EMA5=155.51  EMA10=159.30</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>30-04-2026</td>
+      <td>11:41:30</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>157.10</td>
+      <td>20</td>
+      <td>61.0</td>
+      <td>-1077.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹154.05 → Sell ₹157.10 (+₹3.05) in 1 candles</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>30-04-2026</td>
+      <td>11:43:45</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>142.00</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1077.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹149.25 dropped ₹7.25 to ₹142.00  |  Trend: DOWNTREND  EMA5=152.84  EMA10=154.91</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>30-04-2026</td>
+      <td>11:43:51</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>145.00</td>
+      <td>20</td>
+      <td>60.0</td>
+      <td>-1017.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹142.00 → Sell ₹145.00 (+₹3.00) in 1 candles</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>30-04-2026</td>
+      <td>11:44:02</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>143.70</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1017.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹149.55 dropped ₹5.85 to ₹143.70  |  Trend: DOWNTREND  EMA5=149.01  EMA10=150.12</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>30-04-2026</td>
+      <td>11:44:32</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>149.05</td>
+      <td>20</td>
+      <td>107.0</td>
+      <td>-910.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹143.70 → Sell ₹149.05 (+₹5.35) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>30-04-2026</td>
+      <td>11:44:34</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>146.25</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-910.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹149.55 dropped ₹3.30 to ₹146.25  |  Trend: DOWNTREND  EMA5=149.01  EMA10=150.12</td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>30-04-2026</td>
+      <td>11:44:54</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>149.30</td>
+      <td>20</td>
+      <td>61.0</td>
+      <td>-849.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹146.25 → Sell ₹149.30 (+₹3.05) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>30-04-2026</td>
+      <td>11:48:43</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>139.05</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-849.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹142.40 dropped ₹3.35 to ₹139.05  |  Trend: DOWNTREND  EMA5=146.29  EMA10=149.83</td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>30-04-2026</td>
+      <td>11:48:54</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>143.10</td>
+      <td>20</td>
+      <td>81.0</td>
+      <td>-768.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹139.05 → Sell ₹143.10 (+₹4.05) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>30-04-2026</td>
+      <td>11:49:17</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>136.75</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-768.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹141.75 dropped ₹5.00 to ₹136.75  |  Trend: DOWNTREND  EMA5=144.66  EMA10=148.16</td>
+    </tr>
+    <tr>
+      <td>66</td>
+      <td>30-04-2026</td>
+      <td>11:49:21</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>141.70</td>
+      <td>20</td>
+      <td>99.0</td>
+      <td>-669.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹136.75 → Sell ₹141.70 (+₹4.95) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>30-04-2026</td>
+      <td>11:49:32</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>138.50</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-669.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹141.75 dropped ₹3.25 to ₹138.50  |  Trend: DOWNTREND  EMA5=144.66  EMA10=148.16</td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>30-04-2026</td>
+      <td>11:50:47</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>144.65</td>
+      <td>20</td>
+      <td>123.0</td>
+      <td>-546.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹138.50 → Sell ₹144.65 (+₹6.15) in 1 candles</td>
+    </tr>
+    <tr>
+      <td>69</td>
+      <td>30-04-2026</td>
+      <td>12:01:06</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>152.95</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-546.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹156.00 dropped ₹3.05 to ₹152.95  |  Trend: DOWNTREND  EMA5=148.93  EMA10=149.63</td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td>30-04-2026</td>
+      <td>12:02:30</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>137.90</td>
+      <td>20</td>
+      <td>-301.0</td>
+      <td>-847.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹152.95 → Exit ₹137.90 (-₹15.05)</td>
+    </tr>
+    <tr>
+      <td>71</td>
+      <td>30-04-2026</td>
+      <td>12:02:32</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>136.90</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-847.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹151.20 dropped ₹14.30 to ₹136.90  |  Trend: DOWNTREND  EMA5=149.99  EMA10=150.35</td>
+    </tr>
+    <tr>
+      <td>72</td>
+      <td>30-04-2026</td>
+      <td>12:04:11</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>120.00</td>
+      <td>20</td>
+      <td>-338.0</td>
+      <td>-1185.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹136.90 → Exit ₹120.00 (-₹16.90)</td>
+    </tr>
+    <tr>
+      <td>73</td>
+      <td>30-04-2026</td>
+      <td>12:04:13</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>119.15</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1185.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹125.20 dropped ₹6.05 to ₹119.15  |  Trend: DOWNTREND  EMA5=138.02  EMA10=144.12</td>
+    </tr>
+    <tr>
+      <td>74</td>
+      <td>30-04-2026</td>
+      <td>12:07:04</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>94.45</td>
+      <td>20</td>
+      <td>-494.0</td>
+      <td>-1679.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹119.15 → Exit ₹94.45 (-₹24.70)</td>
+    </tr>
+    <tr>
+      <td>75</td>
+      <td>30-04-2026</td>
+      <td>12:08:04</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>99.60</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1679.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹103.05 dropped ₹3.45 to ₹99.60  |  Trend: DOWNTREND  EMA5=111.95  EMA10=128.38</td>
+    </tr>
+    <tr>
+      <td>76</td>
+      <td>30-04-2026</td>
+      <td>12:08:10</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>105.30</td>
+      <td>20</td>
+      <td>114.0</td>
+      <td>-1565.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹99.60 → Sell ₹105.30 (+₹5.70) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>77</td>
+      <td>30-04-2026</td>
+      <td>12:09:13</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>95.55</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1565.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹103.05 dropped ₹7.50 to ₹95.55  |  Trend: DOWNTREND  EMA5=111.95  EMA10=128.38</td>
+    </tr>
+    <tr>
+      <td>78</td>
+      <td>30-04-2026</td>
+      <td>12:09:30</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>80.55</td>
+      <td>20</td>
+      <td>-300.0</td>
+      <td>-1865.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹95.55 → Exit ₹80.55 (-₹15.00)</td>
+    </tr>
+    <tr>
+      <td>79</td>
+      <td>30-04-2026</td>
+      <td>12:09:32</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>79.75</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1865.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹91.90 dropped ₹12.15 to ₹79.75  |  Trend: DOWNTREND  EMA5=105.73  EMA10=123.51</td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td>30-04-2026</td>
+      <td>12:09:41</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>83.85</td>
+      <td>20</td>
+      <td>82.0</td>
+      <td>-1783.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹79.75 → Sell ₹83.85 (+₹4.10) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>81</td>
+      <td>30-04-2026</td>
+      <td>12:09:43</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>83.80</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1783.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹91.90 dropped ₹8.10 to ₹83.80  |  Trend: DOWNTREND  EMA5=105.73  EMA10=123.51</td>
+    </tr>
+    <tr>
+      <td>82</td>
+      <td>30-04-2026</td>
+      <td>12:12:38</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>86.95</td>
+      <td>20</td>
+      <td>63.0</td>
+      <td>-1720.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹83.80 → Sell ₹86.95 (+₹3.15) in 3 candles</td>
+    </tr>
+    <tr>
+      <td>83</td>
+      <td>30-04-2026</td>
+      <td>12:13:23</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>82.65</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1720.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹86.25 dropped ₹3.60 to ₹82.65  |  Trend: DOWNTREND  EMA5=87.10  EMA10=97.97</td>
+    </tr>
+    <tr>
+      <td>84</td>
+      <td>30-04-2026</td>
+      <td>12:13:28</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>86.15</td>
+      <td>20</td>
+      <td>70.0</td>
+      <td>-1650.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹82.65 → Sell ₹86.15 (+₹3.50) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>85</td>
+      <td>30-04-2026</td>
+      <td>12:14:30</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>71.15</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1650.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹86.25 dropped ₹15.10 to ₹71.15  |  Trend: DOWNTREND  EMA5=87.10  EMA10=97.97</td>
+    </tr>
+    <tr>
+      <td>86</td>
+      <td>30-04-2026</td>
+      <td>12:14:56</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>55.30</td>
+      <td>20</td>
+      <td>-317.0</td>
+      <td>-1967.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹71.15 → Exit ₹55.30 (-₹15.85)</td>
+    </tr>
+    <tr>
+      <td>87</td>
+      <td>30-04-2026</td>
+      <td>12:14:58</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>55.75</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1967.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹70.05 dropped ₹14.30 to ₹55.75  |  Trend: DOWNTREND  EMA5=81.41  EMA10=92.46</td>
+    </tr>
+    <tr>
+      <td>88</td>
+      <td>30-04-2026</td>
+      <td>12:15:36</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>59.70</td>
+      <td>20</td>
+      <td>79.0</td>
+      <td>-1888.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹55.75 → Sell ₹59.70 (+₹3.95) in 1 candles</td>
+    </tr>
+    <tr>
+      <td>89</td>
+      <td>30-04-2026</td>
+      <td>12:20:22</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>64.65</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1888.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹67.80 dropped ₹3.15 to ₹64.65  |  Trend: DOWNTREND  EMA5=63.98  EMA10=69.53</td>
+    </tr>
+    <tr>
+      <td>90</td>
+      <td>30-04-2026</td>
+      <td>12:20:26</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>67.75</td>
+      <td>20</td>
+      <td>62.0</td>
+      <td>-1826.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹64.65 → Sell ₹67.75 (+₹3.10) in 0 candles</td>
+    </tr>
+    <tr>
+      <td>91</td>
+      <td>30-04-2026</td>
+      <td>12:21:15</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>70.00</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-1826.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹73.75 dropped ₹3.75 to ₹70.00  |  Trend: DOWNTREND  EMA5=67.51  EMA10=68.35</td>
+    </tr>
+    <tr>
+      <td>92</td>
+      <td>30-04-2026</td>
+      <td>12:22:41</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>54.90</td>
+      <td>20</td>
+      <td>-302.0</td>
+      <td>-2128.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹70.00 → Exit ₹54.90 (-₹15.10)</td>
+    </tr>
+    <tr>
+      <td>93</td>
+      <td>30-04-2026</td>
+      <td>12:22:44</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>53.15</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-2128.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹57.35 dropped ₹4.20 to ₹53.15  |  Trend: DOWNTREND  EMA5=64.31  EMA10=66.19</td>
+    </tr>
+    <tr>
+      <td>94</td>
+      <td>30-04-2026</td>
+      <td>12:26:26</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>38.10</td>
+      <td>20</td>
+      <td>-301.0</td>
+      <td>-2429.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Stop loss ❌ Buy ₹53.15 → Exit ₹38.10 (-₹15.05)</td>
+    </tr>
+    <tr>
+      <td>95</td>
+      <td>30-04-2026</td>
+      <td>12:29:39</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>34.70</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-2429.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹40.55 dropped ₹5.85 to ₹34.70  |  Trend: DOWNTREND  EMA5=45.52  EMA10=54.16</td>
+    </tr>
+    <tr>
+      <td>96</td>
+      <td>30-04-2026</td>
+      <td>12:29:52</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>38.45</td>
+      <td>20</td>
+      <td>75.0</td>
+      <td>-2354.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹34.70 → Sell ₹38.45 (+₹3.75) in 1 candles</td>
+    </tr>
+    <tr>
+      <td>97</td>
+      <td>30-04-2026</td>
+      <td>12:33:09</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>39.50</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-2354.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹43.10 dropped ₹3.60 to ₹39.50  |  Trend: DOWNTREND  EMA5=41.13  EMA10=42.16</td>
+    </tr>
+    <tr>
+      <td>98</td>
+      <td>30-04-2026</td>
+      <td>12:35:48</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>44.40</td>
+      <td>20</td>
+      <td>98.0</td>
+      <td>-2256.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target hit ✅ Buy ₹39.50 → Sell ₹44.40 (+₹4.90) in 1 candles</td>
+    </tr>
+    <tr>
+      <td>99</td>
+      <td>30-04-2026</td>
+      <td>12:43:10</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>39.75</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-2256.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹43.60 dropped ₹3.85 to ₹39.75  |  Trend: DOWNTREND  EMA5=42.69  EMA10=42.73</td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td>30-04-2026</td>
+      <td>12:47:42</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>30.65</td>
+      <td>20</td>
+      <td>-182.0</td>
+      <td>-2438.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Timeout ⏰ 5 candles passed. Buy ₹39.75 → Exit ₹30.65 (₹-9.10)</td>
+    </tr>
+    <tr>
+      <td>101</td>
+      <td>30-04-2026</td>
+      <td>12:55:16</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>26.15</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-2438.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹30.30 dropped ₹4.15 to ₹26.15  |  Trend: DOWNTREND  EMA5=31.35  EMA10=32.49</td>
+    </tr>
+    <tr>
+      <td>102</td>
+      <td>30-04-2026</td>
+      <td>12:59:01</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>23.75</td>
+      <td>20</td>
+      <td>-48.0</td>
+      <td>-2486.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Timeout ⏰ 5 candles passed. Buy ₹26.15 → Exit ₹23.75 (₹-2.40)</td>
+    </tr>
+    <tr>
+      <td>103</td>
+      <td>30-04-2026</td>
+      <td>13:12:14</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>13.80</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-2486.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹18.50 dropped ₹4.70 to ₹13.80  |  Trend: DOWNTREND  EMA5=20.32  EMA10=24.03</td>
+    </tr>
+    <tr>
+      <td>104</td>
+      <td>30-04-2026</td>
+      <td>13:17:17</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>14.80</td>
+      <td>20</td>
+      <td>20.0</td>
+      <td>-2466.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Timeout ⏰ 5 candles passed. Buy ₹13.80 → Exit ₹14.80 (₹1.00)</td>
+    </tr>
+    <tr>
+      <td>105</td>
+      <td>30-04-2026</td>
+      <td>13:23:56</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>BUY</td>
+      <td>10.40</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>-2466.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Candle open ₹13.50 dropped ₹3.10 to ₹10.40  |  Trend: DOWNTREND  EMA5=13.23  EMA10=13.29</td>
+    </tr>
+    <tr>
+      <td>106</td>
+      <td>30-04-2026</td>
+      <td>13:29:00</td>
+      <td>PE</td>
+      <td>SENSEX26APR76400PE</td>
+      <td>SELL</td>
+      <td>9.35</td>
+      <td>20</td>
+      <td>-21.0</td>
+      <td>-2487.0</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Timeout ⏰ 5 candles passed. Buy ₹10.40 → Exit ₹9.35 (₹-1.05)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
