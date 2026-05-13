@@ -1,0 +1,3387 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Banknifty Atm Strategy</title>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<style>
+
+body {
+    margin:0;
+    font-family:'Segoe UI';
+    background:#f1f5f9;
+}
+
+.container {
+    display:flex;
+}
+
+.sidebar {
+    width:260px;
+    background:#0f172a;
+    color:white;
+    height:100vh;
+    padding:20px;
+}
+
+.sidebar a {
+    display:block;
+    color:#cbd5f5;
+    padding:10px;
+    text-decoration:none;
+}
+
+.sidebar a:hover {
+    background:#1e293b;
+}
+
+.content {
+    flex:1;
+    padding:20px;
+}
+
+.dashboard {
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.stat {
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.stat p {
+    font-size:18px;
+    font-weight:bold;
+}
+
+.green { color:green; }
+.red { color:red; }
+
+.card {
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    overflow-x:auto;
+}
+
+.menu-btn {
+    display:none;
+    font-size:20px;
+    cursor:pointer;
+    margin-bottom:10px;
+}
+
+@media (max-width: 768px) {
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position:absolute;
+        transform:translateX(-100%);
+        z-index:1000;
+        transition:0.3s;
+    }
+
+    .sidebar.active {
+        transform:translateX(0);
+    }
+
+    .menu-btn {
+        display:block;
+    }
+
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+</style>
+
+<script>
+
+$(document).ready(function () {
+    $('table').DataTable();
+});
+
+function updateDateTime() {
+    const now = new Date();
+
+    const options = {
+        weekday:'long',
+        year:'numeric',
+        month:'long',
+        day:'numeric'
+    };
+
+    const date = now.toLocaleDateString('en-IN', options);
+    const time = now.toLocaleTimeString('en-IN');
+
+    document.getElementById("datetime").innerHTML =
+        "📅 " + date + " | ⏰ " + time;
+}
+
+setInterval(updateDateTime, 1000);
+
+updateDateTime();
+
+function toggleMenu() {
+    document.querySelector('.sidebar').classList.toggle('active');
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="sidebar">
+
+<h2>📊 Strategies</h2>
+
+<a href="banknifty_atm_strategy.html">Banknifty Atm Strategy</a>
+
+</div>
+
+<div class="content">
+
+<div class="menu-btn" onclick="toggleMenu()">☰ Menu</div>
+
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+
+<h1>Banknifty Atm Strategy</h1>
+
+<div id="datetime" style="font-size:14px; color:#475569;"></div>
+
+</div>
+
+<div class="dashboard">
+
+<div class="stat">
+<h3>Total Trades</h3>
+<p>210</p>
+</div>
+
+<div class="stat">
+<h3>Total P&L</h3>
+<p class="green">2860.5</p>
+</div>
+
+<div class="stat">
+<h3>Win Rate</h3>
+<p>33.33%</p>
+</div>
+
+<div class="stat">
+<h3>Winners</h3>
+<p class="green">70</p>
+</div>
+
+<div class="stat">
+<h3>Losers</h3>
+<p class="red">35</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<table border="1" class="dataframe display">
+  <thead>
+    <tr style="text-align: right;">
+      <th>id</th>
+      <th>date</th>
+      <th>time</th>
+      <th>contract</th>
+      <th>symbol</th>
+      <th>action</th>
+      <th>price</th>
+      <th>qty</th>
+      <th>pnl</th>
+      <th>total_pnl</th>
+      <th>order_id</th>
+      <th>mode</th>
+      <th>reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>13-05-2026</td>
+      <td>09:16:39</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>885.60</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹905.30 dropped ₹19.70 to ₹885.60</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>13-05-2026</td>
+      <td>09:16:42</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>891.35</td>
+      <td>15</td>
+      <td>86.25</td>
+      <td>86.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹885.60→₹891.35 +₹5.75 in 0c</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>13-05-2026</td>
+      <td>09:16:45</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>883.30</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>86.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹905.30 dropped ₹22.00 to ₹883.30</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>13-05-2026</td>
+      <td>09:16:53</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>870.00</td>
+      <td>15</td>
+      <td>-199.50</td>
+      <td>-113.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹883.30→₹870.00 -₹13.30</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>13-05-2026</td>
+      <td>09:16:55</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>866.60</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-113.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹905.30 dropped ₹38.70 to ₹866.60</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>13-05-2026</td>
+      <td>09:17:01</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>878.20</td>
+      <td>15</td>
+      <td>174.00</td>
+      <td>60.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹866.60→₹878.20 +₹11.60 in 1c</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>13-05-2026</td>
+      <td>09:17:03</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>991.95</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>60.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1015.20 dropped ₹23.25 to ₹991.95</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>13-05-2026</td>
+      <td>09:17:05</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>998.20</td>
+      <td>15</td>
+      <td>93.75</td>
+      <td>154.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹991.95→₹998.20 +₹6.25 in 0c</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>13-05-2026</td>
+      <td>09:17:08</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>997.40</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>154.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1015.20 dropped ₹17.80 to ₹997.40</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>13-05-2026</td>
+      <td>09:17:12</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>986.75</td>
+      <td>15</td>
+      <td>-159.75</td>
+      <td>-5.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹997.40→₹986.75 -₹10.65</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>13-05-2026</td>
+      <td>09:17:13</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>987.85</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-5.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1015.20 dropped ₹27.35 to ₹987.85</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>13-05-2026</td>
+      <td>09:17:14</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1008.85</td>
+      <td>15</td>
+      <td>315.00</td>
+      <td>309.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹987.85→₹1008.85 +₹21.00 in 0c</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>13-05-2026</td>
+      <td>09:17:29</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>997.85</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>309.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1015.20 dropped ₹17.35 to ₹997.85</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>13-05-2026</td>
+      <td>09:17:35</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1007.70</td>
+      <td>15</td>
+      <td>147.75</td>
+      <td>457.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹997.85→₹1007.70 +₹9.85 in 0c</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>13-05-2026</td>
+      <td>09:17:45</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>995.65</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>457.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1015.20 dropped ₹19.55 to ₹995.65</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>13-05-2026</td>
+      <td>09:17:49</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1004.85</td>
+      <td>15</td>
+      <td>138.00</td>
+      <td>595.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹995.65→₹1004.85 +₹9.20 in 0c</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>13-05-2026</td>
+      <td>09:17:51</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>998.95</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>595.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1015.20 dropped ₹16.25 to ₹998.95</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>13-05-2026</td>
+      <td>09:17:52</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1006.10</td>
+      <td>15</td>
+      <td>107.25</td>
+      <td>702.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹998.95→₹1006.10 +₹7.15 in 0c</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>13-05-2026</td>
+      <td>09:17:57</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>997.70</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>702.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1015.20 dropped ₹17.50 to ₹997.70</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>13-05-2026</td>
+      <td>09:18:01</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>986.45</td>
+      <td>15</td>
+      <td>-168.75</td>
+      <td>534.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹997.70→₹986.45 -₹11.25</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>13-05-2026</td>
+      <td>09:18:21</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>972.90</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>534.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹990.20 dropped ₹17.30 to ₹972.90</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>13-05-2026</td>
+      <td>09:18:28</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>979.70</td>
+      <td>15</td>
+      <td>102.00</td>
+      <td>636.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹972.90→₹979.70 +₹6.80 in 0c</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>13-05-2026</td>
+      <td>09:18:52</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>971.65</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>636.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹990.20 dropped ₹18.55 to ₹971.65</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>13-05-2026</td>
+      <td>09:18:53</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>977.50</td>
+      <td>15</td>
+      <td>87.75</td>
+      <td>723.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹971.65→₹977.50 +₹5.85 in 0c</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>13-05-2026</td>
+      <td>09:18:57</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>964.40</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>723.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹990.20 dropped ₹25.80 to ₹964.40</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>13-05-2026</td>
+      <td>09:18:58</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>970.45</td>
+      <td>15</td>
+      <td>90.75</td>
+      <td>814.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹964.40→₹970.45 +₹6.05 in 0c</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>13-05-2026</td>
+      <td>09:18:59</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>970.25</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>814.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹990.20 dropped ₹19.95 to ₹970.25</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>13-05-2026</td>
+      <td>09:19:04</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>956.85</td>
+      <td>15</td>
+      <td>-201.00</td>
+      <td>613.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹970.25→₹956.85 -₹13.40</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>13-05-2026</td>
+      <td>09:19:11</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>888.60</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>613.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹906.15 dropped ₹17.55 to ₹888.60</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>13-05-2026</td>
+      <td>09:19:17</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>894.25</td>
+      <td>15</td>
+      <td>84.75</td>
+      <td>698.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹888.60→₹894.25 +₹5.65 in 0c</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>13-05-2026</td>
+      <td>09:19:18</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>890.15</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>698.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹906.15 dropped ₹16.00 to ₹890.15</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>13-05-2026</td>
+      <td>09:19:24</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>879.75</td>
+      <td>15</td>
+      <td>-156.00</td>
+      <td>542.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹890.15→₹879.75 -₹10.40</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>13-05-2026</td>
+      <td>09:19:25</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>883.05</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>542.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹906.15 dropped ₹23.10 to ₹883.05</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>13-05-2026</td>
+      <td>09:19:51</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>892.05</td>
+      <td>15</td>
+      <td>135.00</td>
+      <td>677.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹883.05→₹892.05 +₹9.00 in 0c</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>13-05-2026</td>
+      <td>09:19:52</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>887.15</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>677.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹906.15 dropped ₹19.00 to ₹887.15</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>13-05-2026</td>
+      <td>09:20:11</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>893.40</td>
+      <td>15</td>
+      <td>93.75</td>
+      <td>771.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹887.15→₹893.40 +₹6.25 in 1c</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>13-05-2026</td>
+      <td>09:20:12</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>985.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>771.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1003.85 dropped ₹18.85 to ₹985.00</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>13-05-2026</td>
+      <td>09:20:52</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>996.35</td>
+      <td>15</td>
+      <td>170.25</td>
+      <td>941.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹985.00→₹996.35 +₹11.35 in 0c</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>13-05-2026</td>
+      <td>09:21:28</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>870.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>941.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹889.10 dropped ₹19.10 to ₹870.00</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>13-05-2026</td>
+      <td>09:21:39</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>859.10</td>
+      <td>15</td>
+      <td>-163.50</td>
+      <td>777.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹870.00→₹859.10 -₹10.90</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>13-05-2026</td>
+      <td>09:21:40</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>864.30</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>777.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹889.10 dropped ₹24.80 to ₹864.30</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>13-05-2026</td>
+      <td>09:21:42</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>870.30</td>
+      <td>15</td>
+      <td>90.00</td>
+      <td>867.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹864.30→₹870.30 +₹6.00 in 0c</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>13-05-2026</td>
+      <td>09:21:46</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>866.75</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>867.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹889.10 dropped ₹22.35 to ₹866.75</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>13-05-2026</td>
+      <td>09:21:50</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>873.10</td>
+      <td>15</td>
+      <td>95.25</td>
+      <td>963.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹866.75→₹873.10 +₹6.35 in 0c</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>13-05-2026</td>
+      <td>09:21:52</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>864.40</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>963.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹889.10 dropped ₹24.70 to ₹864.40</td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>13-05-2026</td>
+      <td>09:21:55</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>870.90</td>
+      <td>15</td>
+      <td>97.50</td>
+      <td>1060.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹864.40→₹870.90 +₹6.50 in 0c</td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>13-05-2026</td>
+      <td>09:21:56</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>863.85</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1060.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹889.10 dropped ₹25.25 to ₹863.85</td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>13-05-2026</td>
+      <td>09:22:03</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>869.30</td>
+      <td>15</td>
+      <td>81.75</td>
+      <td>1142.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹863.85→₹869.30 +₹5.45 in 1c</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>13-05-2026</td>
+      <td>09:22:15</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>848.05</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1142.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹867.55 dropped ₹19.50 to ₹848.05</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>13-05-2026</td>
+      <td>09:22:19</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>853.15</td>
+      <td>15</td>
+      <td>76.50</td>
+      <td>1218.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹848.05→₹853.15 +₹5.10 in 0c</td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>13-05-2026</td>
+      <td>09:23:31</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1034.80</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1218.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1051.50 dropped ₹16.70 to ₹1034.80</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>13-05-2026</td>
+      <td>09:23:33</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1016.95</td>
+      <td>15</td>
+      <td>-267.75</td>
+      <td>951.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1034.80→₹1016.95 -₹17.85</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>13-05-2026</td>
+      <td>09:23:36</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1017.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>951.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1051.50 dropped ₹34.50 to ₹1017.00</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>13-05-2026</td>
+      <td>09:23:42</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1000.00</td>
+      <td>15</td>
+      <td>-255.00</td>
+      <td>696.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1017.00→₹1000.00 -₹17.00</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>13-05-2026</td>
+      <td>09:23:44</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>997.35</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>696.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1051.50 dropped ₹54.15 to ₹997.35</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>13-05-2026</td>
+      <td>09:23:45</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1002.35</td>
+      <td>15</td>
+      <td>75.00</td>
+      <td>771.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹997.35→₹1002.35 +₹5.00 in 0c</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>13-05-2026</td>
+      <td>09:23:45</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>997.10</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>771.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1051.50 dropped ₹54.40 to ₹997.10</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>13-05-2026</td>
+      <td>09:23:49</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1007.15</td>
+      <td>15</td>
+      <td>150.75</td>
+      <td>921.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹997.10→₹1007.15 +₹10.05 in 0c</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>13-05-2026</td>
+      <td>09:23:49</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1003.30</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>921.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1051.50 dropped ₹48.20 to ₹1003.30</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>13-05-2026</td>
+      <td>09:23:52</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>988.15</td>
+      <td>15</td>
+      <td>-227.25</td>
+      <td>694.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1003.30→₹988.15 -₹15.15</td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>13-05-2026</td>
+      <td>09:23:52</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>988.30</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>694.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1051.50 dropped ₹63.20 to ₹988.30</td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>13-05-2026</td>
+      <td>09:23:57</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>995.15</td>
+      <td>15</td>
+      <td>102.75</td>
+      <td>797.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹988.30→₹995.15 +₹6.85 in 0c</td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>13-05-2026</td>
+      <td>09:23:58</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1002.50</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>797.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1051.50 dropped ₹49.00 to ₹1002.50</td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>13-05-2026</td>
+      <td>09:24:08</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>990.35</td>
+      <td>15</td>
+      <td>-182.25</td>
+      <td>615.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1002.50→₹990.35 -₹12.15</td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>13-05-2026</td>
+      <td>09:24:11</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>980.75</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>615.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹999.20 dropped ₹18.45 to ₹980.75</td>
+    </tr>
+    <tr>
+      <td>66</td>
+      <td>13-05-2026</td>
+      <td>09:24:16</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>997.85</td>
+      <td>15</td>
+      <td>256.50</td>
+      <td>871.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹980.75→₹997.85 +₹17.10 in 0c</td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>13-05-2026</td>
+      <td>09:24:36</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>981.65</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>871.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹999.20 dropped ₹17.55 to ₹981.65</td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>13-05-2026</td>
+      <td>09:24:43</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>988.90</td>
+      <td>15</td>
+      <td>108.75</td>
+      <td>980.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹981.65→₹988.90 +₹7.25 in 0c</td>
+    </tr>
+    <tr>
+      <td>69</td>
+      <td>13-05-2026</td>
+      <td>09:24:56</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>976.05</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>980.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹999.20 dropped ₹23.15 to ₹976.05</td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td>13-05-2026</td>
+      <td>09:25:04</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>987.90</td>
+      <td>15</td>
+      <td>177.75</td>
+      <td>1158.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹976.05→₹987.90 +₹11.85 in 1c</td>
+    </tr>
+    <tr>
+      <td>71</td>
+      <td>13-05-2026</td>
+      <td>09:25:15</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>895.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1158.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹910.50 dropped ₹15.50 to ₹895.00</td>
+    </tr>
+    <tr>
+      <td>72</td>
+      <td>13-05-2026</td>
+      <td>09:25:36</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>882.60</td>
+      <td>15</td>
+      <td>-186.00</td>
+      <td>972.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹895.00→₹882.60 -₹12.40</td>
+    </tr>
+    <tr>
+      <td>73</td>
+      <td>13-05-2026</td>
+      <td>09:25:36</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>880.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>972.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹910.50 dropped ₹30.50 to ₹880.00</td>
+    </tr>
+    <tr>
+      <td>74</td>
+      <td>13-05-2026</td>
+      <td>09:26:56</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>867.70</td>
+      <td>15</td>
+      <td>-184.50</td>
+      <td>787.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹880.00→₹867.70 -₹12.30</td>
+    </tr>
+    <tr>
+      <td>75</td>
+      <td>13-05-2026</td>
+      <td>09:28:53</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>853.45</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>787.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹870.30 dropped ₹16.85 to ₹853.45</td>
+    </tr>
+    <tr>
+      <td>76</td>
+      <td>13-05-2026</td>
+      <td>09:28:55</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>859.15</td>
+      <td>15</td>
+      <td>85.50</td>
+      <td>873.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹853.45→₹859.15 +₹5.70 in 0c</td>
+    </tr>
+    <tr>
+      <td>77</td>
+      <td>13-05-2026</td>
+      <td>09:29:18</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>846.45</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>873.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹864.60 dropped ₹18.15 to ₹846.45</td>
+    </tr>
+    <tr>
+      <td>78</td>
+      <td>13-05-2026</td>
+      <td>09:29:21</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>852.70</td>
+      <td>15</td>
+      <td>93.75</td>
+      <td>966.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹846.45→₹852.70 +₹6.25 in 0c</td>
+    </tr>
+    <tr>
+      <td>79</td>
+      <td>13-05-2026</td>
+      <td>09:29:24</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>847.25</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>966.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹864.60 dropped ₹17.35 to ₹847.25</td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td>13-05-2026</td>
+      <td>09:29:49</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>836.95</td>
+      <td>15</td>
+      <td>-154.50</td>
+      <td>812.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹847.25→₹836.95 -₹10.30</td>
+    </tr>
+    <tr>
+      <td>81</td>
+      <td>13-05-2026</td>
+      <td>09:29:50</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>835.70</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>812.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹864.60 dropped ₹28.90 to ₹835.70</td>
+    </tr>
+    <tr>
+      <td>82</td>
+      <td>13-05-2026</td>
+      <td>09:30:14</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>841.00</td>
+      <td>15</td>
+      <td>79.50</td>
+      <td>891.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹835.70→₹841.00 +₹5.30 in 1c</td>
+    </tr>
+    <tr>
+      <td>83</td>
+      <td>13-05-2026</td>
+      <td>09:30:20</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1074.50</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>891.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1093.35 dropped ₹18.85 to ₹1074.50</td>
+    </tr>
+    <tr>
+      <td>84</td>
+      <td>13-05-2026</td>
+      <td>09:30:34</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1082.90</td>
+      <td>15</td>
+      <td>126.00</td>
+      <td>1017.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1074.50→₹1082.90 +₹8.40 in 0c</td>
+    </tr>
+    <tr>
+      <td>85</td>
+      <td>13-05-2026</td>
+      <td>09:30:41</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1072.70</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1017.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1093.35 dropped ₹20.65 to ₹1072.70</td>
+    </tr>
+    <tr>
+      <td>86</td>
+      <td>13-05-2026</td>
+      <td>09:30:48</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1061.60</td>
+      <td>15</td>
+      <td>-166.50</td>
+      <td>851.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1072.70→₹1061.60 -₹11.10</td>
+    </tr>
+    <tr>
+      <td>87</td>
+      <td>13-05-2026</td>
+      <td>09:30:48</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1060.80</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>851.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1093.35 dropped ₹32.55 to ₹1060.80</td>
+    </tr>
+    <tr>
+      <td>88</td>
+      <td>13-05-2026</td>
+      <td>09:30:49</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1066.05</td>
+      <td>15</td>
+      <td>78.75</td>
+      <td>930.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1060.80→₹1066.05 +₹5.25 in 0c</td>
+    </tr>
+    <tr>
+      <td>89</td>
+      <td>13-05-2026</td>
+      <td>09:30:50</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1059.60</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>930.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1093.35 dropped ₹33.75 to ₹1059.60</td>
+    </tr>
+    <tr>
+      <td>90</td>
+      <td>13-05-2026</td>
+      <td>09:30:54</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1065.65</td>
+      <td>15</td>
+      <td>90.75</td>
+      <td>1020.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1059.60→₹1065.65 +₹6.05 in 0c</td>
+    </tr>
+    <tr>
+      <td>91</td>
+      <td>13-05-2026</td>
+      <td>09:30:56</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1057.15</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1020.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1093.35 dropped ₹36.20 to ₹1057.15</td>
+    </tr>
+    <tr>
+      <td>92</td>
+      <td>13-05-2026</td>
+      <td>09:30:59</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1063.85</td>
+      <td>15</td>
+      <td>100.50</td>
+      <td>1121.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1057.15→₹1063.85 +₹6.70 in 0c</td>
+    </tr>
+    <tr>
+      <td>93</td>
+      <td>13-05-2026</td>
+      <td>09:31:25</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>827.65</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1121.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹847.65 dropped ₹20.00 to ₹827.65</td>
+    </tr>
+    <tr>
+      <td>94</td>
+      <td>13-05-2026</td>
+      <td>09:31:40</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>815.80</td>
+      <td>15</td>
+      <td>-177.75</td>
+      <td>943.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹827.65→₹815.80 -₹11.85</td>
+    </tr>
+    <tr>
+      <td>95</td>
+      <td>13-05-2026</td>
+      <td>09:31:41</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>815.10</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>943.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹847.65 dropped ₹32.55 to ₹815.10</td>
+    </tr>
+    <tr>
+      <td>96</td>
+      <td>13-05-2026</td>
+      <td>09:31:53</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>802.75</td>
+      <td>15</td>
+      <td>-185.25</td>
+      <td>758.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹815.10→₹802.75 -₹12.35</td>
+    </tr>
+    <tr>
+      <td>97</td>
+      <td>13-05-2026</td>
+      <td>09:31:54</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>803.15</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>758.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹847.65 dropped ₹44.50 to ₹803.15</td>
+    </tr>
+    <tr>
+      <td>98</td>
+      <td>13-05-2026</td>
+      <td>09:33:23</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1127.70</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>758.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1148.20 dropped ₹20.50 to ₹1127.70</td>
+    </tr>
+    <tr>
+      <td>99</td>
+      <td>13-05-2026</td>
+      <td>09:33:28</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1141.15</td>
+      <td>15</td>
+      <td>201.75</td>
+      <td>960.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1127.70→₹1141.15 +₹13.45 in 0c</td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td>13-05-2026</td>
+      <td>09:33:38</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1132.80</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>960.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1148.20 dropped ₹15.40 to ₹1132.80</td>
+    </tr>
+    <tr>
+      <td>101</td>
+      <td>13-05-2026</td>
+      <td>09:33:51</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1139.55</td>
+      <td>15</td>
+      <td>101.25</td>
+      <td>1061.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1132.80→₹1139.55 +₹6.75 in 0c</td>
+    </tr>
+    <tr>
+      <td>102</td>
+      <td>13-05-2026</td>
+      <td>09:34:19</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>792.75</td>
+      <td>15</td>
+      <td>-156.00</td>
+      <td>905.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹803.15→₹792.75 -₹10.40</td>
+    </tr>
+    <tr>
+      <td>103</td>
+      <td>13-05-2026</td>
+      <td>09:34:21</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>787.50</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>905.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹803.35 dropped ₹15.85 to ₹787.50</td>
+    </tr>
+    <tr>
+      <td>104</td>
+      <td>13-05-2026</td>
+      <td>09:34:51</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>776.10</td>
+      <td>15</td>
+      <td>-171.00</td>
+      <td>734.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹787.50→₹776.10 -₹11.40</td>
+    </tr>
+    <tr>
+      <td>105</td>
+      <td>13-05-2026</td>
+      <td>09:34:52</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>776.05</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>734.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹803.35 dropped ₹27.30 to ₹776.05</td>
+    </tr>
+    <tr>
+      <td>106</td>
+      <td>13-05-2026</td>
+      <td>09:35:49</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>763.20</td>
+      <td>15</td>
+      <td>-192.75</td>
+      <td>541.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹776.05→₹763.20 -₹12.85</td>
+    </tr>
+    <tr>
+      <td>107</td>
+      <td>13-05-2026</td>
+      <td>09:35:55</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>755.70</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>541.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹771.75 dropped ₹16.05 to ₹755.70</td>
+    </tr>
+    <tr>
+      <td>108</td>
+      <td>13-05-2026</td>
+      <td>09:36:17</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>760.70</td>
+      <td>15</td>
+      <td>75.00</td>
+      <td>616.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹755.70→₹760.70 +₹5.00 in 1c</td>
+    </tr>
+    <tr>
+      <td>109</td>
+      <td>13-05-2026</td>
+      <td>09:36:31</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1185.75</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>616.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1207.30 dropped ₹21.55 to ₹1185.75</td>
+    </tr>
+    <tr>
+      <td>110</td>
+      <td>13-05-2026</td>
+      <td>09:36:36</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1175.65</td>
+      <td>15</td>
+      <td>-151.50</td>
+      <td>465.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1185.75→₹1175.65 -₹10.10</td>
+    </tr>
+    <tr>
+      <td>111</td>
+      <td>13-05-2026</td>
+      <td>09:36:38</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1176.20</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>465.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1207.30 dropped ₹31.10 to ₹1176.20</td>
+    </tr>
+    <tr>
+      <td>112</td>
+      <td>13-05-2026</td>
+      <td>09:36:56</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1195.30</td>
+      <td>15</td>
+      <td>286.50</td>
+      <td>751.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1176.20→₹1195.30 +₹19.10 in 0c</td>
+    </tr>
+    <tr>
+      <td>113</td>
+      <td>13-05-2026</td>
+      <td>09:36:58</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1191.25</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>751.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1207.30 dropped ₹16.05 to ₹1191.25</td>
+    </tr>
+    <tr>
+      <td>114</td>
+      <td>13-05-2026</td>
+      <td>09:37:00</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1200.00</td>
+      <td>15</td>
+      <td>131.25</td>
+      <td>882.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1191.25→₹1200.00 +₹8.75 in 1c</td>
+    </tr>
+    <tr>
+      <td>115</td>
+      <td>13-05-2026</td>
+      <td>09:37:02</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1177.20</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>882.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1200.00 dropped ₹22.80 to ₹1177.20</td>
+    </tr>
+    <tr>
+      <td>116</td>
+      <td>13-05-2026</td>
+      <td>09:37:13</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1191.65</td>
+      <td>15</td>
+      <td>216.75</td>
+      <td>1099.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1177.20→₹1191.65 +₹14.45 in 0c</td>
+    </tr>
+    <tr>
+      <td>117</td>
+      <td>13-05-2026</td>
+      <td>09:37:17</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1184.45</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1099.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1200.00 dropped ₹15.55 to ₹1184.45</td>
+    </tr>
+    <tr>
+      <td>118</td>
+      <td>13-05-2026</td>
+      <td>09:37:17</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1189.75</td>
+      <td>15</td>
+      <td>79.50</td>
+      <td>1179.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1184.45→₹1189.75 +₹5.30 in 0c</td>
+    </tr>
+    <tr>
+      <td>119</td>
+      <td>13-05-2026</td>
+      <td>09:37:23</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1181.05</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1179.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1200.00 dropped ₹18.95 to ₹1181.05</td>
+    </tr>
+    <tr>
+      <td>120</td>
+      <td>13-05-2026</td>
+      <td>09:37:24</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1186.35</td>
+      <td>15</td>
+      <td>79.50</td>
+      <td>1258.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1181.05→₹1186.35 +₹5.30 in 0c</td>
+    </tr>
+    <tr>
+      <td>121</td>
+      <td>13-05-2026</td>
+      <td>09:37:28</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1184.15</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1258.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1200.00 dropped ₹15.85 to ₹1184.15</td>
+    </tr>
+    <tr>
+      <td>122</td>
+      <td>13-05-2026</td>
+      <td>09:37:33</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1193.55</td>
+      <td>15</td>
+      <td>141.00</td>
+      <td>1399.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1184.15→₹1193.55 +₹9.40 in 0c</td>
+    </tr>
+    <tr>
+      <td>123</td>
+      <td>13-05-2026</td>
+      <td>09:38:25</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1192.70</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1399.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1208.05 dropped ₹15.35 to ₹1192.70</td>
+    </tr>
+    <tr>
+      <td>124</td>
+      <td>13-05-2026</td>
+      <td>09:38:29</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1198.80</td>
+      <td>15</td>
+      <td>91.50</td>
+      <td>1491.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1192.70→₹1198.80 +₹6.10 in 0c</td>
+    </tr>
+    <tr>
+      <td>125</td>
+      <td>13-05-2026</td>
+      <td>09:38:35</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1191.10</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1491.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1208.05 dropped ₹16.95 to ₹1191.10</td>
+    </tr>
+    <tr>
+      <td>126</td>
+      <td>13-05-2026</td>
+      <td>09:38:38</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1196.15</td>
+      <td>15</td>
+      <td>75.75</td>
+      <td>1566.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1191.10→₹1196.15 +₹5.05 in 0c</td>
+    </tr>
+    <tr>
+      <td>127</td>
+      <td>13-05-2026</td>
+      <td>09:38:40</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1190.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1566.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1208.05 dropped ₹18.05 to ₹1190.00</td>
+    </tr>
+    <tr>
+      <td>128</td>
+      <td>13-05-2026</td>
+      <td>09:38:48</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1213.40</td>
+      <td>15</td>
+      <td>351.00</td>
+      <td>1917.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1190.00→₹1213.40 +₹23.40 in 0c</td>
+    </tr>
+    <tr>
+      <td>129</td>
+      <td>13-05-2026</td>
+      <td>09:39:55</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1205.85</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1917.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1221.00 dropped ₹15.15 to ₹1205.85</td>
+    </tr>
+    <tr>
+      <td>130</td>
+      <td>13-05-2026</td>
+      <td>09:39:57</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1217.25</td>
+      <td>15</td>
+      <td>171.00</td>
+      <td>2088.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1205.85→₹1217.25 +₹11.40 in 0c</td>
+    </tr>
+    <tr>
+      <td>131</td>
+      <td>13-05-2026</td>
+      <td>09:40:25</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1195.30</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2088.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1217.75 dropped ₹22.45 to ₹1195.30</td>
+    </tr>
+    <tr>
+      <td>132</td>
+      <td>13-05-2026</td>
+      <td>09:41:12</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1214.10</td>
+      <td>15</td>
+      <td>282.00</td>
+      <td>2370.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1195.30→₹1214.10 +₹18.80 in 1c</td>
+    </tr>
+    <tr>
+      <td>133</td>
+      <td>13-05-2026</td>
+      <td>09:41:27</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1197.20</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2370.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1214.10 dropped ₹16.90 to ₹1197.20</td>
+    </tr>
+    <tr>
+      <td>134</td>
+      <td>13-05-2026</td>
+      <td>09:41:33</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1177.75</td>
+      <td>15</td>
+      <td>-291.75</td>
+      <td>2079.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1197.20→₹1177.75 -₹19.45</td>
+    </tr>
+    <tr>
+      <td>135</td>
+      <td>13-05-2026</td>
+      <td>09:41:34</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1190.25</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2079.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1214.10 dropped ₹23.85 to ₹1190.25</td>
+    </tr>
+    <tr>
+      <td>136</td>
+      <td>13-05-2026</td>
+      <td>09:41:40</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1200.00</td>
+      <td>15</td>
+      <td>146.25</td>
+      <td>2225.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1190.25→₹1200.00 +₹9.75 in 0c</td>
+    </tr>
+    <tr>
+      <td>137</td>
+      <td>13-05-2026</td>
+      <td>09:41:46</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1194.35</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2225.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1214.10 dropped ₹19.75 to ₹1194.35</td>
+    </tr>
+    <tr>
+      <td>138</td>
+      <td>13-05-2026</td>
+      <td>09:41:55</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1211.90</td>
+      <td>15</td>
+      <td>263.25</td>
+      <td>2488.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1194.35→₹1211.90 +₹17.55 in 0c</td>
+    </tr>
+    <tr>
+      <td>139</td>
+      <td>13-05-2026</td>
+      <td>09:42:07</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1178.30</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2488.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1195.20 dropped ₹16.90 to ₹1178.30</td>
+    </tr>
+    <tr>
+      <td>140</td>
+      <td>13-05-2026</td>
+      <td>09:42:12</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1184.50</td>
+      <td>15</td>
+      <td>93.00</td>
+      <td>2581.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1178.30→₹1184.50 +₹6.20 in 0c</td>
+    </tr>
+    <tr>
+      <td>141</td>
+      <td>13-05-2026</td>
+      <td>09:42:29</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1179.20</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2581.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1195.20 dropped ₹16.00 to ₹1179.20</td>
+    </tr>
+    <tr>
+      <td>142</td>
+      <td>13-05-2026</td>
+      <td>09:42:47</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1169.05</td>
+      <td>15</td>
+      <td>-152.25</td>
+      <td>2429.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1179.20→₹1169.05 -₹10.15</td>
+    </tr>
+    <tr>
+      <td>143</td>
+      <td>13-05-2026</td>
+      <td>09:42:48</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1166.30</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2429.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1195.20 dropped ₹28.90 to ₹1166.30</td>
+    </tr>
+    <tr>
+      <td>144</td>
+      <td>13-05-2026</td>
+      <td>09:42:49</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1177.50</td>
+      <td>15</td>
+      <td>168.00</td>
+      <td>2597.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1166.30→₹1177.50 +₹11.20 in 0c</td>
+    </tr>
+    <tr>
+      <td>145</td>
+      <td>13-05-2026</td>
+      <td>09:42:51</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1162.70</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2597.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1195.20 dropped ₹32.50 to ₹1162.70</td>
+    </tr>
+    <tr>
+      <td>146</td>
+      <td>13-05-2026</td>
+      <td>09:43:03</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1151.20</td>
+      <td>15</td>
+      <td>-172.50</td>
+      <td>2424.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1162.70→₹1151.20 -₹11.50</td>
+    </tr>
+    <tr>
+      <td>147</td>
+      <td>13-05-2026</td>
+      <td>09:44:10</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1150.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2424.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1167.55 dropped ₹17.55 to ₹1150.00</td>
+    </tr>
+    <tr>
+      <td>148</td>
+      <td>13-05-2026</td>
+      <td>09:44:31</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1163.20</td>
+      <td>15</td>
+      <td>198.00</td>
+      <td>2622.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1150.00→₹1163.20 +₹13.20 in 0c</td>
+    </tr>
+    <tr>
+      <td>149</td>
+      <td>13-05-2026</td>
+      <td>09:44:40</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1150.70</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2622.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1167.55 dropped ₹16.85 to ₹1150.70</td>
+    </tr>
+    <tr>
+      <td>150</td>
+      <td>13-05-2026</td>
+      <td>09:44:50</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1158.85</td>
+      <td>15</td>
+      <td>122.25</td>
+      <td>2745.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1150.70→₹1158.85 +₹8.15 in 0c</td>
+    </tr>
+    <tr>
+      <td>151</td>
+      <td>13-05-2026</td>
+      <td>09:45:18</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1150.40</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2745.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1168.95 dropped ₹18.55 to ₹1150.40</td>
+    </tr>
+    <tr>
+      <td>152</td>
+      <td>13-05-2026</td>
+      <td>09:46:21</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1161.20</td>
+      <td>15</td>
+      <td>162.00</td>
+      <td>2907.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1150.40→₹1161.20 +₹10.80 in 1c</td>
+    </tr>
+    <tr>
+      <td>153</td>
+      <td>13-05-2026</td>
+      <td>09:49:36</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1200.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2907.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1220.00 dropped ₹20.00 to ₹1200.00</td>
+    </tr>
+    <tr>
+      <td>154</td>
+      <td>13-05-2026</td>
+      <td>09:49:46</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1185.85</td>
+      <td>15</td>
+      <td>-212.25</td>
+      <td>2694.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1200.00→₹1185.85 -₹14.15</td>
+    </tr>
+    <tr>
+      <td>155</td>
+      <td>13-05-2026</td>
+      <td>09:49:55</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1178.55</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2694.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1220.00 dropped ₹41.45 to ₹1178.55</td>
+    </tr>
+    <tr>
+      <td>156</td>
+      <td>13-05-2026</td>
+      <td>09:49:58</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1186.30</td>
+      <td>15</td>
+      <td>116.25</td>
+      <td>2811.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1178.55→₹1186.30 +₹7.75 in 0c</td>
+    </tr>
+    <tr>
+      <td>157</td>
+      <td>13-05-2026</td>
+      <td>09:49:59</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1190.85</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2811.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1220.00 dropped ₹29.15 to ₹1190.85</td>
+    </tr>
+    <tr>
+      <td>158</td>
+      <td>13-05-2026</td>
+      <td>09:50:00</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1197.60</td>
+      <td>15</td>
+      <td>101.25</td>
+      <td>2912.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1190.85→₹1197.60 +₹6.75 in 1c</td>
+    </tr>
+    <tr>
+      <td>159</td>
+      <td>13-05-2026</td>
+      <td>09:50:45</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1181.60</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2912.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1197.60 dropped ₹16.00 to ₹1181.60</td>
+    </tr>
+    <tr>
+      <td>160</td>
+      <td>13-05-2026</td>
+      <td>09:51:16</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1161.25</td>
+      <td>15</td>
+      <td>-305.25</td>
+      <td>2607.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1181.60→₹1161.25 -₹20.35</td>
+    </tr>
+    <tr>
+      <td>161</td>
+      <td>13-05-2026</td>
+      <td>09:51:17</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1161.45</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2607.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1181.35 dropped ₹19.90 to ₹1161.45</td>
+    </tr>
+    <tr>
+      <td>162</td>
+      <td>13-05-2026</td>
+      <td>09:51:28</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1149.50</td>
+      <td>15</td>
+      <td>-179.25</td>
+      <td>2427.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1161.45→₹1149.50 -₹11.95</td>
+    </tr>
+    <tr>
+      <td>163</td>
+      <td>13-05-2026</td>
+      <td>09:51:37</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1145.20</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2427.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1181.35 dropped ₹36.15 to ₹1145.20</td>
+    </tr>
+    <tr>
+      <td>164</td>
+      <td>13-05-2026</td>
+      <td>09:51:57</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1133.30</td>
+      <td>15</td>
+      <td>-178.50</td>
+      <td>2249.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1145.20→₹1133.30 -₹11.90</td>
+    </tr>
+    <tr>
+      <td>165</td>
+      <td>13-05-2026</td>
+      <td>09:52:06</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>789.35</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2249.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹807.00 dropped ₹17.65 to ₹789.35</td>
+    </tr>
+    <tr>
+      <td>166</td>
+      <td>13-05-2026</td>
+      <td>09:52:31</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>803.35</td>
+      <td>15</td>
+      <td>210.00</td>
+      <td>2459.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹789.35→₹803.35 +₹14.00 in 0c</td>
+    </tr>
+    <tr>
+      <td>167</td>
+      <td>13-05-2026</td>
+      <td>09:55:16</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1087.40</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2459.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1104.20 dropped ₹16.80 to ₹1087.40</td>
+    </tr>
+    <tr>
+      <td>168</td>
+      <td>13-05-2026</td>
+      <td>09:55:20</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1075.50</td>
+      <td>15</td>
+      <td>-178.50</td>
+      <td>2280.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1087.40→₹1075.50 -₹11.90</td>
+    </tr>
+    <tr>
+      <td>169</td>
+      <td>13-05-2026</td>
+      <td>09:55:21</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1078.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2280.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1104.20 dropped ₹26.20 to ₹1078.00</td>
+    </tr>
+    <tr>
+      <td>170</td>
+      <td>13-05-2026</td>
+      <td>09:55:34</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1110.20</td>
+      <td>15</td>
+      <td>483.00</td>
+      <td>2763.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1078.00→₹1110.20 +₹32.20 in 0c</td>
+    </tr>
+    <tr>
+      <td>171</td>
+      <td>13-05-2026</td>
+      <td>09:58:51</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1136.45</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2763.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1155.00 dropped ₹18.55 to ₹1136.45</td>
+    </tr>
+    <tr>
+      <td>172</td>
+      <td>13-05-2026</td>
+      <td>09:58:53</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1142.35</td>
+      <td>15</td>
+      <td>88.50</td>
+      <td>2852.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1136.45→₹1142.35 +₹5.90 in 0c</td>
+    </tr>
+    <tr>
+      <td>173</td>
+      <td>13-05-2026</td>
+      <td>10:01:21</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1092.65</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2852.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1109.40 dropped ₹16.75 to ₹1092.65</td>
+    </tr>
+    <tr>
+      <td>174</td>
+      <td>13-05-2026</td>
+      <td>10:01:27</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1103.75</td>
+      <td>15</td>
+      <td>166.50</td>
+      <td>3018.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1092.65→₹1103.75 +₹11.10 in 0c</td>
+    </tr>
+    <tr>
+      <td>175</td>
+      <td>13-05-2026</td>
+      <td>10:01:33</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1093.45</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>3018.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1109.40 dropped ₹15.95 to ₹1093.45</td>
+    </tr>
+    <tr>
+      <td>176</td>
+      <td>13-05-2026</td>
+      <td>10:01:39</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1098.55</td>
+      <td>15</td>
+      <td>76.50</td>
+      <td>3095.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1093.45→₹1098.55 +₹5.10 in 0c</td>
+    </tr>
+    <tr>
+      <td>177</td>
+      <td>13-05-2026</td>
+      <td>10:01:43</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1093.15</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>3095.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1109.40 dropped ₹16.25 to ₹1093.15</td>
+    </tr>
+    <tr>
+      <td>178</td>
+      <td>13-05-2026</td>
+      <td>10:01:45</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1106.35</td>
+      <td>15</td>
+      <td>198.00</td>
+      <td>3293.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1093.15→₹1106.35 +₹13.20 in 0c</td>
+    </tr>
+    <tr>
+      <td>179</td>
+      <td>13-05-2026</td>
+      <td>10:04:20</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1103.80</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>3293.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1119.40 dropped ₹15.60 to ₹1103.80</td>
+    </tr>
+    <tr>
+      <td>180</td>
+      <td>13-05-2026</td>
+      <td>10:04:52</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1085.85</td>
+      <td>15</td>
+      <td>-269.25</td>
+      <td>3024.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1103.80→₹1085.85 -₹17.95</td>
+    </tr>
+    <tr>
+      <td>181</td>
+      <td>13-05-2026</td>
+      <td>10:04:54</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1088.90</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>3024.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1119.40 dropped ₹30.50 to ₹1088.90</td>
+    </tr>
+    <tr>
+      <td>182</td>
+      <td>13-05-2026</td>
+      <td>10:05:08</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1072.10</td>
+      <td>15</td>
+      <td>-252.00</td>
+      <td>2772.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1088.90→₹1072.10 -₹16.80</td>
+    </tr>
+    <tr>
+      <td>183</td>
+      <td>13-05-2026</td>
+      <td>10:05:30</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1068.30</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2772.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1089.35 dropped ₹21.05 to ₹1068.30</td>
+    </tr>
+    <tr>
+      <td>184</td>
+      <td>13-05-2026</td>
+      <td>10:05:43</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1074.00</td>
+      <td>15</td>
+      <td>85.50</td>
+      <td>2857.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1068.30→₹1074.00 +₹5.70 in 0c</td>
+    </tr>
+    <tr>
+      <td>185</td>
+      <td>13-05-2026</td>
+      <td>10:06:28</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1058.80</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2857.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1076.00 dropped ₹17.20 to ₹1058.80</td>
+    </tr>
+    <tr>
+      <td>186</td>
+      <td>13-05-2026</td>
+      <td>10:06:28</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1046.90</td>
+      <td>15</td>
+      <td>-178.50</td>
+      <td>2679.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1058.80→₹1046.90 -₹11.90</td>
+    </tr>
+    <tr>
+      <td>187</td>
+      <td>13-05-2026</td>
+      <td>10:06:30</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1047.45</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2679.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1076.00 dropped ₹28.55 to ₹1047.45</td>
+    </tr>
+    <tr>
+      <td>188</td>
+      <td>13-05-2026</td>
+      <td>10:06:33</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1055.45</td>
+      <td>15</td>
+      <td>120.00</td>
+      <td>2799.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1047.45→₹1055.45 +₹8.00 in 0c</td>
+    </tr>
+    <tr>
+      <td>189</td>
+      <td>13-05-2026</td>
+      <td>10:06:34</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1053.60</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2799.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1076.00 dropped ₹22.40 to ₹1053.60</td>
+    </tr>
+    <tr>
+      <td>190</td>
+      <td>13-05-2026</td>
+      <td>10:06:52</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1041.60</td>
+      <td>15</td>
+      <td>-180.00</td>
+      <td>2619.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1053.60→₹1041.60 -₹12.00</td>
+    </tr>
+    <tr>
+      <td>191</td>
+      <td>13-05-2026</td>
+      <td>10:06:55</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1030.90</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2619.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1076.00 dropped ₹45.10 to ₹1030.90</td>
+    </tr>
+    <tr>
+      <td>192</td>
+      <td>13-05-2026</td>
+      <td>10:07:06</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1036.45</td>
+      <td>15</td>
+      <td>83.25</td>
+      <td>2702.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1030.90→₹1036.45 +₹5.55 in 1c</td>
+    </tr>
+    <tr>
+      <td>193</td>
+      <td>13-05-2026</td>
+      <td>10:07:18</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1016.20</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2702.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1033.40 dropped ₹17.20 to ₹1016.20</td>
+    </tr>
+    <tr>
+      <td>194</td>
+      <td>13-05-2026</td>
+      <td>10:07:26</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1023.00</td>
+      <td>15</td>
+      <td>102.00</td>
+      <td>2804.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1016.20→₹1023.00 +₹6.80 in 0c</td>
+    </tr>
+    <tr>
+      <td>195</td>
+      <td>13-05-2026</td>
+      <td>10:07:28</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1015.20</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2804.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1033.40 dropped ₹18.20 to ₹1015.20</td>
+    </tr>
+    <tr>
+      <td>196</td>
+      <td>13-05-2026</td>
+      <td>10:07:36</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1023.00</td>
+      <td>15</td>
+      <td>117.00</td>
+      <td>2921.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1015.20→₹1023.00 +₹7.80 in 0c</td>
+    </tr>
+    <tr>
+      <td>197</td>
+      <td>13-05-2026</td>
+      <td>10:09:37</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>863.35</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2921.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹882.00 dropped ₹18.65 to ₹863.35</td>
+    </tr>
+    <tr>
+      <td>198</td>
+      <td>13-05-2026</td>
+      <td>10:09:41</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>869.00</td>
+      <td>15</td>
+      <td>84.75</td>
+      <td>3006.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹863.35→₹869.00 +₹5.65 in 0c</td>
+    </tr>
+    <tr>
+      <td>199</td>
+      <td>13-05-2026</td>
+      <td>10:09:54</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>863.95</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>3006.00</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹882.00 dropped ₹18.05 to ₹863.95</td>
+    </tr>
+    <tr>
+      <td>200</td>
+      <td>13-05-2026</td>
+      <td>10:10:24</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>852.30</td>
+      <td>15</td>
+      <td>-174.75</td>
+      <td>2831.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹863.95→₹852.30 -₹11.65</td>
+    </tr>
+    <tr>
+      <td>201</td>
+      <td>13-05-2026</td>
+      <td>10:10:59</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>BUY</td>
+      <td>845.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2831.25</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹861.30 dropped ₹16.30 to ₹845.00</td>
+    </tr>
+    <tr>
+      <td>202</td>
+      <td>13-05-2026</td>
+      <td>10:11:11</td>
+      <td>CE</td>
+      <td>BANKNIFTY26MAY53900CE</td>
+      <td>SELL</td>
+      <td>850.75</td>
+      <td>15</td>
+      <td>86.25</td>
+      <td>2917.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹845.00→₹850.75 +₹5.75 in 1c</td>
+    </tr>
+    <tr>
+      <td>203</td>
+      <td>13-05-2026</td>
+      <td>10:11:15</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1074.70</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2917.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1091.85 dropped ₹17.15 to ₹1074.70</td>
+    </tr>
+    <tr>
+      <td>204</td>
+      <td>13-05-2026</td>
+      <td>10:11:43</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1089.05</td>
+      <td>15</td>
+      <td>215.25</td>
+      <td>3132.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1074.70→₹1089.05 +₹14.35 in 0c</td>
+    </tr>
+    <tr>
+      <td>205</td>
+      <td>13-05-2026</td>
+      <td>10:12:11</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1056.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>3132.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1091.05 dropped ₹35.05 to ₹1056.00</td>
+    </tr>
+    <tr>
+      <td>206</td>
+      <td>13-05-2026</td>
+      <td>10:12:20</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1044.00</td>
+      <td>15</td>
+      <td>-180.00</td>
+      <td>2952.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1056.00→₹1044.00 -₹12.00</td>
+    </tr>
+    <tr>
+      <td>207</td>
+      <td>13-05-2026</td>
+      <td>10:12:21</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1040.65</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2952.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1091.05 dropped ₹50.40 to ₹1040.65</td>
+    </tr>
+    <tr>
+      <td>208</td>
+      <td>13-05-2026</td>
+      <td>10:12:33</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1047.70</td>
+      <td>15</td>
+      <td>105.75</td>
+      <td>3058.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target ✅ ₹1040.65→₹1047.70 +₹7.05 in 0c</td>
+    </tr>
+    <tr>
+      <td>209</td>
+      <td>13-05-2026</td>
+      <td>10:12:49</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>BUY</td>
+      <td>1055.65</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>3058.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Open ₹1091.05 dropped ₹35.40 to ₹1055.65</td>
+    </tr>
+    <tr>
+      <td>210</td>
+      <td>13-05-2026</td>
+      <td>10:14:27</td>
+      <td>PE</td>
+      <td>BANKNIFTY26MAY53900PE</td>
+      <td>SELL</td>
+      <td>1042.45</td>
+      <td>15</td>
+      <td>-198.00</td>
+      <td>2860.50</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>SL ❌ ₹1055.65→₹1042.45 -₹13.20</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

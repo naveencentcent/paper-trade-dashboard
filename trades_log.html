@@ -2,14 +2,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Traffic Light</title>
+
+<title>Trades Log</title>
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
 <style>
+
 body {
     margin:0;
     font-family:'Segoe UI';
@@ -26,7 +31,6 @@ body {
     color:white;
     height:100vh;
     padding:20px;
-    transition: transform 0.3s ease;
 }
 
 .sidebar a {
@@ -90,14 +94,14 @@ body {
     }
 
     .sidebar {
-        position: absolute;
-        transform: translateX(-100%);
-        z-index: 1000;
-        height: 100%;
+        position:absolute;
+        transform:translateX(-100%);
+        z-index:1000;
+        transition:0.3s;
     }
 
     .sidebar.active {
-        transform: translateX(0);
+        transform:translateX(0);
     }
 
     .menu-btn {
@@ -107,34 +111,41 @@ body {
     .dashboard {
         grid-template-columns: repeat(2, 1fr);
     }
-
-    h1 {
-        font-size:18px;
-    }
 }
+
 </style>
 
 <script>
+
 $(document).ready(function () {
     $('table').DataTable();
 });
 
-// Date Time
 function updateDateTime() {
     const now = new Date();
-    const options = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
+
+    const options = {
+        weekday:'long',
+        year:'numeric',
+        month:'long',
+        day:'numeric'
+    };
+
     const date = now.toLocaleDateString('en-IN', options);
     const time = now.toLocaleTimeString('en-IN');
+
     document.getElementById("datetime").innerHTML =
         "📅 " + date + " | ⏰ " + time;
 }
+
 setInterval(updateDateTime, 1000);
+
 updateDateTime();
 
-// Mobile menu toggle
 function toggleMenu() {
     document.querySelector('.sidebar').classList.toggle('active');
 }
+
 </script>
 
 </head>
@@ -144,8 +155,11 @@ function toggleMenu() {
 <div class="container">
 
 <div class="sidebar">
-<h2>📊 JSON Files</h2>
-<a href="bajfinance_strategy_log.html">Bajaj Finance Strategy</a><a href="stratergy-1.html">Stratergy 1</a><a href="stratergy-2.html">Stratergy 2</a><a href="trades_log.html">Traffic Light</a>
+
+<h2>📊 Strategies</h2>
+
+<a href="bajfinance_strategy_log.html">Bajfinance Strategy Log</a><a href="banknifty_atm_strategy.html">Banknifty Atm Strategy</a><a href="bt_daily.html">Bt Daily</a><a href="bt_summary.html">Bt Summary</a><a href="bt_trades.html">Bt Trades</a><a href="candle_cache_04052026.html">Candle Cache 04052026</a><a href="candle_cache_05052026.html">Candle Cache 05052026</a><a href="dashboard_data.html">Dashboard Data</a><a href="distutils.schema.html">Distutils.Schema</a><a href="ema5_events.html">Ema5 Events</a><a href="ema5_summary.html">Ema5 Summary</a><a href="ema5_trades.html">Ema5 Trades</a><a href="events_log.html">Events Log</a><a href="paper_trade_log.html">Paper Trade Log</a><a href="settings.html">Settings</a><a href="setuptools.schema.html">Setuptools.Schema</a><a href="sim_events.html">Sim Events</a><a href="sim_summary.html">Sim Summary</a><a href="sim_trades.html">Sim Trades</a><a href="stratergy-1.html">Stratergy 1</a><a href="stratergy-2.html">Stratergy 2</a><a href="summary.html">Summary</a><a href="summary_2026-05-04.html">Summary 2026 05 04</a><a href="summary_2026-05-05.html">Summary 2026 05 05</a><a href="supertrend_strategy.html">Supertrend Strategy</a><a href="trades_log.html">Trades Log</a>
+
 </div>
 
 <div class="content">
@@ -153,40 +167,44 @@ function toggleMenu() {
 <div class="menu-btn" onclick="toggleMenu()">☰ Menu</div>
 
 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-    <h1>Traffic Light</h1>
-    <div id="datetime" style="font-size:14px; color:#475569;"></div>
+
+<h1>Trades Log</h1>
+
+<div id="datetime" style="font-size:14px; color:#475569;"></div>
+
 </div>
 
 <div class="dashboard">
 
 <div class="stat">
 <h3>Total Trades</h3>
-<p>89</p>
+<p>206</p>
 </div>
 
 <div class="stat">
 <h3>Total P&L</h3>
-<p class="green">3483.75</p>
+<p class="green">9475.5</p>
 </div>
 
 <div class="stat">
 <h3>Win Rate</h3>
-<p>32.58%</p>
+<p>33.01%</p>
 </div>
 
 <div class="stat">
 <h3>Winners</h3>
-<p class="green">29</p>
+<p class="green">68</p>
 </div>
 
 <div class="stat">
 <h3>Losers</h3>
-<p class="red">15</p>
+<p class="red">34</p>
 </div>
 
 </div>
 
 <div class="card">
+
 <table border="1" class="dataframe display">
   <thead>
     <tr style="text-align: right;">
@@ -1451,11 +1469,1651 @@ function toggleMenu() {
       <td>29</td>
       <td>15</td>
     </tr>
+    <tr>
+      <td>1</td>
+      <td>2026-05-04 09:21:17</td>
+      <td>BUY</td>
+      <td>55202.25</td>
+      <td>55202.25</td>
+      <td>55107.20</td>
+      <td>55288.55</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2026-05-04 09:27:52</td>
+      <td>EXIT_LONG</td>
+      <td>55290.70</td>
+      <td>55202.25</td>
+      <td>55107.20</td>
+      <td>55288.55</td>
+      <td>15</td>
+      <td>1326.75</td>
+      <td>1326.75</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2026-05-04 09:27:57</td>
+      <td>BUY</td>
+      <td>55316.70</td>
+      <td>55316.70</td>
+      <td>55152.55</td>
+      <td>55369.65</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1326.75</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2026-05-04 09:30:13</td>
+      <td>EXIT_LONG</td>
+      <td>55377.55</td>
+      <td>55316.70</td>
+      <td>55152.55</td>
+      <td>55369.65</td>
+      <td>15</td>
+      <td>912.75</td>
+      <td>2239.50</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2026-05-04 09:30:18</td>
+      <td>BUY</td>
+      <td>55390.10</td>
+      <td>55390.10</td>
+      <td>55301.25</td>
+      <td>55429.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2239.50</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2026-05-04 09:31:03</td>
+      <td>EXIT_LONG</td>
+      <td>55438.20</td>
+      <td>55390.10</td>
+      <td>55301.25</td>
+      <td>55429.00</td>
+      <td>15</td>
+      <td>721.50</td>
+      <td>2961.00</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2026-05-04 09:33:03</td>
+      <td>SELL</td>
+      <td>55386.10</td>
+      <td>55386.10</td>
+      <td>55463.40</td>
+      <td>55319.90</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2961.00</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2026-05-04 09:37:59</td>
+      <td>SL_SHORT</td>
+      <td>55471.75</td>
+      <td>55386.10</td>
+      <td>55463.40</td>
+      <td>55319.90</td>
+      <td>15</td>
+      <td>-1284.75</td>
+      <td>1676.25</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2026-05-04 09:38:04</td>
+      <td>BUY</td>
+      <td>55475.75</td>
+      <td>55475.75</td>
+      <td>55384.20</td>
+      <td>55563.30</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1676.25</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2026-05-04 09:40:54</td>
+      <td>EXIT_LONG</td>
+      <td>55583.95</td>
+      <td>55475.75</td>
+      <td>55384.20</td>
+      <td>55563.30</td>
+      <td>15</td>
+      <td>1623.00</td>
+      <td>3299.25</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2026-05-04 09:43:04</td>
+      <td>SELL</td>
+      <td>55548.85</td>
+      <td>55548.85</td>
+      <td>55597.95</td>
+      <td>55507.55</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>3299.25</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>2026-05-04 09:44:24</td>
+      <td>EXIT_SHORT</td>
+      <td>55507.35</td>
+      <td>55548.85</td>
+      <td>55597.95</td>
+      <td>55507.55</td>
+      <td>15</td>
+      <td>622.50</td>
+      <td>3921.75</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2026-05-04 09:49:00</td>
+      <td>SELL</td>
+      <td>55478.35</td>
+      <td>55478.35</td>
+      <td>55502.25</td>
+      <td>55458.30</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>3921.75</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2026-05-04 09:49:50</td>
+      <td>EXIT_SHORT</td>
+      <td>55451.35</td>
+      <td>55478.35</td>
+      <td>55502.25</td>
+      <td>55458.30</td>
+      <td>15</td>
+      <td>405.00</td>
+      <td>4326.75</td>
+      <td>6</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2026-05-04 09:53:40</td>
+      <td>SELL</td>
+      <td>55369.95</td>
+      <td>55369.95</td>
+      <td>55441.10</td>
+      <td>55319.80</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>4326.75</td>
+      <td>6</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>2026-05-04 09:57:20</td>
+      <td>SL_SHORT</td>
+      <td>55443.70</td>
+      <td>55369.95</td>
+      <td>55441.10</td>
+      <td>55319.80</td>
+      <td>15</td>
+      <td>-1106.25</td>
+      <td>3220.50</td>
+      <td>6</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>2026-05-04 09:57:25</td>
+      <td>BUY</td>
+      <td>55446.35</td>
+      <td>55446.35</td>
+      <td>55320.55</td>
+      <td>55539.40</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>3220.50</td>
+      <td>6</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>2026-05-04 10:14:06</td>
+      <td>SL_LONG</td>
+      <td>55310.70</td>
+      <td>55446.35</td>
+      <td>55320.55</td>
+      <td>55539.40</td>
+      <td>15</td>
+      <td>-2034.75</td>
+      <td>1185.75</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>2026-05-04 10:14:11</td>
+      <td>SELL</td>
+      <td>55308.95</td>
+      <td>55308.95</td>
+      <td>55395.10</td>
+      <td>55272.90</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1185.75</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>2026-05-04 10:17:26</td>
+      <td>EXIT_SHORT</td>
+      <td>55268.05</td>
+      <td>55308.95</td>
+      <td>55395.10</td>
+      <td>55272.90</td>
+      <td>15</td>
+      <td>613.50</td>
+      <td>1799.25</td>
+      <td>7</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>2026-05-04 10:19:01</td>
+      <td>BUY</td>
+      <td>55290.75</td>
+      <td>55290.75</td>
+      <td>55268.05</td>
+      <td>55308.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1799.25</td>
+      <td>7</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>2026-05-04 10:20:21</td>
+      <td>SL_LONG</td>
+      <td>55264.80</td>
+      <td>55290.75</td>
+      <td>55268.05</td>
+      <td>55308.00</td>
+      <td>15</td>
+      <td>-389.25</td>
+      <td>1410.00</td>
+      <td>7</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>2026-05-04 10:26:01</td>
+      <td>BUY</td>
+      <td>55287.35</td>
+      <td>55287.35</td>
+      <td>55260.10</td>
+      <td>55312.65</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1410.00</td>
+      <td>7</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>2026-05-04 10:26:56</td>
+      <td>EXIT_LONG</td>
+      <td>55315.05</td>
+      <td>55287.35</td>
+      <td>55260.10</td>
+      <td>55312.65</td>
+      <td>15</td>
+      <td>415.50</td>
+      <td>1825.50</td>
+      <td>8</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>2026-05-04 10:28:47</td>
+      <td>BUY</td>
+      <td>55325.40</td>
+      <td>55325.40</td>
+      <td>55275.45</td>
+      <td>55365.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1825.50</td>
+      <td>8</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>2026-05-04 10:30:17</td>
+      <td>EXIT_LONG</td>
+      <td>55378.45</td>
+      <td>55325.40</td>
+      <td>55275.45</td>
+      <td>55365.00</td>
+      <td>15</td>
+      <td>795.75</td>
+      <td>2621.25</td>
+      <td>9</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>2026-05-04 10:30:22</td>
+      <td>BUY</td>
+      <td>55375.25</td>
+      <td>55375.25</td>
+      <td>55298.50</td>
+      <td>55410.10</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2621.25</td>
+      <td>9</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>2026-05-04 10:32:02</td>
+      <td>EXIT_LONG</td>
+      <td>55412.95</td>
+      <td>55375.25</td>
+      <td>55298.50</td>
+      <td>55410.10</td>
+      <td>15</td>
+      <td>565.50</td>
+      <td>3186.75</td>
+      <td>10</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>2026-05-04 10:33:02</td>
+      <td>SELL</td>
+      <td>55368.90</td>
+      <td>55368.90</td>
+      <td>55415.60</td>
+      <td>55324.35</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>3186.75</td>
+      <td>10</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>2026-05-04 10:33:22</td>
+      <td>EXIT_SHORT</td>
+      <td>55319.55</td>
+      <td>55368.90</td>
+      <td>55415.60</td>
+      <td>55324.35</td>
+      <td>15</td>
+      <td>740.25</td>
+      <td>3927.00</td>
+      <td>11</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>2026-05-04 10:36:42</td>
+      <td>BUY</td>
+      <td>55368.05</td>
+      <td>55368.05</td>
+      <td>55302.70</td>
+      <td>55419.25</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>3927.00</td>
+      <td>11</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>2026-05-04 10:58:28</td>
+      <td>SL_LONG</td>
+      <td>55299.80</td>
+      <td>55368.05</td>
+      <td>55302.70</td>
+      <td>55419.25</td>
+      <td>15</td>
+      <td>-1023.75</td>
+      <td>2903.25</td>
+      <td>11</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>2026-05-04 10:58:33</td>
+      <td>SELL</td>
+      <td>55298.90</td>
+      <td>55298.90</td>
+      <td>55340.10</td>
+      <td>55272.30</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2903.25</td>
+      <td>11</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>2026-05-04 11:00:13</td>
+      <td>EXIT_SHORT</td>
+      <td>55261.15</td>
+      <td>55298.90</td>
+      <td>55340.10</td>
+      <td>55272.30</td>
+      <td>15</td>
+      <td>566.25</td>
+      <td>3469.50</td>
+      <td>12</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2026-05-04 12:02:15</td>
+      <td>SELL</td>
+      <td>55336.45</td>
+      <td>55336.45</td>
+      <td>55374.05</td>
+      <td>55301.90</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2026-05-04 12:06:55</td>
+      <td>EXIT_SHORT</td>
+      <td>55298.90</td>
+      <td>55336.45</td>
+      <td>55374.05</td>
+      <td>55301.90</td>
+      <td>15</td>
+      <td>563.25</td>
+      <td>563.25</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2026-05-04 12:07:00</td>
+      <td>SELL</td>
+      <td>55295.30</td>
+      <td>55295.30</td>
+      <td>55362.65</td>
+      <td>55269.10</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>563.25</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2026-05-04 12:10:30</td>
+      <td>EXIT_SHORT</td>
+      <td>55264.15</td>
+      <td>55295.30</td>
+      <td>55362.65</td>
+      <td>55269.10</td>
+      <td>15</td>
+      <td>467.25</td>
+      <td>1030.50</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>2026-05-04 12:10:35</td>
+      <td>SELL</td>
+      <td>55260.55</td>
+      <td>55260.55</td>
+      <td>55311.30</td>
+      <td>55233.55</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1030.50</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>2026-05-04 12:11:11</td>
+      <td>EXIT_SHORT</td>
+      <td>55228.35</td>
+      <td>55260.55</td>
+      <td>55311.30</td>
+      <td>55233.55</td>
+      <td>15</td>
+      <td>483.00</td>
+      <td>1513.50</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>2026-05-04 12:11:16</td>
+      <td>SELL</td>
+      <td>55211.10</td>
+      <td>55211.10</td>
+      <td>55311.30</td>
+      <td>55133.55</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1513.50</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2026-05-04 12:13:06</td>
+      <td>EXIT_SHORT</td>
+      <td>55123.50</td>
+      <td>55211.10</td>
+      <td>55311.30</td>
+      <td>55133.55</td>
+      <td>15</td>
+      <td>1314.00</td>
+      <td>2827.50</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2026-05-04 12:18:36</td>
+      <td>BUY</td>
+      <td>55088.85</td>
+      <td>55088.85</td>
+      <td>55042.20</td>
+      <td>55135.15</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2827.50</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2026-05-04 12:20:01</td>
+      <td>EXIT_LONG</td>
+      <td>55135.40</td>
+      <td>55088.85</td>
+      <td>55042.20</td>
+      <td>55135.15</td>
+      <td>15</td>
+      <td>698.25</td>
+      <td>3525.75</td>
+      <td>5</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2026-05-04 12:20:06</td>
+      <td>BUY</td>
+      <td>55138.30</td>
+      <td>55138.30</td>
+      <td>55053.75</td>
+      <td>55183.10</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>3525.75</td>
+      <td>5</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>2026-05-04 12:34:37</td>
+      <td>SL_LONG</td>
+      <td>55050.85</td>
+      <td>55138.30</td>
+      <td>55053.75</td>
+      <td>55183.10</td>
+      <td>15</td>
+      <td>-1311.75</td>
+      <td>2214.00</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2026-05-04 12:34:42</td>
+      <td>SELL</td>
+      <td>55045.15</td>
+      <td>55045.15</td>
+      <td>55108.85</td>
+      <td>55019.80</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2214.00</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2026-05-04 12:35:12</td>
+      <td>EXIT_SHORT</td>
+      <td>55019.20</td>
+      <td>55045.15</td>
+      <td>55108.85</td>
+      <td>55019.80</td>
+      <td>15</td>
+      <td>389.25</td>
+      <td>2603.25</td>
+      <td>6</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2026-05-04 12:37:42</td>
+      <td>SELL</td>
+      <td>55000.40</td>
+      <td>55000.40</td>
+      <td>55057.30</td>
+      <td>54962.30</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2603.25</td>
+      <td>6</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>2026-05-04 12:41:12</td>
+      <td>SL_SHORT</td>
+      <td>55059.00</td>
+      <td>55000.40</td>
+      <td>55057.30</td>
+      <td>54962.30</td>
+      <td>15</td>
+      <td>-879.00</td>
+      <td>1724.25</td>
+      <td>6</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>2026-05-04 12:41:17</td>
+      <td>BUY</td>
+      <td>55056.40</td>
+      <td>55056.40</td>
+      <td>54980.35</td>
+      <td>55111.45</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1724.25</td>
+      <td>6</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>2026-05-04 12:44:27</td>
+      <td>SL_LONG</td>
+      <td>54974.30</td>
+      <td>55056.40</td>
+      <td>54980.35</td>
+      <td>55111.45</td>
+      <td>15</td>
+      <td>-1231.50</td>
+      <td>492.75</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>2026-05-04 12:44:32</td>
+      <td>SELL</td>
+      <td>54980.30</td>
+      <td>54980.30</td>
+      <td>55059.00</td>
+      <td>54951.35</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>492.75</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>2026-05-04 12:47:17</td>
+      <td>EXIT_SHORT</td>
+      <td>54951.05</td>
+      <td>54980.30</td>
+      <td>55059.00</td>
+      <td>54951.35</td>
+      <td>15</td>
+      <td>438.75</td>
+      <td>931.50</td>
+      <td>7</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>2026-05-04 12:47:22</td>
+      <td>SELL</td>
+      <td>54948.40</td>
+      <td>54948.40</td>
+      <td>54992.85</td>
+      <td>54907.35</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>931.50</td>
+      <td>7</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>2026-05-04 12:49:02</td>
+      <td>EXIT_SHORT</td>
+      <td>54904.25</td>
+      <td>54948.40</td>
+      <td>54992.85</td>
+      <td>54907.35</td>
+      <td>15</td>
+      <td>662.25</td>
+      <td>1593.75</td>
+      <td>8</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>2026-05-04 12:51:53</td>
+      <td>BUY</td>
+      <td>54934.25</td>
+      <td>54934.25</td>
+      <td>54901.40</td>
+      <td>54967.05</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1593.75</td>
+      <td>8</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>2026-05-04 12:52:53</td>
+      <td>EXIT_LONG</td>
+      <td>54975.15</td>
+      <td>54934.25</td>
+      <td>54901.40</td>
+      <td>54967.05</td>
+      <td>15</td>
+      <td>613.50</td>
+      <td>2207.25</td>
+      <td>9</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>2026-05-04 12:52:58</td>
+      <td>BUY</td>
+      <td>54968.75</td>
+      <td>54968.75</td>
+      <td>54911.55</td>
+      <td>54997.35</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2207.25</td>
+      <td>9</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>2026-05-04 13:00:23</td>
+      <td>SL_LONG</td>
+      <td>54910.70</td>
+      <td>54968.75</td>
+      <td>54911.55</td>
+      <td>54997.35</td>
+      <td>15</td>
+      <td>-870.75</td>
+      <td>1336.50</td>
+      <td>9</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>2026-05-04 13:00:28</td>
+      <td>SELL</td>
+      <td>54905.30</td>
+      <td>54905.30</td>
+      <td>54960.85</td>
+      <td>54865.25</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1336.50</td>
+      <td>9</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>2026-05-04 13:11:59</td>
+      <td>SL_SHORT</td>
+      <td>54962.05</td>
+      <td>54905.30</td>
+      <td>54960.85</td>
+      <td>54865.25</td>
+      <td>15</td>
+      <td>-851.25</td>
+      <td>485.25</td>
+      <td>9</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>2026-05-04 13:12:04</td>
+      <td>BUY</td>
+      <td>54959.45</td>
+      <td>54959.45</td>
+      <td>54931.10</td>
+      <td>54984.75</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>485.25</td>
+      <td>9</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>2026-05-04 13:16:04</td>
+      <td>SL_LONG</td>
+      <td>54928.90</td>
+      <td>54959.45</td>
+      <td>54931.10</td>
+      <td>54984.75</td>
+      <td>15</td>
+      <td>-458.25</td>
+      <td>27.00</td>
+      <td>9</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>2026-05-04 13:16:09</td>
+      <td>SELL</td>
+      <td>54926.00</td>
+      <td>54926.00</td>
+      <td>54979.30</td>
+      <td>54905.10</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>27.00</td>
+      <td>9</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>2026-05-04 13:16:20</td>
+      <td>EXIT_SHORT</td>
+      <td>54904.10</td>
+      <td>54926.00</td>
+      <td>54979.30</td>
+      <td>54905.10</td>
+      <td>15</td>
+      <td>328.50</td>
+      <td>355.50</td>
+      <td>10</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>2026-05-04 13:21:15</td>
+      <td>SELL</td>
+      <td>54856.45</td>
+      <td>54856.45</td>
+      <td>54915.70</td>
+      <td>54808.15</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>355.50</td>
+      <td>10</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>2026-05-04 13:26:45</td>
+      <td>SL_SHORT</td>
+      <td>54922.30</td>
+      <td>54856.45</td>
+      <td>54915.70</td>
+      <td>54808.15</td>
+      <td>15</td>
+      <td>-987.75</td>
+      <td>-632.25</td>
+      <td>10</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>2026-05-04 13:26:50</td>
+      <td>BUY</td>
+      <td>54923.25</td>
+      <td>54923.25</td>
+      <td>54841.40</td>
+      <td>54971.45</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-632.25</td>
+      <td>10</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>2026-05-04 13:29:05</td>
+      <td>SL_LONG</td>
+      <td>54827.80</td>
+      <td>54923.25</td>
+      <td>54841.40</td>
+      <td>54971.45</td>
+      <td>15</td>
+      <td>-1431.75</td>
+      <td>-2064.00</td>
+      <td>10</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>2026-05-04 13:29:10</td>
+      <td>SELL</td>
+      <td>54812.75</td>
+      <td>54812.75</td>
+      <td>54924.00</td>
+      <td>54774.40</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-2064.00</td>
+      <td>10</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>2026-05-04 13:30:05</td>
+      <td>EXIT_SHORT</td>
+      <td>54765.40</td>
+      <td>54812.75</td>
+      <td>54924.00</td>
+      <td>54774.40</td>
+      <td>15</td>
+      <td>710.25</td>
+      <td>-1353.75</td>
+      <td>11</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>2026-05-04 13:32:06</td>
+      <td>BUY</td>
+      <td>54790.55</td>
+      <td>54790.55</td>
+      <td>54732.95</td>
+      <td>54839.50</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-1353.75</td>
+      <td>11</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>2026-05-04 13:35:36</td>
+      <td>SL_LONG</td>
+      <td>54731.10</td>
+      <td>54790.55</td>
+      <td>54732.95</td>
+      <td>54839.50</td>
+      <td>15</td>
+      <td>-891.75</td>
+      <td>-2245.50</td>
+      <td>11</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>2026-05-04 13:35:41</td>
+      <td>SELL</td>
+      <td>54732.20</td>
+      <td>54732.20</td>
+      <td>54794.20</td>
+      <td>54685.85</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-2245.50</td>
+      <td>11</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>2026-05-04 13:40:06</td>
+      <td>SL_SHORT</td>
+      <td>54798.05</td>
+      <td>54732.20</td>
+      <td>54794.20</td>
+      <td>54685.85</td>
+      <td>15</td>
+      <td>-987.75</td>
+      <td>-3233.25</td>
+      <td>11</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>2026-05-04 13:40:11</td>
+      <td>BUY</td>
+      <td>54799.15</td>
+      <td>54799.15</td>
+      <td>54747.90</td>
+      <td>54840.45</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-3233.25</td>
+      <td>11</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>2026-05-04 13:40:56</td>
+      <td>EXIT_LONG</td>
+      <td>54840.60</td>
+      <td>54799.15</td>
+      <td>54747.90</td>
+      <td>54840.45</td>
+      <td>15</td>
+      <td>621.75</td>
+      <td>-2611.50</td>
+      <td>12</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>2026-05-04 13:42:06</td>
+      <td>BUY</td>
+      <td>54846.50</td>
+      <td>54846.50</td>
+      <td>54792.95</td>
+      <td>54897.10</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-2611.50</td>
+      <td>12</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>2026-05-04 13:47:07</td>
+      <td>EXIT_LONG</td>
+      <td>54898.60</td>
+      <td>54846.50</td>
+      <td>54792.95</td>
+      <td>54897.10</td>
+      <td>15</td>
+      <td>781.50</td>
+      <td>-1830.00</td>
+      <td>13</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>2026-05-04 13:47:12</td>
+      <td>BUY</td>
+      <td>54896.85</td>
+      <td>54896.85</td>
+      <td>54876.70</td>
+      <td>54912.50</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-1830.00</td>
+      <td>13</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>2026-05-04 13:47:37</td>
+      <td>EXIT_LONG</td>
+      <td>54916.35</td>
+      <td>54896.85</td>
+      <td>54876.70</td>
+      <td>54912.50</td>
+      <td>15</td>
+      <td>292.50</td>
+      <td>-1537.50</td>
+      <td>14</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>2026-05-04 13:51:52</td>
+      <td>SELL</td>
+      <td>54882.55</td>
+      <td>54882.55</td>
+      <td>54938.50</td>
+      <td>54844.40</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-1537.50</td>
+      <td>14</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>2026-05-04 13:56:07</td>
+      <td>EXIT_SHORT</td>
+      <td>54841.45</td>
+      <td>54882.55</td>
+      <td>54938.50</td>
+      <td>54844.40</td>
+      <td>15</td>
+      <td>616.50</td>
+      <td>-921.00</td>
+      <td>15</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>2026-05-04 13:56:12</td>
+      <td>SELL</td>
+      <td>54845.00</td>
+      <td>54845.00</td>
+      <td>54879.30</td>
+      <td>54825.55</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-921.00</td>
+      <td>15</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>2026-05-04 13:57:22</td>
+      <td>EXIT_SHORT</td>
+      <td>54818.45</td>
+      <td>54845.00</td>
+      <td>54879.30</td>
+      <td>54825.55</td>
+      <td>15</td>
+      <td>398.25</td>
+      <td>-522.75</td>
+      <td>16</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>2026-05-04 13:58:02</td>
+      <td>SELL</td>
+      <td>54800.50</td>
+      <td>54800.50</td>
+      <td>54853.70</td>
+      <td>54760.60</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-522.75</td>
+      <td>16</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>2026-05-04 14:05:47</td>
+      <td>SL_SHORT</td>
+      <td>54853.85</td>
+      <td>54800.50</td>
+      <td>54853.70</td>
+      <td>54760.60</td>
+      <td>15</td>
+      <td>-800.25</td>
+      <td>-1323.00</td>
+      <td>16</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>2026-05-04 14:05:52</td>
+      <td>BUY</td>
+      <td>54848.30</td>
+      <td>54848.30</td>
+      <td>54800.50</td>
+      <td>54878.15</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-1323.00</td>
+      <td>16</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>2026-05-04 14:10:18</td>
+      <td>EXIT_LONG</td>
+      <td>54887.50</td>
+      <td>54848.30</td>
+      <td>54800.50</td>
+      <td>54878.15</td>
+      <td>15</td>
+      <td>588.00</td>
+      <td>-735.00</td>
+      <td>17</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>2026-05-04 14:10:23</td>
+      <td>BUY</td>
+      <td>54890.20</td>
+      <td>54890.20</td>
+      <td>54829.55</td>
+      <td>54918.15</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-735.00</td>
+      <td>17</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>2026-05-04 14:11:48</td>
+      <td>EXIT_LONG</td>
+      <td>54919.30</td>
+      <td>54890.20</td>
+      <td>54829.55</td>
+      <td>54918.15</td>
+      <td>15</td>
+      <td>436.50</td>
+      <td>-298.50</td>
+      <td>18</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>2026-05-04 14:15:53</td>
+      <td>BUY</td>
+      <td>54938.15</td>
+      <td>54938.15</td>
+      <td>54912.85</td>
+      <td>54963.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-298.50</td>
+      <td>18</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>2026-05-04 14:18:13</td>
+      <td>EXIT_LONG</td>
+      <td>54965.90</td>
+      <td>54938.15</td>
+      <td>54912.85</td>
+      <td>54963.00</td>
+      <td>15</td>
+      <td>416.25</td>
+      <td>117.75</td>
+      <td>19</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>2026-05-04 14:18:18</td>
+      <td>BUY</td>
+      <td>54956.10</td>
+      <td>54956.10</td>
+      <td>54934.95</td>
+      <td>54969.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>117.75</td>
+      <td>19</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>2026-05-04 14:18:38</td>
+      <td>EXIT_LONG</td>
+      <td>54975.90</td>
+      <td>54956.10</td>
+      <td>54934.95</td>
+      <td>54969.00</td>
+      <td>15</td>
+      <td>297.00</td>
+      <td>414.75</td>
+      <td>20</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>2026-05-04 14:21:28</td>
+      <td>BUY</td>
+      <td>55016.40</td>
+      <td>55016.40</td>
+      <td>54993.80</td>
+      <td>55038.50</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>414.75</td>
+      <td>20</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>2026-05-04 14:22:23</td>
+      <td>SL_LONG</td>
+      <td>54978.35</td>
+      <td>55016.40</td>
+      <td>54993.80</td>
+      <td>55038.50</td>
+      <td>15</td>
+      <td>-570.75</td>
+      <td>-156.00</td>
+      <td>20</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>2026-05-04 14:22:29</td>
+      <td>SELL</td>
+      <td>54975.15</td>
+      <td>54975.15</td>
+      <td>55016.40</td>
+      <td>54958.20</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-156.00</td>
+      <td>20</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>66</td>
+      <td>2026-05-04 14:25:09</td>
+      <td>EXIT_SHORT</td>
+      <td>54956.30</td>
+      <td>54975.15</td>
+      <td>55016.40</td>
+      <td>54958.20</td>
+      <td>15</td>
+      <td>282.75</td>
+      <td>126.75</td>
+      <td>21</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>2026-05-04 14:25:14</td>
+      <td>SELL</td>
+      <td>54956.40</td>
+      <td>54956.40</td>
+      <td>54989.40</td>
+      <td>54929.85</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>126.75</td>
+      <td>21</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>2026-05-04 14:31:09</td>
+      <td>EXIT_SHORT</td>
+      <td>54885.65</td>
+      <td>54956.40</td>
+      <td>54989.40</td>
+      <td>54929.85</td>
+      <td>15</td>
+      <td>1061.25</td>
+      <td>1188.00</td>
+      <td>22</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>69</td>
+      <td>2026-05-04 14:31:14</td>
+      <td>SELL</td>
+      <td>54894.75</td>
+      <td>54894.75</td>
+      <td>54970.20</td>
+      <td>54864.50</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1188.00</td>
+      <td>22</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td>2026-05-04 14:33:49</td>
+      <td>EXIT_SHORT</td>
+      <td>54864.50</td>
+      <td>54894.75</td>
+      <td>54970.20</td>
+      <td>54864.50</td>
+      <td>15</td>
+      <td>453.75</td>
+      <td>1641.75</td>
+      <td>23</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>71</td>
+      <td>2026-05-04 14:33:54</td>
+      <td>SELL</td>
+      <td>54867.50</td>
+      <td>54867.50</td>
+      <td>54970.20</td>
+      <td>54782.95</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1641.75</td>
+      <td>23</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>72</td>
+      <td>2026-05-04 14:46:41</td>
+      <td>EXIT_SHORT</td>
+      <td>54779.00</td>
+      <td>54867.50</td>
+      <td>54970.20</td>
+      <td>54782.95</td>
+      <td>15</td>
+      <td>1327.50</td>
+      <td>2969.25</td>
+      <td>24</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>73</td>
+      <td>2026-05-04 14:46:46</td>
+      <td>SELL</td>
+      <td>54791.25</td>
+      <td>54791.25</td>
+      <td>54849.00</td>
+      <td>54757.60</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2969.25</td>
+      <td>24</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>74</td>
+      <td>2026-05-04 14:59:32</td>
+      <td>EXIT_SHORT</td>
+      <td>54756.70</td>
+      <td>54791.25</td>
+      <td>54849.00</td>
+      <td>54757.60</td>
+      <td>15</td>
+      <td>518.25</td>
+      <td>3487.50</td>
+      <td>25</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>75</td>
+      <td>2026-05-04 14:59:37</td>
+      <td>SELL</td>
+      <td>54748.10</td>
+      <td>54748.10</td>
+      <td>54840.30</td>
+      <td>54692.65</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>3487.50</td>
+      <td>25</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>76</td>
+      <td>2026-05-04 15:06:02</td>
+      <td>SL_SHORT</td>
+      <td>54847.90</td>
+      <td>54748.10</td>
+      <td>54840.30</td>
+      <td>54692.65</td>
+      <td>15</td>
+      <td>-1497.00</td>
+      <td>1990.50</td>
+      <td>25</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>77</td>
+      <td>2026-05-04 15:06:07</td>
+      <td>BUY</td>
+      <td>54848.70</td>
+      <td>54848.70</td>
+      <td>54801.40</td>
+      <td>54887.20</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>1990.50</td>
+      <td>25</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>78</td>
+      <td>2026-05-04 15:12:18</td>
+      <td>EXIT_LONG</td>
+      <td>54895.10</td>
+      <td>54848.70</td>
+      <td>54801.40</td>
+      <td>54887.20</td>
+      <td>15</td>
+      <td>696.00</td>
+      <td>2686.50</td>
+      <td>26</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>79</td>
+      <td>2026-05-04 15:12:23</td>
+      <td>BUY</td>
+      <td>54896.30</td>
+      <td>54896.30</td>
+      <td>54838.10</td>
+      <td>54944.30</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2686.50</td>
+      <td>26</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td>2026-05-04 15:21:33</td>
+      <td>EXIT_LONG</td>
+      <td>54946.80</td>
+      <td>54896.30</td>
+      <td>54838.10</td>
+      <td>54944.30</td>
+      <td>15</td>
+      <td>757.50</td>
+      <td>3444.00</td>
+      <td>27</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>81</td>
+      <td>2026-05-04 15:21:38</td>
+      <td>BUY</td>
+      <td>54947.75</td>
+      <td>54947.75</td>
+      <td>54891.80</td>
+      <td>54968.95</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>3444.00</td>
+      <td>27</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>82</td>
+      <td>2026-05-04 15:24:33</td>
+      <td>SL_LONG</td>
+      <td>54886.30</td>
+      <td>54947.75</td>
+      <td>54891.80</td>
+      <td>54968.95</td>
+      <td>15</td>
+      <td>-921.75</td>
+      <td>2522.25</td>
+      <td>27</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>83</td>
+      <td>2026-05-04 15:24:38</td>
+      <td>SELL</td>
+      <td>54890.45</td>
+      <td>54890.45</td>
+      <td>54947.75</td>
+      <td>54851.40</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>2522.25</td>
+      <td>27</td>
+      <td>14</td>
+    </tr>
   </tbody>
 </table>
+
 </div>
 
 </div>
+
 </div>
 
 </body>

@@ -5,7 +5,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Stratergy 2</title>
+<title>Dashboard Data</title>
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
@@ -168,7 +168,7 @@ function toggleMenu() {
 
 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
 
-<h1>Stratergy 2</h1>
+<h1>Dashboard Data</h1>
 
 <div id="datetime" style="font-size:14px; color:#475569;"></div>
 
@@ -178,27 +178,27 @@ function toggleMenu() {
 
 <div class="stat">
 <h3>Total Trades</h3>
-<p>10</p>
+<p>1</p>
 </div>
 
 <div class="stat">
 <h3>Total P&L</h3>
-<p class="green">107.0</p>
+<p class="green">0</p>
 </div>
 
 <div class="stat">
 <h3>Win Rate</h3>
-<p>30.0%</p>
+<p>0.0%</p>
 </div>
 
 <div class="stat">
 <h3>Winners</h3>
-<p class="green">3</p>
+<p class="green">0</p>
 </div>
 
 <div class="stat">
 <h3>Losers</h3>
-<p class="red">2</p>
+<p class="red">0</p>
 </div>
 
 </div>
@@ -208,171 +208,56 @@ function toggleMenu() {
 <table border="1" class="dataframe display">
   <thead>
     <tr style="text-align: right;">
-      <th>id</th>
-      <th>date</th>
-      <th>time</th>
-      <th>contract</th>
-      <th>symbol</th>
-      <th>action</th>
-      <th>price</th>
-      <th>qty</th>
-      <th>pnl</th>
+      <th>last_updated</th>
+      <th>bn_ltp</th>
+      <th>ema5</th>
+      <th>position</th>
+      <th>option_strike</th>
+      <th>option_type</th>
+      <th>option_ltp</th>
+      <th>entry_price</th>
+      <th>stop_loss</th>
+      <th>target1</th>
+      <th>trail_sl</th>
+      <th>partial_booked</th>
+      <th>alert_candle</th>
+      <th>waiting_breakout</th>
+      <th>trades_today</th>
+      <th>sl_hits_today</th>
       <th>total_pnl</th>
-      <th>order_id</th>
-      <th>mode</th>
-      <th>reason</th>
+      <th>today_pnl</th>
+      <th>wins</th>
+      <th>losses</th>
+      <th>trade_count</th>
+      <th>candles</th>
+      <th>trades</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td>2026-05-06 12:44:36</td>
+      <td>54694.15</td>
+      <td>54877.71</td>
+      <td>LONG</td>
+      <td>55000</td>
+      <td>CE</td>
+      <td>None</td>
+      <td>199.1</td>
+      <td>143.96</td>
+      <td>364.52</td>
+      <td>143.96</td>
+      <td>False</td>
+      <td>None</td>
+      <td>False</td>
       <td>1</td>
-      <td>06-05-2026</td>
-      <td>11:13:43</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>BUY</td>
-      <td>113.05</td>
-      <td>20</td>
+      <td>0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Candle open ₹117.35 dropped ₹4.30 to ₹113.05  |  Trend: DOWNTREND  EMA5=115.98  EMA10=116.44</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>06-05-2026</td>
-      <td>11:14:47</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>SELL</td>
-      <td>116.45</td>
-      <td>20</td>
-      <td>68.0</td>
-      <td>68.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Target hit ✅ Buy ₹113.05 → Sell ₹116.45 (+₹3.40) in 1 candles</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>06-05-2026</td>
-      <td>11:16:05</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>BUY</td>
-      <td>110.05</td>
-      <td>20</td>
-      <td>0.0</td>
-      <td>68.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Candle open ₹114.30 dropped ₹4.25 to ₹110.05  |  Trend: DOWNTREND  EMA5=114.81  EMA10=114.89</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>06-05-2026</td>
-      <td>11:19:43</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>SELL</td>
-      <td>113.70</td>
-      <td>20</td>
-      <td>73.0</td>
-      <td>141.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Target hit ✅ Buy ₹110.05 → Sell ₹113.70 (+₹3.65) in 3 candles</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>06-05-2026</td>
-      <td>11:20:28</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>BUY</td>
-      <td>111.55</td>
-      <td>20</td>
-      <td>0.0</td>
-      <td>141.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Candle open ₹115.70 dropped ₹4.15 to ₹111.55  |  Trend: DOWNTREND  EMA5=111.45  EMA10=112.97</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>06-05-2026</td>
-      <td>11:25:02</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>SELL</td>
-      <td>112.10</td>
-      <td>20</td>
-      <td>11.0</td>
-      <td>152.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Timeout ⏰ 5 candles passed. Buy ₹111.55 → Exit ₹112.10 (₹0.55)</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>06-05-2026</td>
-      <td>11:30:42</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>BUY</td>
-      <td>102.25</td>
-      <td>20</td>
-      <td>0.0</td>
-      <td>152.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Candle open ₹106.25 dropped ₹4.00 to ₹102.25  |  Trend: DOWNTREND  EMA5=107.98  EMA10=109.53</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>06-05-2026</td>
-      <td>11:35:00</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>SELL</td>
-      <td>101.75</td>
-      <td>20</td>
-      <td>-10.0</td>
-      <td>142.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Timeout ⏰ 5 candles passed. Buy ₹102.25 → Exit ₹101.75 (₹-0.50)</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>06-05-2026</td>
-      <td>11:53:25</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>BUY</td>
-      <td>105.15</td>
-      <td>20</td>
-      <td>0.0</td>
-      <td>142.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Candle open ₹108.55 dropped ₹3.40 to ₹105.15  |  Trend: DOWNTREND  EMA5=107.79  EMA10=107.81</td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>06-05-2026</td>
-      <td>11:58:01</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>SELL</td>
-      <td>103.40</td>
-      <td>20</td>
-      <td>-35.0</td>
-      <td>107.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Timeout ⏰ 5 candles passed. Buy ₹105.15 → Exit ₹103.40 (₹-1.75)</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>[{'key': '09:15', 'open': 55291.5, 'high': 55297.9, 'low': 55156.5, 'close': 55216.45}, {'key': '09:30', 'open': 55242.85, 'high': 55258.35, 'low': 55115.75, 'close': 55115.75}, {'key': '09:45', 'open': 55126.15, 'high': 55208.75, 'low': 55104.35, 'close': 55105.8}, {'key': '10:00', 'open': 55101.7, 'high': 55101.7, 'low': 55012.7, 'close': 55090.95}, {'key': '10:15', 'open': 55083.95, 'high': 55140.35, 'low': 55036.5, 'close': 55099.65}, {'key': '10:30', 'open': 55088.1, 'high': 55182.05, 'low': 55034.5, 'close': 55155.1}, {'key': '10:45', 'open': 55146.3, 'high': 55158.35, 'low': 55038.55, 'close': 55071.85}, {'key': '11:00', 'open': 55076.05, 'high': 55079.4, 'low': 54956.0, 'close': 54973.5}, {'key': '11:15', 'open': 54973.2, 'high': 54995.35, 'low': 54903.45, 'close': 54995.35}, {'key': '11:30', 'open': 54993.65, 'high': 55020.7, 'low': 54889.65, 'close': 54916.0}, {'key': '11:45', 'open': 54917.9, 'high': 54945.85, 'low': 54885.4, 'close': 54900.6}, {'key': '12:00', 'open': 54906.8, 'high': 54910.8, 'low': 54836.75, 'close': 54857.5}, {'key': '12:15', 'open': 54855.85, 'high': 54856.7, 'low': 54717.5, 'close': 54771.5}]</td>
+      <td>[{'trade_no': 1, 'time': '2026-05-04 14:19:13', 'action': 'BUY_CE', 'strike': 55000, 'option_type': 'CE', 'price': 196.2, 'entry_price': 196.2, 'stop_loss': 139.8, 'target1': 365.4, 'qty': 15, 'pnl': 0, 'total_pnl': 0.0, 'wins': 0, 'losses': 0}, {'trade_no': 1, 'time': '2026-05-06 11:30:22', 'action': 'BUY_CE', 'strike': 55000, 'option_type': 'CE', 'price': 199.1, 'entry_price': 199.1, 'stop_loss': 143.96, 'target1': 364.52, 'qty': 15, 'pnl': 0, 'total_pnl': 0.0, 'wins': 0, 'losses': 0}]</td>
     </tr>
   </tbody>
 </table>

@@ -5,7 +5,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Stratergy 2</title>
+<title>Bt Trades</title>
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
@@ -168,7 +168,7 @@ function toggleMenu() {
 
 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
 
-<h1>Stratergy 2</h1>
+<h1>Bt Trades</h1>
 
 <div id="datetime" style="font-size:14px; color:#475569;"></div>
 
@@ -178,27 +178,27 @@ function toggleMenu() {
 
 <div class="stat">
 <h3>Total Trades</h3>
-<p>10</p>
+<p>9</p>
 </div>
 
 <div class="stat">
 <h3>Total P&L</h3>
-<p class="green">107.0</p>
+<p class="green">84901.09</p>
 </div>
 
 <div class="stat">
 <h3>Win Rate</h3>
-<p>30.0%</p>
+<p>66.67%</p>
 </div>
 
 <div class="stat">
 <h3>Winners</h3>
-<p class="green">3</p>
+<p class="green">6</p>
 </div>
 
 <div class="stat">
 <h3>Losers</h3>
-<p class="red">2</p>
+<p class="red">3</p>
 </div>
 
 </div>
@@ -208,171 +208,136 @@ function toggleMenu() {
 <table border="1" class="dataframe display">
   <thead>
     <tr style="text-align: right;">
-      <th>id</th>
-      <th>date</th>
-      <th>time</th>
-      <th>contract</th>
-      <th>symbol</th>
-      <th>action</th>
-      <th>price</th>
-      <th>qty</th>
-      <th>pnl</th>
-      <th>total_pnl</th>
-      <th>order_id</th>
-      <th>mode</th>
+      <th>day</th>
+      <th>entry_time</th>
+      <th>exit_time</th>
+      <th>strike</th>
+      <th>entry_price</th>
+      <th>exit_price</th>
+      <th>stop_loss</th>
+      <th>target1</th>
       <th>reason</th>
+      <th>pnl</th>
+      <th>qty</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>1</td>
-      <td>06-05-2026</td>
-      <td>11:13:43</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>BUY</td>
-      <td>113.05</td>
-      <td>20</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Candle open ₹117.35 dropped ₹4.30 to ₹113.05  |  Trend: DOWNTREND  EMA5=115.98  EMA10=116.44</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>06-05-2026</td>
-      <td>11:14:47</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>SELL</td>
-      <td>116.45</td>
-      <td>20</td>
-      <td>68.0</td>
-      <td>68.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Target hit ✅ Buy ₹113.05 → Sell ₹116.45 (+₹3.40) in 1 candles</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>06-05-2026</td>
-      <td>11:16:05</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>BUY</td>
-      <td>110.05</td>
-      <td>20</td>
-      <td>0.0</td>
-      <td>68.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Candle open ₹114.30 dropped ₹4.25 to ₹110.05  |  Trend: DOWNTREND  EMA5=114.81  EMA10=114.89</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>06-05-2026</td>
-      <td>11:19:43</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>SELL</td>
-      <td>113.70</td>
-      <td>20</td>
-      <td>73.0</td>
-      <td>141.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Target hit ✅ Buy ₹110.05 → Sell ₹113.70 (+₹3.65) in 3 candles</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>06-05-2026</td>
-      <td>11:20:28</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>BUY</td>
-      <td>111.55</td>
-      <td>20</td>
-      <td>0.0</td>
-      <td>141.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Candle open ₹115.70 dropped ₹4.15 to ₹111.55  |  Trend: DOWNTREND  EMA5=111.45  EMA10=112.97</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>06-05-2026</td>
-      <td>11:25:02</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>SELL</td>
-      <td>112.10</td>
-      <td>20</td>
-      <td>11.0</td>
-      <td>152.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Timeout ⏰ 5 candles passed. Buy ₹111.55 → Exit ₹112.10 (₹0.55)</td>
-    </tr>
-    <tr>
+      <td>2026-04-07</td>
+      <td>11:15</td>
+      <td>13:30</td>
+      <td>52100</td>
+      <td>196.26</td>
+      <td>485.49</td>
+      <td>121.26</td>
+      <td>421.26</td>
+      <td>PARTIAL_TARGET</td>
+      <td>50615.33</td>
       <td>7</td>
-      <td>06-05-2026</td>
-      <td>11:30:42</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>BUY</td>
-      <td>102.25</td>
-      <td>20</td>
-      <td>0.0</td>
-      <td>152.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Candle open ₹106.25 dropped ₹4.00 to ₹102.25  |  Trend: DOWNTREND  EMA5=107.98  EMA10=109.53</td>
     </tr>
     <tr>
-      <td>8</td>
-      <td>06-05-2026</td>
-      <td>11:35:00</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>SELL</td>
-      <td>101.75</td>
-      <td>20</td>
-      <td>-10.0</td>
-      <td>142.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Timeout ⏰ 5 candles passed. Buy ₹102.25 → Exit ₹101.75 (₹-0.50)</td>
+      <td>2026-04-07</td>
+      <td>11:15</td>
+      <td>14:30</td>
+      <td>52100</td>
+      <td>196.26</td>
+      <td>389.55</td>
+      <td>121.26</td>
+      <td>421.26</td>
+      <td>SL_HIT</td>
+      <td>33825.75</td>
+      <td>7</td>
     </tr>
     <tr>
-      <td>9</td>
-      <td>06-05-2026</td>
-      <td>11:53:25</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>BUY</td>
-      <td>105.15</td>
-      <td>20</td>
-      <td>0.0</td>
-      <td>142.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Candle open ₹108.55 dropped ₹3.40 to ₹105.15  |  Trend: DOWNTREND  EMA5=107.79  EMA10=107.81</td>
+      <td>2026-04-10</td>
+      <td>15:00</td>
+      <td>15:15</td>
+      <td>55800</td>
+      <td>470.23</td>
+      <td>547.27</td>
+      <td>380.20</td>
+      <td>740.32</td>
+      <td>EOD_EXIT</td>
+      <td>28889.65</td>
+      <td>15</td>
     </tr>
     <tr>
-      <td>10</td>
-      <td>06-05-2026</td>
-      <td>11:58:01</td>
-      <td>PE</td>
-      <td>SENSEX2651475000PE</td>
-      <td>SELL</td>
-      <td>103.40</td>
-      <td>20</td>
-      <td>-35.0</td>
-      <td>107.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Timeout ⏰ 5 candles passed. Buy ₹105.15 → Exit ₹103.40 (₹-1.75)</td>
+      <td>2026-04-15</td>
+      <td>11:30</td>
+      <td>15:15</td>
+      <td>56200</td>
+      <td>560.67</td>
+      <td>577.86</td>
+      <td>488.67</td>
+      <td>776.67</td>
+      <td>EOD_EXIT</td>
+      <td>6446.78</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>2026-04-22</td>
+      <td>12:30</td>
+      <td>13:15</td>
+      <td>57300</td>
+      <td>571.57</td>
+      <td>536.11</td>
+      <td>536.11</td>
+      <td>677.95</td>
+      <td>SL_HIT</td>
+      <td>-13297.50</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>2026-04-22</td>
+      <td>14:30</td>
+      <td>14:45</td>
+      <td>57300</td>
+      <td>571.22</td>
+      <td>525.44</td>
+      <td>525.44</td>
+      <td>708.56</td>
+      <td>SL_HIT</td>
+      <td>-17167.50</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>2026-04-24</td>
+      <td>14:15</td>
+      <td>14:30</td>
+      <td>55900</td>
+      <td>471.46</td>
+      <td>599.74</td>
+      <td>438.82</td>
+      <td>569.38</td>
+      <td>PARTIAL_TARGET</td>
+      <td>22449.08</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>2026-04-24</td>
+      <td>14:15</td>
+      <td>15:00</td>
+      <td>55900</td>
+      <td>471.46</td>
+      <td>538.15</td>
+      <td>438.82</td>
+      <td>569.38</td>
+      <td>SL_HIT</td>
+      <td>11670.75</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>2026-04-27</td>
+      <td>10:45</td>
+      <td>11:30</td>
+      <td>56100</td>
+      <td>299.21</td>
+      <td>196.46</td>
+      <td>196.46</td>
+      <td>607.46</td>
+      <td>SL_HIT</td>
+      <td>-38531.25</td>
+      <td>15</td>
     </tr>
   </tbody>
 </table>
