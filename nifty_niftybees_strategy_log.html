@@ -5,7 +5,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bajaj Finance Strategy</title>
+<title>Nifty Niftybees Strategy Log</title>
 
 <link rel="stylesheet"
 href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
@@ -181,7 +181,7 @@ justify-content:space-between;
 align-items:center;
 margin-bottom:15px;">
 
-<h1>Bajaj Finance Strategy</h1>
+<h1>Nifty Niftybees Strategy Log</h1>
 
 <div id="datetime"
 style="font-size:14px; color:#475569;"></div>
@@ -192,19 +192,19 @@ style="font-size:14px; color:#475569;"></div>
 
 <div class="stat">
 <h3>Total Trades</h3>
-<p>1</p>
+<p>2</p>
 </div>
 
 <div class="stat">
 <h3>Total P&L</h3>
 <p class="green">
-50.0
+1938.75
 </p>
 </div>
 
 <div class="stat">
 <h3>Win Rate</h3>
-<p>100.0%</p>
+<p>50.0%</p>
 </div>
 
 <div class="stat">
@@ -214,7 +214,7 @@ style="font-size:14px; color:#475569;"></div>
 
 <div class="stat">
 <h3>Losers</h3>
-<p class="red">0</p>
+<p class="red">1</p>
 </div>
 
 </div>
@@ -227,55 +227,87 @@ style="font-size:14px; color:#475569;"></div>
       <th>id</th>
       <th>date</th>
       <th>time</th>
-      <th>symbol</th>
+      <th>instrument</th>
       <th>action</th>
       <th>price</th>
       <th>qty</th>
       <th>pnl</th>
       <th>total_pnl</th>
+      <th>order_id</th>
       <th>mode</th>
-      <th>note</th>
+      <th>reason</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>1</td>
-      <td>22-05-2026</td>
-      <td>14:05:13</td>
-      <td>BAJFINANCE-EQ</td>
-      <td>BUY</td>
-      <td>920.0</td>
-      <td>25</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>18-05-2026</td>
+      <td>12:42:08</td>
+      <td>NIFTYBEES</td>
+      <td>BUY_NIFTYBEES</td>
+      <td>266.89</td>
+      <td>1000</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>PAPER</td>
-      <td>Drop trigger</td>
+      <td>PAPER</td>
+      <td>Base buy at 12:42</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>22-05-2026</td>
-      <td>14:08:01</td>
-      <td>BAJFINANCE-EQ</td>
-      <td>SELL</td>
-      <td>922.0</td>
-      <td>25</td>
-      <td>50.0</td>
-      <td>50.0</td>
+      <td>18-05-2026</td>
+      <td>12:42:16</td>
+      <td>NIFTY26MAY24150CE</td>
+      <td>SELL_CE</td>
+      <td>65.95</td>
+      <td>75</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>PAPER</td>
-      <td>Target</td>
+      <td>PAPER</td>
+      <td>Sell OTM CE | Strike 24150 | Nifty at -0.20% — below 0%</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>22-05-2026</td>
-      <td>14:27:00</td>
-      <td>BAJFINANCE-EQ</td>
-      <td>BUY</td>
-      <td>919.9</td>
-      <td>25</td>
-      <td>0.0</td>
-      <td>50.0</td>
+      <td>18-05-2026</td>
+      <td>15:15:02</td>
+      <td>NIFTY26MAY24150CE</td>
+      <td>EXIT_CE</td>
+      <td>75.70</td>
+      <td>75</td>
+      <td>-731.25</td>
+      <td>-731.25</td>
       <td>PAPER</td>
-      <td>Drop trigger</td>
+      <td>PAPER</td>
+      <td>Exit CE | 3:15 PM force exit</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>22-05-2026</td>
+      <td>11:44:27</td>
+      <td>NIFTYBEES</td>
+      <td>SELL_NIFTYBEES</td>
+      <td>269.56</td>
+      <td>1000</td>
+      <td>2670.00</td>
+      <td>1938.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Target +1.00% reached (avg ₹266.89)</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>22-05-2026</td>
+      <td>11:44:32</td>
+      <td>NIFTYBEES</td>
+      <td>BUY_NIFTYBEES</td>
+      <td>269.52</td>
+      <td>1000</td>
+      <td>0.00</td>
+      <td>1938.75</td>
+      <td>PAPER</td>
+      <td>PAPER</td>
+      <td>Base buy at 11:44</td>
     </tr>
   </tbody>
 </table>
@@ -288,7 +320,7 @@ font-size:12px;
 color:gray;
 text-align:right;
 ">
-Last Updated: 2026-05-24 12:01:41.155470
+Last Updated: 2026-05-24 12:01:41.378263
 </div>
 
 </div>

@@ -5,7 +5,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BN ATM Strategy V2</title>
+<title>Banknifty Straddle V3 Trades</title>
 
 <link rel="stylesheet"
 href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
@@ -181,7 +181,7 @@ justify-content:space-between;
 align-items:center;
 margin-bottom:15px;">
 
-<h1>BN ATM Strategy V2</h1>
+<h1>Banknifty Straddle V3 Trades</h1>
 
 <div id="datetime"
 style="font-size:14px; color:#475569;"></div>
@@ -192,29 +192,29 @@ style="font-size:14px; color:#475569;"></div>
 
 <div class="stat">
 <h3>Total Trades</h3>
-<p>11</p>
+<p>6</p>
 </div>
 
 <div class="stat">
 <h3>Total P&L</h3>
-<p class="green">
-114.0
+<p class="red">
+-14.25
 </p>
 </div>
 
 <div class="stat">
 <h3>Win Rate</h3>
-<p>45.45%</p>
+<p>66.67%</p>
 </div>
 
 <div class="stat">
 <h3>Winners</h3>
-<p class="green">5</p>
+<p class="green">4</p>
 </div>
 
 <div class="stat">
 <h3>Losers</h3>
-<p class="red">6</p>
+<p class="red">2</p>
 </div>
 
 </div>
@@ -227,14 +227,18 @@ style="font-size:14px; color:#475569;"></div>
       <th>id</th>
       <th>date</th>
       <th>time</th>
-      <th>contract</th>
-      <th>symbol</th>
       <th>action</th>
-      <th>price</th>
+      <th>strike</th>
+      <th>ce_symbol</th>
+      <th>pe_symbol</th>
+      <th>ce_price</th>
+      <th>pe_price</th>
+      <th>combined</th>
       <th>qty</th>
       <th>pnl</th>
       <th>total_pnl</th>
-      <th>order_id</th>
+      <th>order_ce</th>
+      <th>order_pe</th>
       <th>mode</th>
       <th>reason</th>
     </tr>
@@ -243,332 +247,230 @@ style="font-size:14px; color:#475569;"></div>
     <tr>
       <td>1</td>
       <td>22-05-2026</td>
-      <td>10:30:27</td>
-      <td>PE</td>
-      <td>BANKNIFTY26MAY53900PE</td>
+      <td>11:01:01</td>
       <td>BUY</td>
-      <td>321.95</td>
+      <td>54000</td>
+      <td>BANKNIFTY26MAY54000CE</td>
+      <td>BANKNIFTY26MAY54000PE</td>
+      <td>471.50</td>
+      <td>362.00</td>
+      <td>833.50</td>
       <td>15</td>
       <td>0.00</td>
       <td>0.00</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>Drop ₹14.70 | Bounce ₹1.75 | Delay 11s  ATR:₹8.8</td>
+      <td>PAPER</td>
+      <td>VIX 18.6 ✓ | ORB: above ORB high ₹436.00 | Candle strong ✓ | ATR ₹20.1 (data ok)</td>
     </tr>
     <tr>
       <td>2</td>
       <td>22-05-2026</td>
-      <td>10:30:53</td>
-      <td>PE</td>
-      <td>BANKNIFTY26MAY53900PE</td>
+      <td>11:24:00</td>
       <td>SELL</td>
-      <td>330.00</td>
+      <td>54000</td>
+      <td>BANKNIFTY26MAY54000CE</td>
+      <td>BANKNIFTY26MAY54000PE</td>
+      <td>476.75</td>
+      <td>354.70</td>
+      <td>831.45</td>
       <td>15</td>
-      <td>120.75</td>
-      <td>120.75</td>
+      <td>-30.75</td>
+      <td>-30.75</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>Target ✅ ₹321.95→₹330.00 +₹8.05 in 0c</td>
+      <td>PAPER</td>
+      <td>Momentum exit — ADX fell 3c</td>
     </tr>
     <tr>
       <td>3</td>
       <td>22-05-2026</td>
-      <td>10:48:57</td>
-      <td>CE</td>
-      <td>BANKNIFTY26MAY53900CE</td>
+      <td>11:45:00</td>
       <td>BUY</td>
-      <td>539.25</td>
+      <td>54000</td>
+      <td>BANKNIFTY26MAY54000CE</td>
+      <td>BANKNIFTY26MAY54000PE</td>
+      <td>466.50</td>
+      <td>352.45</td>
+      <td>818.95</td>
       <td>15</td>
       <td>0.00</td>
-      <td>120.75</td>
+      <td>-30.75</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>Drop ₹24.30 | Bounce ₹1.95 | Delay 18s  ATR:₹13.3</td>
+      <td>PAPER</td>
+      <td>VIX 18.4 ✓ | ORB: above ORB high ₹436.00 | Candle strong ✓ | ATR ₹29.4 (data ok)</td>
     </tr>
     <tr>
       <td>4</td>
       <td>22-05-2026</td>
-      <td>10:49:05</td>
-      <td>CE</td>
-      <td>BANKNIFTY26MAY53900CE</td>
+      <td>11:58:00</td>
       <td>SELL</td>
-      <td>534.20</td>
+      <td>54000</td>
+      <td>BANKNIFTY26MAY54000CE</td>
+      <td>BANKNIFTY26MAY54000PE</td>
+      <td>478.35</td>
+      <td>341.30</td>
+      <td>819.65</td>
       <td>15</td>
-      <td>-75.75</td>
-      <td>45.00</td>
+      <td>10.50</td>
+      <td>-20.25</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>SL ❌ ₹539.25→₹534.20 -₹5.05</td>
+      <td>PAPER</td>
+      <td>Momentum exit — ADX fell 3c</td>
     </tr>
     <tr>
       <td>5</td>
       <td>22-05-2026</td>
-      <td>11:21:46</td>
-      <td>PE</td>
-      <td>BANKNIFTY26MAY53900PE</td>
+      <td>12:11:00</td>
       <td>BUY</td>
-      <td>333.10</td>
+      <td>54000</td>
+      <td>BANKNIFTY26MAY54000CE</td>
+      <td>BANKNIFTY26MAY54000PE</td>
+      <td>475.60</td>
+      <td>344.20</td>
+      <td>819.80</td>
       <td>15</td>
       <td>0.00</td>
-      <td>45.00</td>
+      <td>-20.25</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>Drop ₹16.45 | Bounce ₹1.55 | Delay 9s  ATR:₹8.7</td>
+      <td>PAPER</td>
+      <td>VIX 18.4 ✓ | ORB: above ORB high ₹436.00 | Candle strong ✓ | ATR ₹21.7 (data ok)</td>
     </tr>
     <tr>
       <td>6</td>
       <td>22-05-2026</td>
-      <td>11:22:08</td>
-      <td>PE</td>
-      <td>BANKNIFTY26MAY53900PE</td>
+      <td>12:17:00</td>
       <td>SELL</td>
-      <td>327.00</td>
+      <td>54000</td>
+      <td>BANKNIFTY26MAY54000CE</td>
+      <td>BANKNIFTY26MAY54000PE</td>
+      <td>480.80</td>
+      <td>342.65</td>
+      <td>823.45</td>
       <td>15</td>
-      <td>-91.50</td>
-      <td>-46.50</td>
+      <td>54.75</td>
+      <td>34.50</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>SL ❌ ₹333.10→₹327.00 -₹6.10</td>
+      <td>PAPER</td>
+      <td>Momentum exit — ADX fell 3c</td>
     </tr>
     <tr>
       <td>7</td>
       <td>22-05-2026</td>
-      <td>11:40:07</td>
-      <td>PE</td>
-      <td>BANKNIFTY26MAY53900PE</td>
+      <td>12:18:00</td>
       <td>BUY</td>
-      <td>347.25</td>
+      <td>54000</td>
+      <td>BANKNIFTY26MAY54000CE</td>
+      <td>BANKNIFTY26MAY54000PE</td>
+      <td>470.85</td>
+      <td>348.60</td>
+      <td>819.45</td>
       <td>15</td>
       <td>0.00</td>
-      <td>-46.50</td>
+      <td>34.50</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>Drop ₹0.70 | Bounce ₹1.65 | Delay 10s  ATR:₹11.7</td>
+      <td>PAPER</td>
+      <td>VIX 18.4 ✓ | ORB: above ORB high ₹436.00 | Candle strong ✓ | ATR ₹21.1 (data ok)</td>
     </tr>
     <tr>
       <td>8</td>
       <td>22-05-2026</td>
-      <td>11:40:50</td>
-      <td>PE</td>
-      <td>BANKNIFTY26MAY53900PE</td>
+      <td>12:21:00</td>
       <td>SELL</td>
-      <td>340.00</td>
+      <td>54000</td>
+      <td>BANKNIFTY26MAY54000CE</td>
+      <td>BANKNIFTY26MAY54000PE</td>
+      <td>470.70</td>
+      <td>349.40</td>
+      <td>820.10</td>
       <td>15</td>
-      <td>-108.75</td>
-      <td>-155.25</td>
+      <td>9.75</td>
+      <td>44.25</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>SL ❌ ₹347.25→₹340.00 -₹7.25</td>
+      <td>PAPER</td>
+      <td>Momentum exit — ADX fell 3c</td>
     </tr>
     <tr>
       <td>9</td>
       <td>22-05-2026</td>
-      <td>11:58:04</td>
-      <td>CE</td>
-      <td>BANKNIFTY26MAY53900CE</td>
+      <td>12:41:00</td>
       <td>BUY</td>
-      <td>538.20</td>
+      <td>54000</td>
+      <td>BANKNIFTY26MAY54000CE</td>
+      <td>BANKNIFTY26MAY54000PE</td>
+      <td>442.25</td>
+      <td>372.00</td>
+      <td>814.25</td>
       <td>15</td>
       <td>0.00</td>
-      <td>-155.25</td>
+      <td>44.25</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>Drop ₹0.45 | Bounce ₹1.65 | Delay 12s  ATR:₹11.9</td>
+      <td>PAPER</td>
+      <td>VIX 18.3 ✓ | ORB: above ORB high ₹436.00 | Candle strong ✓ | ATR ₹23.9 (data ok)</td>
     </tr>
     <tr>
       <td>10</td>
       <td>22-05-2026</td>
-      <td>11:58:11</td>
-      <td>CE</td>
-      <td>BANKNIFTY26MAY53900CE</td>
+      <td>12:44:00</td>
       <td>SELL</td>
-      <td>545.65</td>
+      <td>54000</td>
+      <td>BANKNIFTY26MAY54000CE</td>
+      <td>BANKNIFTY26MAY54000PE</td>
+      <td>441.60</td>
+      <td>368.30</td>
+      <td>809.90</td>
       <td>15</td>
-      <td>111.75</td>
-      <td>-43.50</td>
+      <td>-65.25</td>
+      <td>-21.00</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>Target ✅ ₹538.20→₹545.65 +₹7.45 in 0c</td>
+      <td>PAPER</td>
+      <td>Momentum exit — ADX fell 3c</td>
     </tr>
     <tr>
       <td>11</td>
       <td>22-05-2026</td>
-      <td>12:06:36</td>
-      <td>PE</td>
-      <td>BANKNIFTY26MAY53900PE</td>
+      <td>13:46:00</td>
       <td>BUY</td>
-      <td>304.25</td>
+      <td>54000</td>
+      <td>BANKNIFTY26MAY54000CE</td>
+      <td>BANKNIFTY26MAY54000PE</td>
+      <td>538.50</td>
+      <td>285.00</td>
+      <td>823.50</td>
       <td>15</td>
       <td>0.00</td>
-      <td>-43.50</td>
+      <td>-21.00</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>Drop ₹9.85 | Bounce ₹1.30 | Delay 8s  ATR:₹5.4</td>
+      <td>PAPER</td>
+      <td>VIX 17.9 ✓ | ORB: above ORB high ₹436.00 | Candle strong ✓ | ATR ₹17.2 (data ok)</td>
     </tr>
     <tr>
       <td>12</td>
       <td>22-05-2026</td>
-      <td>12:07:58</td>
-      <td>PE</td>
-      <td>BANKNIFTY26MAY53900PE</td>
+      <td>13:52:00</td>
       <td>SELL</td>
-      <td>299.10</td>
+      <td>54000</td>
+      <td>BANKNIFTY26MAY54000CE</td>
+      <td>BANKNIFTY26MAY54000PE</td>
+      <td>540.95</td>
+      <td>283.00</td>
+      <td>823.95</td>
       <td>15</td>
-      <td>-77.25</td>
-      <td>-120.75</td>
+      <td>6.75</td>
+      <td>-14.25</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>SL ❌ ₹304.25→₹299.10 -₹5.15</td>
-    </tr>
-    <tr>
-      <td>13</td>
-      <td>22-05-2026</td>
-      <td>12:27:32</td>
-      <td>PE</td>
-      <td>BANKNIFTY26MAY53900PE</td>
-      <td>BUY</td>
-      <td>319.40</td>
-      <td>15</td>
-      <td>0.00</td>
-      <td>-120.75</td>
       <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Drop ₹10.65 | Bounce ₹1.40 | Delay 9s  ATR:₹9.8</td>
-    </tr>
-    <tr>
-      <td>14</td>
-      <td>22-05-2026</td>
-      <td>12:27:40</td>
-      <td>PE</td>
-      <td>BANKNIFTY26MAY53900PE</td>
-      <td>SELL</td>
-      <td>327.30</td>
-      <td>15</td>
-      <td>118.50</td>
-      <td>-2.25</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Target ✅ ₹319.40→₹327.30 +₹7.90 in 0c</td>
-    </tr>
-    <tr>
-      <td>15</td>
-      <td>22-05-2026</td>
-      <td>13:03:02</td>
-      <td>CE</td>
-      <td>BANKNIFTY26MAY53900CE</td>
-      <td>BUY</td>
-      <td>599.75</td>
-      <td>15</td>
-      <td>0.00</td>
-      <td>-2.25</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Drop ₹0.00 | Bounce ₹2.65 | Delay 12s  ATR:₹17.7</td>
-    </tr>
-    <tr>
-      <td>16</td>
-      <td>22-05-2026</td>
-      <td>13:03:06</td>
-      <td>CE</td>
-      <td>BANKNIFTY26MAY53900CE</td>
-      <td>SELL</td>
-      <td>612.40</td>
-      <td>15</td>
-      <td>189.75</td>
-      <td>187.50</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Target ✅ ₹599.75→₹612.40 +₹12.65 in 0c</td>
-    </tr>
-    <tr>
-      <td>17</td>
-      <td>22-05-2026</td>
-      <td>14:22:30</td>
-      <td>PE</td>
-      <td>BANKNIFTY26MAY53900PE</td>
-      <td>BUY</td>
-      <td>286.30</td>
-      <td>15</td>
-      <td>0.00</td>
-      <td>187.50</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Drop ₹15.00 | Bounce ₹1.70 | Delay 11s  ATR:₹10.3</td>
-    </tr>
-    <tr>
-      <td>18</td>
-      <td>22-05-2026</td>
-      <td>14:23:08</td>
-      <td>PE</td>
-      <td>BANKNIFTY26MAY53900PE</td>
-      <td>SELL</td>
-      <td>280.95</td>
-      <td>15</td>
-      <td>-80.25</td>
-      <td>107.25</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>SL ❌ ₹286.30→₹280.95 -₹5.35</td>
-    </tr>
-    <tr>
-      <td>19</td>
-      <td>22-05-2026</td>
-      <td>14:45:41</td>
-      <td>PE</td>
-      <td>BANKNIFTY26MAY53900PE</td>
-      <td>BUY</td>
-      <td>335.30</td>
-      <td>15</td>
-      <td>0.00</td>
-      <td>107.25</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Drop ₹13.75 | Bounce ₹1.80 | Delay 9s  ATR:₹10.9</td>
-    </tr>
-    <tr>
-      <td>20</td>
-      <td>22-05-2026</td>
-      <td>14:45:44</td>
-      <td>PE</td>
-      <td>BANKNIFTY26MAY53900PE</td>
-      <td>SELL</td>
-      <td>327.05</td>
-      <td>15</td>
-      <td>-123.75</td>
-      <td>-16.50</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>SL ❌ ₹335.30→₹327.05 -₹8.25</td>
-    </tr>
-    <tr>
-      <td>21</td>
-      <td>22-05-2026</td>
-      <td>14:56:24</td>
-      <td>CE</td>
-      <td>BANKNIFTY26MAY53900CE</td>
-      <td>BUY</td>
-      <td>460.30</td>
-      <td>15</td>
-      <td>0.00</td>
-      <td>-16.50</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Drop ₹18.30 | Bounce ₹2.30 | Delay 11s  ATR:₹13.0</td>
-    </tr>
-    <tr>
-      <td>22</td>
-      <td>22-05-2026</td>
-      <td>14:56:48</td>
-      <td>CE</td>
-      <td>BANKNIFTY26MAY53900CE</td>
-      <td>SELL</td>
-      <td>469.00</td>
-      <td>15</td>
-      <td>130.50</td>
-      <td>114.00</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Target ✅ ₹460.30→₹469.00 +₹8.70 in 0c</td>
+      <td>Momentum exit — ADX fell 3c</td>
     </tr>
   </tbody>
 </table>
@@ -581,7 +483,7 @@ font-size:12px;
 color:gray;
 text-align:right;
 ">
-Last Updated: 2026-05-24 12:01:41.293502
+Last Updated: 2026-05-24 12:01:41.343986
 </div>
 
 </div>

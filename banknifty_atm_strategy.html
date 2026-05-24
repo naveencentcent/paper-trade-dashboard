@@ -7,7 +7,8 @@
 
 <title>BN ATM Strategy V1</title>
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<link rel="stylesheet"
+href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -69,8 +70,13 @@ body {
     font-weight:bold;
 }
 
-.green { color:green; }
-.red { color:red; }
+.green {
+    color:green;
+}
+
+.red {
+    color:red;
+}
 
 .card {
     background:white;
@@ -122,6 +128,7 @@ $(document).ready(function () {
 });
 
 function updateDateTime() {
+
     const now = new Date();
 
     const options = {
@@ -132,6 +139,7 @@ function updateDateTime() {
     };
 
     const date = now.toLocaleDateString('en-IN', options);
+
     const time = now.toLocaleTimeString('en-IN');
 
     document.getElementById("datetime").innerHTML =
@@ -158,7 +166,9 @@ function toggleMenu() {
 
 <h2>📊 Strategies</h2>
 
-<a href="bajfinance_strategy_log.html">Bajaj Finance Strategy</a><a href="banknifty_atm_strategy.html">BN ATM Strategy V1</a><a href="banknifty_atm_strategyv2.html">BN ATM Strategy V2</a>
+<a href="bajfinance_strategy_log.html">Bajaj Finance Strategy</a><a href="bajfinance_strategy_log_OHLC.html">Bajfinance Strategy Log Ohlc</a><a href="banknifty_atm_strategy.html">BN ATM Strategy V1</a><a href="banknifty_atm_strategy_ohc.html">Banknifty Atm Strategy Ohc</a><a href="banknifty_atm_strategy_pro.html">Banknifty Atm Strategy Pro</a><a href="banknifty_atm_strategy_pro_ohlc.html">Banknifty Atm Strategy Pro Ohlc</a><a href="banknifty_atm_strategyv2.html">BN ATM Strategy V2</a><a href="banknifty_straddle_v3_ohlc.html">Banknifty Straddle V3 Ohlc</a><a href="banknifty_straddle_v3_trades.html">Banknifty Straddle V3 Trades</a><a href="distutils.schema.html">Distutils.Schema</a><a href="nifty_niftybees_strategy_log.html">Nifty Niftybees Strategy Log</a><a href="settings.html">Settings</a><a href="setuptools.schema.html">Setuptools.Schema</a>
+
+<a href="history_summary.html">📅 History Summary</a>
 
 </div>
 
@@ -166,11 +176,15 @@ function toggleMenu() {
 
 <div class="menu-btn" onclick="toggleMenu()">☰ Menu</div>
 
-<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+<div style="display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;">
 
 <h1>BN ATM Strategy V1</h1>
 
-<div id="datetime" style="font-size:14px; color:#475569;"></div>
+<div id="datetime"
+style="font-size:14px; color:#475569;"></div>
 
 </div>
 
@@ -183,7 +197,9 @@ function toggleMenu() {
 
 <div class="stat">
 <h3>Total P&L</h3>
-<p class="green">1509.75</p>
+<p class="green">
+1509.75
+</p>
 </div>
 
 <div class="stat">
@@ -1279,8 +1295,13 @@ function toggleMenu() {
 
 </div>
 
-<div style="margin-top:20px; font-size:12px; color:gray; text-align:right;">
-    Last Updated: 2026-05-22 15:30:05.738580
+<div style="
+margin-top:20px;
+font-size:12px;
+color:gray;
+text-align:right;
+">
+Last Updated: 2026-05-24 12:01:41.212546
 </div>
 
 </div>
