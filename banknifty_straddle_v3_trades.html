@@ -6,7 +6,7 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>BN ATM Strategy V2</title>
+<title>BN Straddle V3</title>
 
 <link rel="stylesheet"
 href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
@@ -202,7 +202,7 @@ align-items:center;
 margin-bottom:15px;
 ">
 
-<h1>BN ATM Strategy V2</h1>
+<h1>BN Straddle V3</h1>
 
 <div id="datetime"
 style="
@@ -217,7 +217,7 @@ color:#475569;
 
 <div class="stat">
 <h3>Total Trades</h3>
-<p>2</p>
+<p>0</p>
 </div>
 
 <div class="stat">
@@ -225,19 +225,19 @@ color:#475569;
 
 <p class="green">
 
-240.75
+0
 
 </p>
 </div>
 
 <div class="stat">
 <h3>Win Rate</h3>
-<p>100.0%</p>
+<p>0%</p>
 </div>
 
 <div class="stat">
 <h3>Winners</h3>
-<p class="green">2</p>
+<p class="green">0</p>
 </div>
 
 <div class="stat">
@@ -255,14 +255,18 @@ color:#475569;
       <th>id</th>
       <th>date</th>
       <th>time</th>
-      <th>contract</th>
-      <th>symbol</th>
       <th>action</th>
-      <th>price</th>
+      <th>strike</th>
+      <th>ce_symbol</th>
+      <th>pe_symbol</th>
+      <th>ce_price</th>
+      <th>pe_price</th>
+      <th>combined</th>
       <th>qty</th>
       <th>pnl</th>
       <th>total_pnl</th>
-      <th>order_id</th>
+      <th>order_ce</th>
+      <th>order_pe</th>
       <th>mode</th>
       <th>reason</th>
     </tr>
@@ -271,62 +275,21 @@ color:#475569;
     <tr>
       <td>1</td>
       <td>29-05-2026</td>
-      <td>09:48:58</td>
-      <td>PE</td>
-      <td>BANKNIFTY26JUN55300PE</td>
+      <td>10:13:05</td>
       <td>BUY</td>
-      <td>1155.95</td>
-      <td>15</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Drop ₹40.15 | Bounce ₹5.80 | Delay 14s  ATR:₹29.7</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>29-05-2026</td>
-      <td>09:49:06</td>
-      <td>PE</td>
+      <td>55300</td>
+      <td>BANKNIFTY26JUN55300CE</td>
       <td>BANKNIFTY26JUN55300PE</td>
-      <td>SELL</td>
-      <td>1164.00</td>
+      <td>1130.95</td>
+      <td>1043.9</td>
+      <td>2174.85</td>
       <td>15</td>
-      <td>120.75</td>
-      <td>120.75</td>
+      <td>0</td>
+      <td>0.0</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>Target ✅ ₹1155.95→₹1164.00 +₹8.05 in 1c</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>29-05-2026</td>
-      <td>10:13:59</td>
-      <td>CE</td>
-      <td>BANKNIFTY26JUN55300CE</td>
-      <td>BUY</td>
-      <td>1110.00</td>
-      <td>15</td>
-      <td>0.00</td>
-      <td>120.75</td>
       <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Drop ₹23.70 | Bounce ₹2.75 | Delay 22s  ATR:₹13.8</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>29-05-2026</td>
-      <td>10:14:03</td>
-      <td>CE</td>
-      <td>BANKNIFTY26JUN55300CE</td>
-      <td>SELL</td>
-      <td>1118.00</td>
-      <td>15</td>
-      <td>120.00</td>
-      <td>240.75</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Target ✅ ₹1110.00→₹1118.00 +₹8.00 in 1c</td>
+      <td>VIX 15.2 ✓ | ORB: above ORB high ₹1114.30 | Candle strong ✓ | ATR ₹35.9 (data ok)</td>
     </tr>
   </tbody>
 </table>
@@ -340,7 +303,7 @@ color:gray;
 text-align:right;
 ">
 
-Last Updated: 2026-05-29 10:25:57.788890
+Last Updated: 2026-05-29 10:25:57.800002
 
 </div>
 
