@@ -6,7 +6,7 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Banknifty Atm V4</title>
+<title>Traffic Light Trades</title>
 
 <link rel="stylesheet"
 href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
@@ -202,7 +202,7 @@ align-items:center;
 margin-bottom:15px;
 ">
 
-<h1>Banknifty Atm V4</h1>
+<h1>Traffic Light Trades</h1>
 
 <div id="datetime"
 style="
@@ -217,32 +217,32 @@ color:#475569;
 
 <div class="stat">
 <h3>Total Trades</h3>
-<p>7</p>
+<p>1</p>
 </div>
 
 <div class="stat">
 <h3>Total P&L</h3>
 
-<p class="green">
+<p class="red">
 
-991.5
+-450.75
 
 </p>
 </div>
 
 <div class="stat">
 <h3>Win Rate</h3>
-<p>71.43%</p>
+<p>0.0%</p>
 </div>
 
 <div class="stat">
 <h3>Winners</h3>
-<p class="green">5</p>
+<p class="green">0</p>
 </div>
 
 <div class="stat">
 <h3>Losers</h3>
-<p class="red">2</p>
+<p class="red">1</p>
 </div>
 
 </div>
@@ -255,6 +255,7 @@ color:#475569;
       <th>id</th>
       <th>date</th>
       <th>time</th>
+      <th>tf</th>
       <th>contract</th>
       <th>symbol</th>
       <th>action</th>
@@ -271,212 +272,50 @@ color:#475569;
     <tr>
       <td>1</td>
       <td>29-05-2026</td>
-      <td>09:30:21</td>
+      <td>09:33:01</td>
+      <td>1min</td>
       <td>PE</td>
       <td>BANKNIFTY26JUN55300PE</td>
       <td>BUY</td>
-      <td>1120.55</td>
-      <td>30</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>1140.00</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>0.00</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>Open ₹1147.35 dropped ₹26.80 to ₹1120.55</td>
+      <td>TL BUY_PE | Range:1132-1089 | 1min</td>
     </tr>
     <tr>
       <td>2</td>
       <td>29-05-2026</td>
-      <td>09:30:50</td>
+      <td>09:35:44</td>
+      <td>1min</td>
       <td>PE</td>
       <td>BANKNIFTY26JUN55300PE</td>
       <td>SELL</td>
-      <td>1131.20</td>
-      <td>30</td>
-      <td>319.5</td>
-      <td>319.5</td>
+      <td>1109.95</td>
+      <td>15</td>
+      <td>-450.75</td>
+      <td>-450.75</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>Target ✅ ₹1120.55→₹1131.20 +₹10.65 in 0c</td>
+      <td>SL ❌  ₹1140.00→₹1109.95  -30.0pts</td>
     </tr>
     <tr>
       <td>3</td>
       <td>29-05-2026</td>
-      <td>09:31:16</td>
-      <td>PE</td>
-      <td>BANKNIFTY26JUN55300PE</td>
-      <td>BUY</td>
-      <td>1079.30</td>
-      <td>30</td>
-      <td>0.0</td>
-      <td>319.5</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Open ₹1112.10 dropped ₹32.80 to ₹1079.30</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>29-05-2026</td>
-      <td>09:31:18</td>
-      <td>PE</td>
-      <td>BANKNIFTY26JUN55300PE</td>
-      <td>SELL</td>
-      <td>1090.70</td>
-      <td>30</td>
-      <td>342.0</td>
-      <td>661.5</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Target ✅ ₹1079.30→₹1090.70 +₹11.40 in 0c</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>29-05-2026</td>
-      <td>09:31:26</td>
-      <td>PE</td>
-      <td>BANKNIFTY26JUN55300PE</td>
-      <td>BUY</td>
-      <td>1085.55</td>
-      <td>30</td>
-      <td>0.0</td>
-      <td>661.5</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Open ₹1112.10 dropped ₹26.55 to ₹1085.55</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>29-05-2026</td>
-      <td>09:31:48</td>
-      <td>PE</td>
-      <td>BANKNIFTY26JUN55300PE</td>
-      <td>SELL</td>
-      <td>1100.00</td>
-      <td>30</td>
-      <td>433.5</td>
-      <td>1095.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Target ✅ ₹1085.55→₹1100.00 +₹14.45 in 0c</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>29-05-2026</td>
-      <td>09:35:09</td>
-      <td>PE</td>
-      <td>BANKNIFTY26JUN55300PE</td>
-      <td>BUY</td>
-      <td>1115.40</td>
-      <td>30</td>
-      <td>0.0</td>
-      <td>1095.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Open ₹1146.35 dropped ₹30.95 to ₹1115.40</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>29-05-2026</td>
-      <td>09:35:20</td>
-      <td>PE</td>
-      <td>BANKNIFTY26JUN55300PE</td>
-      <td>SELL</td>
-      <td>1130.65</td>
-      <td>30</td>
-      <td>457.5</td>
-      <td>1552.5</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Target ✅ ₹1115.40→₹1130.65 +₹15.25 in 0c</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>29-05-2026</td>
-      <td>09:35:30</td>
-      <td>PE</td>
-      <td>BANKNIFTY26JUN55300PE</td>
-      <td>BUY</td>
-      <td>1118.55</td>
-      <td>30</td>
-      <td>0.0</td>
-      <td>1552.5</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Open ₹1146.35 dropped ₹27.80 to ₹1118.55</td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>29-05-2026</td>
-      <td>09:35:44</td>
-      <td>PE</td>
-      <td>BANKNIFTY26JUN55300PE</td>
-      <td>SELL</td>
-      <td>1107.75</td>
-      <td>30</td>
-      <td>-324.0</td>
-      <td>1228.5</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>SL ❌ ₹1118.55→₹1107.75 -₹10.80</td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>29-05-2026</td>
-      <td>09:35:45</td>
-      <td>PE</td>
-      <td>BANKNIFTY26JUN55300PE</td>
-      <td>BUY</td>
-      <td>1107.35</td>
-      <td>30</td>
-      <td>0.0</td>
-      <td>1228.5</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Open ₹1146.35 dropped ₹39.00 to ₹1107.35</td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>29-05-2026</td>
-      <td>09:36:18</td>
-      <td>PE</td>
-      <td>BANKNIFTY26JUN55300PE</td>
-      <td>SELL</td>
-      <td>1088.80</td>
-      <td>30</td>
-      <td>-556.5</td>
-      <td>672.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>SL ❌ ₹1107.35→₹1088.80 -₹18.55</td>
-    </tr>
-    <tr>
-      <td>13</td>
-      <td>29-05-2026</td>
-      <td>09:38:28</td>
+      <td>09:36:10</td>
+      <td>1min</td>
       <td>CE</td>
       <td>BANKNIFTY26JUN55300CE</td>
       <td>BUY</td>
-      <td>1060.85</td>
-      <td>30</td>
-      <td>0.0</td>
-      <td>672.0</td>
+      <td>1102.40</td>
+      <td>15</td>
+      <td>0.00</td>
+      <td>-450.75</td>
       <td>PAPER</td>
       <td>PAPER</td>
-      <td>Open ₹1086.60 dropped ₹25.75 to ₹1060.85</td>
-    </tr>
-    <tr>
-      <td>14</td>
-      <td>29-05-2026</td>
-      <td>09:39:08</td>
-      <td>CE</td>
-      <td>BANKNIFTY26JUN55300CE</td>
-      <td>SELL</td>
-      <td>1071.50</td>
-      <td>30</td>
-      <td>319.5</td>
-      <td>991.5</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Target ✅ ₹1060.85→₹1071.50 +₹10.65 in 1c</td>
+      <td>TL BUY_CE | Range:1102-1056 | 1min</td>
     </tr>
   </tbody>
 </table>
@@ -490,7 +329,7 @@ color:gray;
 text-align:right;
 ">
 
-Last Updated: 2026-05-29 09:55:50.947098
+Last Updated: 2026-05-29 09:55:50.980284
 
 </div>
 
