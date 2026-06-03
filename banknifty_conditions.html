@@ -6,7 +6,7 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Banknifty Atm V1</title>
+<title>Banknifty Conditions</title>
 
 <link rel="stylesheet"
 href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
@@ -202,7 +202,7 @@ align-items:center;
 margin-bottom:15px;
 ">
 
-<h1>Banknifty Atm V1</h1>
+<h1>Banknifty Conditions</h1>
 
 <div id="datetime"
 style="
@@ -217,7 +217,7 @@ color:#475569;
 
 <div class="stat">
 <h3>Total Trades</h3>
-<p>4</p>
+<p>0</p>
 </div>
 
 <div class="stat">
@@ -225,24 +225,24 @@ color:#475569;
 
 <p class="green">
 
-55.5
+0
 
 </p>
 </div>
 
 <div class="stat">
 <h3>Win Rate</h3>
-<p>50.0%</p>
+<p>0%</p>
 </div>
 
 <div class="stat">
 <h3>Winners</h3>
-<p class="green">2</p>
+<p class="green">0</p>
 </div>
 
 <div class="stat">
 <h3>Losers</h3>
-<p class="red">2</p>
+<p class="red">0</p>
 </div>
 
 </div>
@@ -252,141 +252,118 @@ color:#475569;
 <table border="1" class="dataframe display">
   <thead>
     <tr style="text-align: right;">
-      <th>id</th>
       <th>date</th>
       <th>time</th>
-      <th>contract</th>
-      <th>symbol</th>
-      <th>action</th>
-      <th>price</th>
-      <th>qty</th>
-      <th>pnl</th>
+      <th>event</th>
+      <th>note</th>
+      <th>days_since_expiry</th>
+      <th>expiry_zone</th>
+      <th>gap_pct</th>
+      <th>gap_type</th>
+      <th>first_15min_range</th>
+      <th>trading_paused</th>
+      <th>selected_version</th>
+      <th>selection_reason</th>
+      <th>active_contract</th>
       <th>total_pnl</th>
-      <th>order_id</th>
-      <th>mode</th>
-      <th>reason</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>1</td>
       <td>03-06-2026</td>
-      <td>09:21:35</td>
-      <td>PE</td>
-      <td>BANKNIFTY26JUN53600PE</td>
-      <td>BUY</td>
-      <td>1133.35</td>
-      <td>30</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Open ₹1154.90 dropped ₹21.55 to ₹1133.35</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>03-06-2026</td>
-      <td>09:22:17</td>
-      <td>PE</td>
-      <td>BANKNIFTY26JUN53600PE</td>
-      <td>SELL</td>
-      <td>1122.45</td>
-      <td>30</td>
-      <td>-327.0</td>
-      <td>-327.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>SL ❌ ₹1133.35→₹1122.45 -₹10.90</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>03-06-2026</td>
-      <td>09:22:54</td>
-      <td>CE</td>
-      <td>BANKNIFTY26JUN53600CE</td>
-      <td>BUY</td>
-      <td>1099.35</td>
-      <td>30</td>
-      <td>0.0</td>
-      <td>-327.0</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Open ₹1119.65 dropped ₹20.30 to ₹1099.35</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>03-06-2026</td>
-      <td>09:23:04</td>
-      <td>CE</td>
-      <td>BANKNIFTY26JUN53600CE</td>
-      <td>SELL</td>
-      <td>1086.50</td>
-      <td>30</td>
-      <td>-385.5</td>
-      <td>-712.5</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>SL ❌ ₹1099.35→₹1086.50 -₹12.85</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>03-06-2026</td>
-      <td>09:30:24</td>
-      <td>CE</td>
-      <td>BANKNIFTY26JUN53600CE</td>
-      <td>BUY</td>
-      <td>1056.90</td>
-      <td>30</td>
-      <td>0.0</td>
-      <td>-712.5</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Open ₹1079.00 dropped ₹22.10 to ₹1056.90</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>03-06-2026</td>
-      <td>09:30:55</td>
-      <td>CE</td>
-      <td>BANKNIFTY26JUN53600CE</td>
-      <td>SELL</td>
-      <td>1069.20</td>
-      <td>30</td>
-      <td>369.0</td>
-      <td>-343.5</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Target ✅ ₹1056.90→₹1069.20 +₹12.30 in 0c</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>03-06-2026</td>
-      <td>09:33:21</td>
-      <td>PE</td>
-      <td>BANKNIFTY26JUN53600PE</td>
-      <td>BUY</td>
-      <td>1160.85</td>
-      <td>30</td>
-      <td>0.0</td>
-      <td>-343.5</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Open ₹1184.60 dropped ₹23.75 to ₹1160.85</td>
-    </tr>
-    <tr>
+      <td>09:19:45</td>
+      <td>session_start</td>
+      <td>zone:mid_series version:V4</td>
       <td>8</td>
+      <td>mid_series</td>
+      <td>0.00</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+      <td>V4</td>
+      <td>mid/pre-series default → V4 (awaiting gap check at 9:15)</td>
+      <td>None</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
       <td>03-06-2026</td>
-      <td>09:33:55</td>
-      <td>PE</td>
-      <td>BANKNIFTY26JUN53600PE</td>
-      <td>SELL</td>
-      <td>1174.15</td>
-      <td>30</td>
-      <td>399.0</td>
-      <td>55.5</td>
-      <td>PAPER</td>
-      <td>PAPER</td>
-      <td>Target ✅ ₹1160.85→₹1174.15 +₹13.30 in 0c</td>
+      <td>09:19:46</td>
+      <td>gap_check</td>
+      <td>open ₹1141.30</td>
+      <td>8</td>
+      <td>mid_series</td>
+      <td>0.00</td>
+      <td>unknown</td>
+      <td>None</td>
+      <td>False</td>
+      <td>V4</td>
+      <td>mid/pre-series default → V4 (awaiting gap check at 9:15)</td>
+      <td>None</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>03-06-2026</td>
+      <td>09:28:48</td>
+      <td>session_start</td>
+      <td>zone:mid_series version:V4</td>
+      <td>8</td>
+      <td>mid_series</td>
+      <td>0.00</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+      <td>V4</td>
+      <td>mid/pre-series default → V4 (awaiting gap check at 9:15)</td>
+      <td>None</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>03-06-2026</td>
+      <td>09:28:49</td>
+      <td>gap_check</td>
+      <td>open ₹1129.35</td>
+      <td>8</td>
+      <td>mid_series</td>
+      <td>0.00</td>
+      <td>flat</td>
+      <td>None</td>
+      <td>False</td>
+      <td>V4</td>
+      <td>gap flat (+0.00%) → V4</td>
+      <td>None</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>03-06-2026</td>
+      <td>09:33:30</td>
+      <td>session_start</td>
+      <td>zone:mid_series version:V4</td>
+      <td>8</td>
+      <td>mid_series</td>
+      <td>0.00</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+      <td>V4</td>
+      <td>mid/pre-series default → V4 (awaiting gap check at 9:15)</td>
+      <td>None</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>03-06-2026</td>
+      <td>09:33:30</td>
+      <td>gap_check</td>
+      <td>open ₹1126.30</td>
+      <td>8</td>
+      <td>mid_series</td>
+      <td>-97.89</td>
+      <td>gap_down</td>
+      <td>None</td>
+      <td>False</td>
+      <td>V1</td>
+      <td>gap-down (-97.89%) → selling pressure → V1</td>
+      <td>None</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
@@ -400,7 +377,7 @@ color:gray;
 text-align:right;
 ">
 
-Last Updated: 2026-06-03 09:34:40.126593
+Last Updated: 2026-06-03 09:34:40.204220
 
 </div>
 
