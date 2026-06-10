@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Niftybees Ticks 20260610</title>
+
+<link rel="stylesheet"
+href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<style>
+
+body {
+    margin:0;
+    font-family:'Segoe UI';
+    background:#f1f5f9;
+}
+
+.container {
+    display:flex;
+}
+
+.sidebar {
+    width:260px;
+    background:#0f172a;
+    color:white;
+    height:100vh;
+    padding:20px;
+    overflow-y:auto;
+}
+
+.sidebar a {
+    display:block;
+    color:#cbd5f5;
+    padding:10px;
+    text-decoration:none;
+    border-radius:6px;
+    margin-bottom:5px;
+}
+
+.sidebar a:hover {
+    background:#1e293b;
+}
+
+.content {
+    flex:1;
+    padding:20px;
+}
+
+.dashboard {
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.stat {
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.stat p {
+    font-size:18px;
+    font-weight:bold;
+}
+
+.green {
+    color:green;
+}
+
+.red {
+    color:red;
+}
+
+.card {
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    overflow-x:auto;
+}
+
+.menu-btn {
+    display:none;
+    font-size:20px;
+    cursor:pointer;
+    margin-bottom:10px;
+}
+
+table.dataTable {
+    width:100% !important;
+}
+
+@media (max-width: 768px) {
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position:absolute;
+        transform:translateX(-100%);
+        z-index:1000;
+        transition:0.3s;
+    }
+
+    .sidebar.active {
+        transform:translateX(0);
+    }
+
+    .menu-btn {
+        display:block;
+    }
+
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+</style>
+
+<script>
+
+$(document).ready(function () {
+    $('table').DataTable();
+});
+
+function updateDateTime() {
+
+    const now = new Date();
+
+    const options = {
+        weekday:'long',
+        year:'numeric',
+        month:'long',
+        day:'numeric'
+    };
+
+    const date = now.toLocaleDateString(
+        'en-IN',
+        options
+    );
+
+    const time = now.toLocaleTimeString('en-IN');
+
+    document.getElementById("datetime").innerHTML =
+        "📅 " + date + " | ⏰ " + time;
+}
+
+setInterval(updateDateTime, 1000);
+
+updateDateTime();
+
+function toggleMenu() {
+    document
+        .querySelector('.sidebar')
+        .classList
+        .toggle('active');
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="sidebar">
+
+<h2>📊 Strategies</h2>
+
+<a href="NIFTYBEES_ticks_20260610.html">Niftybees Ticks 20260610</a><a href="bajfinance_strategy_log.html">Bajaj Finance Strategy</a><a href="banknifty_atm_V1.html">Banknifty Atm V1</a><a href="banknifty_atm_V2.html">Banknifty Atm V2</a><a href="banknifty_atm_V3.html">Banknifty Atm V3</a><a href="banknifty_atm_V4.html">Banknifty Atm V4</a><a href="banknifty_atm_V5.html">Banknifty Atm V5</a><a href="banknifty_atm_V6.html">Banknifty Atm V6</a><a href="banknifty_atm_strategy.html">BN ATM Strategy V1</a><a href="banknifty_atm_strategyv2.html">BN ATM Strategy V2</a><a href="banknifty_conditions.html">Banknifty Conditions</a><a href="banknifty_straddle_v3_trades.html">BN Straddle V3</a><a href="banknifty_trades.html">Banknifty Trades</a><a href="nifty50_atm_V6.html">Nifty50 Atm V6</a><a href="nifty_niftybees_strategy_log.html">Nifty Bees Strategy</a><a href="session.html">Session</a><a href="traffic_light_trades.html">Traffic Light Trades</a>
+
+<a href="history_summary.html">
+📅 History Summary
+</a>
+
+</div>
+
+<div class="content">
+
+<div class="menu-btn"
+onclick="toggleMenu()">
+☰ Menu
+</div>
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+">
+
+<h1>Niftybees Ticks 20260610</h1>
+
+<div id="datetime"
+style="
+font-size:14px;
+color:#475569;
+">
+</div>
+
+</div>
+
+<div class="dashboard">
+
+<div class="stat">
+<h3>Total Trades</h3>
+<p>0</p>
+</div>
+
+<div class="stat">
+<h3>Total P&L</h3>
+
+<p class="green">
+
+0
+
+</p>
+</div>
+
+<div class="stat">
+<h3>Win Rate</h3>
+<p>0%</p>
+</div>
+
+<div class="stat">
+<h3>Winners</h3>
+<p class="green">0</p>
+</div>
+
+<div class="stat">
+<h3>Losers</h3>
+<p class="red">0</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<table border="1" class="dataframe display">
+  <thead>
+    <tr style="text-align: right;">
+      <th>symbol</th>
+      <th>token</th>
+      <th>date</th>
+      <th>ticks</th>
+      <th>tick_count</th>
+      <th>last_saved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NIFTYBEES-EQ</td>
+      <td>10576</td>
+      <td>2026-06-10</td>
+      <td>[{'ts': '2026-06-10 09:24:29.854552', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:30.356028', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:30.855781', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:31.355901', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:31.855813', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:32.356232', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:32.856898', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:33.358294', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:33.858514', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:34.860577', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:35.361768', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:35.861836', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:36.860967', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:37.362293', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:37.862325', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:38.862192', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:39.362581', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:39.862618', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:40.363881', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:40.862975', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:41.363553', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:41.863328', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:42.364299', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:42.863718', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:43.365905', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:43.866600', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:44.866979', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:45.869902', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:46.871971', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:47.372420', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:47.873900', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:48.374997', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:48.873956', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:49.375020', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:49.875246', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:50.375560', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:50.874877', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:51.378781', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:51.878732', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:52.879122', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:53.378887', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:53.879921', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:54.879636', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:55.379999', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:55.879123', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:56.879651', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:57.380696', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:57.880919', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:58.381785', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:58.880928', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:59.381633', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:24:59.880556', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:00.382081', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:00.881074', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:01.380917', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:01.881617', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:02.882342', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:03.883207', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:04.885077', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:05.382587', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:05.882095', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:06.385855', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:06.882900', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:07.382769', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:07.882375', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:08.383033', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:08.882608', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:09.382599', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:09.882463', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:10.882908', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:11.383036', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:11.882637', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:12.882266', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:13.382036', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:13.882511', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:14.883304', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:15.382611', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:15.882238', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:16.382711', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:16.881981', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:17.382537', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:17.882108', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:18.383061', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:19.383037', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:19.883415', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:20.884412', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:21.886392', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:22.888105', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:23.389642', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:24.389725', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:24.888933', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:25.389927', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:25.890603', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:26.391520', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:26.890705', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:27.390964', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:27.889770', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:28.891240', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:29.392593', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, {'ts': '2026-06-10 09:25:29.893386', 'ltt': '', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'token': '10576'}, ...]</td>
+      <td>402</td>
+      <td>2026-06-10 09:31:52</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+<div style="
+margin-top:20px;
+font-size:12px;
+color:gray;
+text-align:right;
+">
+
+Last Updated: 2026-06-10 09:32:23.174476
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
