@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Banknifty Ce Ticks 20260611</title>
+
+<link rel="stylesheet"
+href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<style>
+
+body {
+    margin:0;
+    font-family:'Segoe UI';
+    background:#f1f5f9;
+}
+
+.container {
+    display:flex;
+}
+
+.sidebar {
+    width:260px;
+    background:#0f172a;
+    color:white;
+    height:100vh;
+    padding:20px;
+    overflow-y:auto;
+}
+
+.sidebar a {
+    display:block;
+    color:#cbd5f5;
+    padding:10px;
+    text-decoration:none;
+    border-radius:6px;
+    margin-bottom:5px;
+}
+
+.sidebar a:hover {
+    background:#1e293b;
+}
+
+.content {
+    flex:1;
+    padding:20px;
+}
+
+.dashboard {
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.stat {
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.stat p {
+    font-size:18px;
+    font-weight:bold;
+}
+
+.green {
+    color:green;
+}
+
+.red {
+    color:red;
+}
+
+.card {
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    overflow-x:auto;
+}
+
+.menu-btn {
+    display:none;
+    font-size:20px;
+    cursor:pointer;
+    margin-bottom:10px;
+}
+
+table.dataTable {
+    width:100% !important;
+}
+
+@media (max-width: 768px) {
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position:absolute;
+        transform:translateX(-100%);
+        z-index:1000;
+        transition:0.3s;
+    }
+
+    .sidebar.active {
+        transform:translateX(0);
+    }
+
+    .menu-btn {
+        display:block;
+    }
+
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+</style>
+
+<script>
+
+$(document).ready(function () {
+    $('table').DataTable();
+});
+
+function updateDateTime() {
+
+    const now = new Date();
+
+    const options = {
+        weekday:'long',
+        year:'numeric',
+        month:'long',
+        day:'numeric'
+    };
+
+    const date = now.toLocaleDateString(
+        'en-IN',
+        options
+    );
+
+    const time = now.toLocaleTimeString('en-IN');
+
+    document.getElementById("datetime").innerHTML =
+        "📅 " + date + " | ⏰ " + time;
+}
+
+setInterval(updateDateTime, 1000);
+
+updateDateTime();
+
+function toggleMenu() {
+    document
+        .querySelector('.sidebar')
+        .classList
+        .toggle('active');
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="sidebar">
+
+<h2>📊 Strategies</h2>
+
+<a href="BANKNIFTY_CE_ticks_20260610.html">Banknifty Ce Ticks 20260610</a><a href="BANKNIFTY_CE_ticks_20260611.html">Banknifty Ce Ticks 20260611</a><a href="BANKNIFTY_PE_ticks_20260610.html">Banknifty Pe Ticks 20260610</a><a href="BANKNIFTY_PE_ticks_20260611.html">Banknifty Pe Ticks 20260611</a><a href="NIFTYBEES_ticks_20260610.html">Niftybees Ticks 20260610</a><a href="NIFTYBEES_ticks_20260611.html">Niftybees Ticks 20260611</a><a href="bajfinance_strategy_log.html">Bajaj Finance Strategy</a><a href="banknifty_atm_V1.html">Banknifty Atm V1</a><a href="banknifty_atm_V2.html">Banknifty Atm V2</a><a href="banknifty_atm_V3.html">Banknifty Atm V3</a><a href="banknifty_atm_V4.html">Banknifty Atm V4</a><a href="banknifty_atm_V5.html">Banknifty Atm V5</a><a href="banknifty_atm_V6.html">Banknifty Atm V6</a><a href="banknifty_atm_strategy.html">BN ATM Strategy V1</a><a href="banknifty_atm_strategyv2.html">BN ATM Strategy V2</a><a href="banknifty_conditions.html">Banknifty Conditions</a><a href="banknifty_straddle_v3_trades.html">BN Straddle V3</a><a href="banknifty_trades.html">Banknifty Trades</a><a href="nifty50_atm_V6.html">Nifty50 Atm V6</a><a href="nifty_niftybees_strategy_log.html">Nifty Bees Strategy</a><a href="session.html">Session</a><a href="traffic_light_trades.html">Traffic Light Trades</a>
+
+<a href="history_summary.html">
+📅 History Summary
+</a>
+
+</div>
+
+<div class="content">
+
+<div class="menu-btn"
+onclick="toggleMenu()">
+☰ Menu
+</div>
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+">
+
+<h1>Banknifty Ce Ticks 20260611</h1>
+
+<div id="datetime"
+style="
+font-size:14px;
+color:#475569;
+">
+</div>
+
+</div>
+
+<div class="dashboard">
+
+<div class="stat">
+<h3>Total Trades</h3>
+<p>0</p>
+</div>
+
+<div class="stat">
+<h3>Total P&L</h3>
+
+<p class="green">
+
+0
+
+</p>
+</div>
+
+<div class="stat">
+<h3>Win Rate</h3>
+<p>0%</p>
+</div>
+
+<div class="stat">
+<h3>Winners</h3>
+<p class="green">0</p>
+</div>
+
+<div class="stat">
+<h3>Losers</h3>
+<p class="red">0</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<table border="1" class="dataframe display">
+  <thead>
+    <tr style="text-align: right;">
+      <th>symbol</th>
+      <th>token</th>
+      <th>strike</th>
+      <th>opt_type</th>
+      <th>date</th>
+      <th>ticks</th>
+      <th>tick_count</th>
+      <th>last_saved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BANKNIFTY26JUN55100CE</td>
+      <td>75602</td>
+      <td>55100</td>
+      <td>CE</td>
+      <td>2026-06-11</td>
+      <td>[{'ts': '2026-06-11 09:10:02.348498', 'ltt': '', 'opt_type': 'CE', 'symbol': 'BANKNIFTY26JUN55100CE', 'strike': 55100, 'token': '75602', 'ltp': 993.6, 'ltq': 30, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 1100.0, 'high': 1252.4, 'low': 962.2, 'close': 993.6, 'chg': 0.0, 'chg_pct': 0.0}, {'ts': '2026-06-11 09:15:20.578133', 'ltt': '', 'opt_type': 'CE', 'symbol': 'BANKNIFTY26JUN54800CE', 'strike': 54800, 'token': '75596', 'ltp': 1047.65, 'ltq': 0, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': -118.25, 'chg_pct': -10.14}, {'ts': '2026-06-11 09:15:22.580856', 'ltt': '', 'opt_type': 'CE', 'symbol': 'BANKNIFTY26JUN54800CE', 'strike': 54800, 'token': '75596', 'ltp': 1047.65, 'ltq': 60, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': -118.25, 'chg_pct': -10.14}, {'ts': '2026-06-11 09:15:28.581385', 'ltt': '11/06/2026 09:15:28', 'opt_type': 'CE', 'symbol': 'BANKNIFTY26JUN54800CE', 'strike': 54800, 'token': '75596', 'ltp': 1043.65, 'ltq': 60, 'vol': 8820, 'bid': 1033.8, 'ask': 1040.25, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': -122.25, 'chg_pct': -10.49}, {'ts': '2026-06-11 09:15:30.581733', 'ltt': '', 'opt_type': 'CE', 'symbol': 'BANKNIFTY26JUN54800CE', 'strike': 54800, 'token': '75596', 'ltp': 1038.7, 'ltq': 60, 'vol': 8820, 'bid': 1035.35, 'ask': 1038.7, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': -127.2, 'chg_pct': -10.91}, {'ts': '2026-06-11 09:15:40.588385', 'ltt': '11/06/2026 09:15:40', 'opt_type': 'CE', 'symbol': 'BANKNIFTY26JUN54800CE', 'strike': 54800, 'token': '75596', 'ltp': 1057.5, 'ltq': 60, 'vol': 11310, 'bid': 1053.1, 'ask': 1057.2, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': -108.4, 'chg_pct': -9.3}, {'ts': '2026-06-11 09:15:44.091302', 'ltt': '', 'opt_type': 'CE', 'symbol': 'BANKNIFTY26JUN54800CE', 'strike': 54800, 'token': '75596', 'ltp': 1057.5, 'ltq': 60, 'vol': 11310, 'bid': 1053.1, 'ask': 1057.2, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': -108.4, 'chg_pct': -9.3}, {'ts': '2026-06-11 09:15:48.098108', 'ltt': '11/06/2026 09:15:47', 'opt_type': 'CE', 'symbol': 'BANKNIFTY26JUN54800CE', 'strike': 54800, 'token': '75596', 'ltp': 1049.9, 'ltq': 60, 'vol': 14070, 'bid': 1046.45, 'ask': 1050.65, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': -116.0, 'chg_pct': -9.95}, {'ts': '2026-06-11 09:15:52.600493', 'ltt': '11/06/2026 09:15:52', 'opt_type': 'CE', 'symbol': 'BANKNIFTY26JUN54800CE', 'strike': 54800, 'token': '75596', 'ltp': 1046.6, 'ltq': 60, 'vol': 18000, 'bid': 1043.75, 'ask': 1046.85, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': -119.3, 'chg_pct': -10.23}, {'ts': '2026-06-11 09:15:54.101796', 'ltt': '', 'opt_type': 'CE', 'symbol': 'BANKNIFTY26JUN54800CE', 'strike': 54800, 'token': '75596', 'ltp': 1046.6, 'ltq': 60, 'vol': 18000, 'bid': 1040.9, 'ask': 1045.5, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': -119.3, 'chg_pct': -10.23}, {'ts': '2026-06-11 09:15:58.104375', 'ltt': '11/06/2026 09:15:57', 'opt_type': 'CE', 'symbol': 'BANKNIFTY26JUN54800CE', 'strike': 54800, 'token': '75596', 'ltp': 1046.0, 'ltq': 60, 'vol': 18750, 'bid': 1041.7, 'ask': 1045.25, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': -119.9, 'chg_pct': -10.28}, {'ts': '2026-06-11 09:15:59.105627', 'ltt': '', 'opt_type': 'CE', 'symbol': 'BANKNIFTY26JUN54800CE', 'strike': 54800, 'token': '75596', 'ltp': 1040.0, 'ltq': 60, 'vol': 18750, 'bid': 1041.7, 'ask': 1045.25, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': -125.9, 'chg_pct': -10.8}, {'ts': '2026-06-11 09:16:04.114545', 'ltt': '11/06/2026 09:16:03', 'opt_type': 'CE', 'symbol': 'BANKNIFTY26JUN54800CE', 'strike': 54800, 'token': '75596', 'ltp': 1018.8, 'ltq': 60, 'vol': 22110, 'bid': 1015.4, 'ask': 1019.15, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': -147.1, 'chg_pct': -12.62}, {'ts': '2026-06-11 09:16:04.611418', 'ltt': '11/06/2026 09:16:04', 'opt_type': 'CE', 'symbol': 'BANKNIFTY26JUN54800CE', 'strike': 54800, 'token': '75596', 'ltp': 1015.4, 'ltq': 60, 'vol': 22380, 'bid': 1011.6, 'ask': 1015.45, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': -150.5, 'chg_pct': -12.91}, {'ts': '2026-06-11 09:16:14.620017', 'ltt': '', 'opt_type': 'CE', 'symbol': 'BANKNIFTY26JUN54800CE', 'strike': 54800, 'token': '75596', 'ltp': 1008.6, 'ltq': 30, 'vol': 22380, 'bid': 1011.6, 'ask': 1015.45, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': -157.3, 'chg_pct': -13.49}]</td>
+      <td>15</td>
+      <td>2026-06-11 09:16:16</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+<div style="
+margin-top:20px;
+font-size:12px;
+color:gray;
+text-align:right;
+">
+
+Last Updated: 2026-06-11 09:16:51.547795
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
