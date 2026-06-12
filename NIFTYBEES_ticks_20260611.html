@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Niftybees Ticks 20260611</title>
+
+<link rel="stylesheet"
+href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<style>
+
+body {
+    margin:0;
+    font-family:'Segoe UI';
+    background:#f1f5f9;
+}
+
+.container {
+    display:flex;
+}
+
+.sidebar {
+    width:260px;
+    background:#0f172a;
+    color:white;
+    height:100vh;
+    padding:20px;
+    overflow-y:auto;
+}
+
+.sidebar a {
+    display:block;
+    color:#cbd5f5;
+    padding:10px;
+    text-decoration:none;
+    border-radius:6px;
+    margin-bottom:5px;
+}
+
+.sidebar a:hover {
+    background:#1e293b;
+}
+
+.content {
+    flex:1;
+    padding:20px;
+}
+
+.dashboard {
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.stat {
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.stat p {
+    font-size:18px;
+    font-weight:bold;
+}
+
+.green {
+    color:green;
+}
+
+.red {
+    color:red;
+}
+
+.card {
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    overflow-x:auto;
+}
+
+.menu-btn {
+    display:none;
+    font-size:20px;
+    cursor:pointer;
+    margin-bottom:10px;
+}
+
+table.dataTable {
+    width:100% !important;
+}
+
+@media (max-width: 768px) {
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position:absolute;
+        transform:translateX(-100%);
+        z-index:1000;
+        transition:0.3s;
+    }
+
+    .sidebar.active {
+        transform:translateX(0);
+    }
+
+    .menu-btn {
+        display:block;
+    }
+
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+</style>
+
+<script>
+
+$(document).ready(function () {
+    $('table').DataTable();
+});
+
+function updateDateTime() {
+
+    const now = new Date();
+
+    const options = {
+        weekday:'long',
+        year:'numeric',
+        month:'long',
+        day:'numeric'
+    };
+
+    const date = now.toLocaleDateString(
+        'en-IN',
+        options
+    );
+
+    const time = now.toLocaleTimeString('en-IN');
+
+    document.getElementById("datetime").innerHTML =
+        "📅 " + date + " | ⏰ " + time;
+}
+
+setInterval(updateDateTime, 1000);
+
+updateDateTime();
+
+function toggleMenu() {
+    document
+        .querySelector('.sidebar')
+        .classList
+        .toggle('active');
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="sidebar">
+
+<h2>📊 Strategies</h2>
+
+<a href="BANKNIFTY_CE_ticks_20260610.html">Banknifty Ce Ticks 20260610</a><a href="BANKNIFTY_CE_ticks_20260611.html">Banknifty Ce Ticks 20260611</a><a href="BANKNIFTY_PE_ticks_20260610.html">Banknifty Pe Ticks 20260610</a><a href="BANKNIFTY_PE_ticks_20260611.html">Banknifty Pe Ticks 20260611</a><a href="NIFTYBEES_ticks_20260610.html">Niftybees Ticks 20260610</a><a href="NIFTYBEES_ticks_20260611.html">Niftybees Ticks 20260611</a><a href="bajfinance_strategy_log.html">Bajaj Finance Strategy</a><a href="banknifty_atm_V1.html">Banknifty Atm V1</a><a href="banknifty_atm_V2.html">Banknifty Atm V2</a><a href="banknifty_atm_V3.html">Banknifty Atm V3</a><a href="banknifty_atm_V4.html">Banknifty Atm V4</a><a href="banknifty_atm_V5.html">Banknifty Atm V5</a><a href="banknifty_atm_V6.html">Banknifty Atm V6</a><a href="banknifty_atm_strategy.html">BN ATM Strategy V1</a><a href="banknifty_atm_strategyv2.html">BN ATM Strategy V2</a><a href="banknifty_conditions.html">Banknifty Conditions</a><a href="banknifty_straddle_v3_trades.html">BN Straddle V3</a><a href="banknifty_trades.html">Banknifty Trades</a><a href="nifty50_atm_V6.html">Nifty50 Atm V6</a><a href="nifty50_atm_V7.html">Nifty50 Atm V7</a><a href="nifty_niftybees_strategy_log.html">Nifty Bees Strategy</a><a href="session.html">Session</a><a href="traffic_light_trades.html">Traffic Light Trades</a>
+
+<a href="history_summary.html">
+📅 History Summary
+</a>
+
+</div>
+
+<div class="content">
+
+<div class="menu-btn"
+onclick="toggleMenu()">
+☰ Menu
+</div>
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+">
+
+<h1>Niftybees Ticks 20260611</h1>
+
+<div id="datetime"
+style="
+font-size:14px;
+color:#475569;
+">
+</div>
+
+</div>
+
+<div class="dashboard">
+
+<div class="stat">
+<h3>Total Trades</h3>
+<p>0</p>
+</div>
+
+<div class="stat">
+<h3>Total P&L</h3>
+
+<p class="green">
+
+0
+
+</p>
+</div>
+
+<div class="stat">
+<h3>Win Rate</h3>
+<p>0%</p>
+</div>
+
+<div class="stat">
+<h3>Winners</h3>
+<p class="green">0</p>
+</div>
+
+<div class="stat">
+<h3>Losers</h3>
+<p class="red">0</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<table border="1" class="dataframe display">
+  <thead>
+    <tr style="text-align: right;">
+      <th>symbol</th>
+      <th>token</th>
+      <th>date</th>
+      <th>ticks</th>
+      <th>tick_count</th>
+      <th>last_saved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NIFTYBEES-EQ</td>
+      <td>10576</td>
+      <td>2026-06-11</td>
+      <td>[{'ts': '2026-06-11 09:00:56.295608', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': True, 'ltp': 263.08, 'ltq': 3, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 264.0, 'high': 265.35, 'low': 262.87, 'close': 263.08, 'chg': 0.0, 'chg_pct': 0.0}, {'ts': '2026-06-11 09:09:26.828774', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': True, 'ltp': 263.08, 'ltq': 3, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 264.0, 'high': 265.35, 'low': 262.87, 'close': 263.08, 'chg': 0.0, 'chg_pct': 0.0}, {'ts': '2026-06-11 09:11:37.949852', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': True, 'ltp': 263.08, 'ltq': 3, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 264.0, 'high': 265.35, 'low': 262.87, 'close': 263.08, 'chg': 0.0, 'chg_pct': 0.0}, {'ts': '2026-06-11 09:13:49.654488', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': True, 'ltp': 263.08, 'ltq': 3, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 264.0, 'high': 265.35, 'low': 262.87, 'close': 263.08, 'chg': 0.0, 'chg_pct': 0.0}, {'ts': '2026-06-11 09:13:54.870492', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': True, 'ltp': 263.08, 'ltq': 3, 'vol': 0, 'bid': 0.0, 'ask': 0.0, 'open': 264.0, 'high': 265.35, 'low': 262.87, 'close': 263.08, 'chg': 0.0, 'chg_pct': 0.0}, {'ts': '2026-06-11 09:15:00.464961', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 263.08, 'ltq': 3, 'vol': 0, 'bid': 0.0, 'ask': 263.99, 'open': 0.0, 'high': 265.35, 'low': 262.87, 'close': 263.08, 'chg': 0.0, 'chg_pct': 0.0}, {'ts': '2026-06-11 09:15:00.749685', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 263.08, 'ltq': 3, 'vol': 0, 'bid': 0.0, 'ask': 263.99, 'open': 0.0, 'high': 265.35, 'low': 262.87, 'close': 263.08, 'chg': 0.0, 'chg_pct': 0.0}, {'ts': '2026-06-11 09:15:01.249254', 'ltt': '11/06/2026 09:15:00', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.0, 'ltq': 10, 'vol': 13094, 'bid': 261.9, 'ask': 262.0, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -1.08, 'chg_pct': -0.41}, {'ts': '2026-06-11 09:15:01.468786', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.0, 'ltq': 10, 'vol': 13094, 'bid': 261.9, 'ask': 262.0, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -1.08, 'chg_pct': -0.41}, {'ts': '2026-06-11 09:15:02.251642', 'ltt': '11/06/2026 09:15:01', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.24, 'ltq': 8, 'vol': 14589, 'bid': 262.0, 'ask': 262.24, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.84, 'chg_pct': -0.32}, {'ts': '2026-06-11 09:15:02.465327', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.24, 'ltq': 8, 'vol': 14589, 'bid': 262.0, 'ask': 262.24, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.84, 'chg_pct': -0.32}, {'ts': '2026-06-11 09:15:02.966362', 'ltt': '11/06/2026 09:15:02', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.25, 'ltq': 19, 'vol': 16862, 'bid': 262.0, 'ask': 262.25, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.83, 'chg_pct': -0.32}, {'ts': '2026-06-11 09:15:03.254226', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.25, 'ltq': 19, 'vol': 16862, 'bid': 262.0, 'ask': 262.25, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.83, 'chg_pct': -0.32}, {'ts': '2026-06-11 09:15:03.965513', 'ltt': '11/06/2026 09:15:03', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.26, 'ltq': 10, 'vol': 18728, 'bid': 262.05, 'ask': 262.25, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.82, 'chg_pct': -0.31}, {'ts': '2026-06-11 09:15:04.256745', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.26, 'ltq': 10, 'vol': 18728, 'bid': 262.05, 'ask': 262.25, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.82, 'chg_pct': -0.31}, {'ts': '2026-06-11 09:15:04.756751', 'ltt': '11/06/2026 09:15:04', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.28, 'ltq': 6, 'vol': 19394, 'bid': 262.03, 'ask': 262.28, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.8, 'chg_pct': -0.3}, {'ts': '2026-06-11 09:15:04.965315', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.28, 'ltq': 6, 'vol': 19394, 'bid': 262.03, 'ask': 262.28, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.8, 'chg_pct': -0.3}, {'ts': '2026-06-11 09:15:05.757372', 'ltt': '11/06/2026 09:15:05', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.03, 'ltq': 1, 'vol': 20563, 'bid': 262.03, 'ask': 262.25, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -1.05, 'chg_pct': -0.4}, {'ts': '2026-06-11 09:15:05.967174', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.03, 'ltq': 1, 'vol': 20563, 'bid': 262.03, 'ask': 262.25, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -1.05, 'chg_pct': -0.4}, {'ts': '2026-06-11 09:15:06.467616', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.25, 'ltq': 2, 'vol': 20563, 'bid': 262.03, 'ask': 262.25, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.83, 'chg_pct': -0.32}, {'ts': '2026-06-11 09:15:06.970485', 'ltt': '11/06/2026 09:15:06', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.22, 'ltq': 2, 'vol': 25166, 'bid': 262.01, 'ask': 262.18, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.86, 'chg_pct': -0.33}, {'ts': '2026-06-11 09:15:07.468912', 'ltt': '11/06/2026 09:15:07', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.22, 'ltq': 1, 'vol': 26894, 'bid': 262.02, 'ask': 262.22, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.86, 'chg_pct': -0.33}, {'ts': '2026-06-11 09:15:07.970504', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.25, 'ltq': 5, 'vol': 26894, 'bid': 262.02, 'ask': 262.22, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.83, 'chg_pct': -0.32}, {'ts': '2026-06-11 09:15:08.973409', 'ltt': '11/06/2026 09:15:08', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.21, 'ltq': 1, 'vol': 27890, 'bid': 262.02, 'ask': 262.21, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.87, 'chg_pct': -0.33}, {'ts': '2026-06-11 09:15:09.472099', 'ltt': '11/06/2026 09:15:09', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.24, 'ltq': 10, 'vol': 31246, 'bid': 262.2, 'ask': 262.24, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.84, 'chg_pct': -0.32}, {'ts': '2026-06-11 09:15:09.971946', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.25, 'ltq': 15, 'vol': 31246, 'bid': 262.2, 'ask': 262.24, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.83, 'chg_pct': -0.32}, {'ts': '2026-06-11 09:15:10.472193', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.3, 'ltq': 2, 'vol': 31807, 'bid': 262.2, 'ask': 262.3, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.78, 'chg_pct': -0.3}, {'ts': '2026-06-11 09:15:10.975903', 'ltt': '11/06/2026 09:15:10', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.4, 'ltq': 6, 'vol': 32716, 'bid': 262.39, 'ask': 262.4, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.68, 'chg_pct': -0.26}, {'ts': '2026-06-11 09:15:12.475739', 'ltt': '11/06/2026 09:15:11', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.47, 'ltq': 1, 'vol': 33540, 'bid': 262.22, 'ask': 262.47, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.61, 'chg_pct': -0.23}, {'ts': '2026-06-11 09:15:12.977068', 'ltt': '11/06/2026 09:15:12', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.46, 'ltq': 3, 'vol': 34274, 'bid': 262.16, 'ask': 262.46, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.62, 'chg_pct': -0.24}, {'ts': '2026-06-11 09:15:13.977417', 'ltt': '11/06/2026 09:15:13', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.56, 'ltq': 10, 'vol': 49193, 'bid': 262.5, 'ask': 262.56, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.52, 'chg_pct': -0.2}, {'ts': '2026-06-11 09:15:14.477351', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.51, 'ltq': 190, 'vol': 49193, 'bid': 262.5, 'ask': 262.56, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.57, 'chg_pct': -0.22}, {'ts': '2026-06-11 09:15:14.978985', 'ltt': '11/06/2026 09:15:14', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.5, 'ltq': 18, 'vol': 52196, 'bid': 262.5, 'ask': 262.57, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.58, 'chg_pct': -0.22}, {'ts': '2026-06-11 09:15:15.980383', 'ltt': '11/06/2026 09:15:15', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.57, 'ltq': 38, 'vol': 52445, 'bid': 262.5, 'ask': 262.57, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.51, 'chg_pct': -0.19}, {'ts': '2026-06-11 09:15:16.980587', 'ltt': '11/06/2026 09:15:16', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.56, 'ltq': 190, 'vol': 52571, 'bid': 262.5, 'ask': 262.57, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.52, 'chg_pct': -0.2}, {'ts': '2026-06-11 09:15:17.480995', 'ltt': '11/06/2026 09:15:17', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.5, 'ltq': 9, 'vol': 52932, 'bid': 262.5, 'ask': 262.55, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.58, 'chg_pct': -0.22}, {'ts': '2026-06-11 09:15:17.981113', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.55, 'ltq': 8, 'vol': 52932, 'bid': 262.5, 'ask': 262.55, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.53, 'chg_pct': -0.2}, {'ts': '2026-06-11 09:15:18.981585', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.5, 'ltq': 7, 'vol': 53132, 'bid': 262.5, 'ask': 262.51, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.58, 'chg_pct': -0.22}, {'ts': '2026-06-11 09:15:19.481496', 'ltt': '11/06/2026 09:15:18', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.4, 'ltq': 1, 'vol': 82118, 'bid': 262.4, 'ask': 262.54, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.68, 'chg_pct': -0.26}, {'ts': '2026-06-11 09:15:19.981172', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.51, 'ltq': 5, 'vol': 82118, 'bid': 262.4, 'ask': 262.54, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.57, 'chg_pct': -0.22}, {'ts': '2026-06-11 09:15:20.482318', 'ltt': '11/06/2026 09:15:19', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.33, 'ltq': 300, 'vol': 82597, 'bid': 262.33, 'ask': 262.51, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.75, 'chg_pct': -0.29}, {'ts': '2026-06-11 09:15:20.983209', 'ltt': '11/06/2026 09:15:20', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.5, 'ltq': 1, 'vol': 83280, 'bid': 262.32, 'ask': 262.5, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.58, 'chg_pct': -0.22}, {'ts': '2026-06-11 09:15:21.982486', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.52, 'ltq': 20, 'vol': 83280, 'bid': 262.32, 'ask': 262.5, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.56, 'chg_pct': -0.21}, {'ts': '2026-06-11 09:15:22.483587', 'ltt': '11/06/2026 09:15:21', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.52, 'ltq': 20, 'vol': 83326, 'bid': 262.5, 'ask': 262.53, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.56, 'chg_pct': -0.21}, {'ts': '2026-06-11 09:15:22.983985', 'ltt': '11/06/2026 09:15:22', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.51, 'ltq': 30, 'vol': 83527, 'bid': 262.5, 'ask': 262.51, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.57, 'chg_pct': -0.22}, {'ts': '2026-06-11 09:15:23.988057', 'ltt': '11/06/2026 09:15:23', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.5, 'ltq': 18, 'vol': 83676, 'bid': 262.5, 'ask': 262.53, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.58, 'chg_pct': -0.22}, {'ts': '2026-06-11 09:15:24.987411', 'ltt': '11/06/2026 09:15:24', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.5, 'ltq': 13, 'vol': 83727, 'bid': 262.5, 'ask': 262.53, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.58, 'chg_pct': -0.22}, {'ts': '2026-06-11 09:15:25.987014', 'ltt': '11/06/2026 09:15:25', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.53, 'ltq': 1, 'vol': 83889, 'bid': 262.5, 'ask': 262.53, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.55, 'chg_pct': -0.21}, {'ts': '2026-06-11 09:15:26.988382', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.57, 'ltq': 20, 'vol': 84290, 'bid': 262.5, 'ask': 262.55, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.51, 'chg_pct': -0.19}, {'ts': '2026-06-11 09:15:27.490159', 'ltt': '11/06/2026 09:15:26', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.5, 'ltq': 92, 'vol': 85631, 'bid': 262.51, 'ask': 262.57, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.58, 'chg_pct': -0.22}, {'ts': '2026-06-11 09:15:27.989404', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.58, 'ltq': 2, 'vol': 85631, 'bid': 262.51, 'ask': 262.57, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.5, 'chg_pct': -0.19}, {'ts': '2026-06-11 09:15:28.489505', 'ltt': '11/06/2026 09:15:27', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.58, 'ltq': 1, 'vol': 86636, 'bid': 262.51, 'ask': 262.58, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.5, 'chg_pct': -0.19}, {'ts': '2026-06-11 09:15:28.991045', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.57, 'ltq': 50, 'vol': 86636, 'bid': 262.51, 'ask': 262.58, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.51, 'chg_pct': -0.19}, {'ts': '2026-06-11 09:15:29.490393', 'ltt': '11/06/2026 09:15:28', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.58, 'ltq': 2051, 'vol': 91067, 'bid': 262.51, 'ask': 262.58, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.5, 'chg_pct': -0.19}, {'ts': '2026-06-11 09:15:29.991473', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.51, 'ltq': 68, 'vol': 91067, 'bid': 262.51, 'ask': 262.58, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.57, 'chg_pct': -0.22}, {'ts': '2026-06-11 09:15:30.492069', 'ltt': '11/06/2026 09:15:29', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.55, 'ltq': 100, 'vol': 91616, 'bid': 262.51, 'ask': 262.55, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.53, 'chg_pct': -0.2}, {'ts': '2026-06-11 09:15:30.994774', 'ltt': '11/06/2026 09:15:30', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.57, 'ltq': 5, 'vol': 91877, 'bid': 262.51, 'ask': 262.55, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.51, 'chg_pct': -0.19}, {'ts': '2026-06-11 09:15:31.994950', 'ltt': '11/06/2026 09:15:31', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.55, 'ltq': 1, 'vol': 96103, 'bid': 262.5, 'ask': 262.54, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.53, 'chg_pct': -0.2}, {'ts': '2026-06-11 09:15:32.993703', 'ltt': '11/06/2026 09:15:32', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.47, 'ltq': 23, 'vol': 100797, 'bid': 262.47, 'ask': 262.51, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.61, 'chg_pct': -0.23}, {'ts': '2026-06-11 09:15:33.995666', 'ltt': '11/06/2026 09:15:33', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.53, 'ltq': 45, 'vol': 100823, 'bid': 262.47, 'ask': 262.56, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.55, 'chg_pct': -0.21}, {'ts': '2026-06-11 09:15:34.997811', 'ltt': '11/06/2026 09:15:34', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.55, 'ltq': 5, 'vol': 101049, 'bid': 262.5, 'ask': 262.55, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.53, 'chg_pct': -0.2}, {'ts': '2026-06-11 09:15:35.499848', 'ltt': '11/06/2026 09:15:35', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.57, 'ltq': 1, 'vol': 101072, 'bid': 262.47, 'ask': 262.57, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.51, 'chg_pct': -0.19}, {'ts': '2026-06-11 09:15:36.001595', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.58, 'ltq': 100, 'vol': 101072, 'bid': 262.47, 'ask': 262.57, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.5, 'chg_pct': -0.19}, {'ts': '2026-06-11 09:15:37.001644', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.61, 'ltq': 1, 'vol': 101204, 'bid': 262.47, 'ask': 262.56, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.47, 'chg_pct': -0.18}, {'ts': '2026-06-11 09:15:37.501350', 'ltt': '11/06/2026 09:15:36', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.61, 'ltq': 1, 'vol': 101210, 'bid': 262.47, 'ask': 262.56, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.47, 'chg_pct': -0.18}, {'ts': '2026-06-11 09:15:38.500671', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.61, 'ltq': 1, 'vol': 101210, 'bid': 262.47, 'ask': 262.56, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.47, 'chg_pct': -0.18}, {'ts': '2026-06-11 09:15:39.002770', 'ltt': '11/06/2026 09:15:38', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.5, 'ltq': 38, 'vol': 101333, 'bid': 262.47, 'ask': 262.5, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.58, 'chg_pct': -0.22}, {'ts': '2026-06-11 09:15:40.000805', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.47, 'ltq': 70, 'vol': 101333, 'bid': 262.47, 'ask': 262.5, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.61, 'chg_pct': -0.23}, {'ts': '2026-06-11 09:15:40.510866', 'ltt': '11/06/2026 09:15:39', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.47, 'ltq': 70, 'vol': 103607, 'bid': 262.47, 'ask': 262.5, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.61, 'chg_pct': -0.23}, {'ts': '2026-06-11 09:15:41.002507', 'ltt': '11/06/2026 09:15:40', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.5, 'ltq': 2, 'vol': 103655, 'bid': 262.47, 'ask': 262.5, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.58, 'chg_pct': -0.22}, {'ts': '2026-06-11 09:15:42.005674', 'ltt': '11/06/2026 09:15:41', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.5, 'ltq': 3, 'vol': 103860, 'bid': 262.47, 'ask': 262.5, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.58, 'chg_pct': -0.22}, {'ts': '2026-06-11 09:15:43.002900', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.47, 'ltq': 1, 'vol': 103861, 'bid': 262.47, 'ask': 262.49, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.61, 'chg_pct': -0.23}, {'ts': '2026-06-11 09:15:44.003489', 'ltt': '11/06/2026 09:15:43', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.45, 'ltq': 1, 'vol': 104415, 'bid': 262.4, 'ask': 262.48, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.63, 'chg_pct': -0.24}, {'ts': '2026-06-11 09:15:45.004562', 'ltt': '11/06/2026 09:15:44', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.45, 'ltq': 1, 'vol': 104630, 'bid': 262.45, 'ask': 262.48, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.63, 'chg_pct': -0.24}, {'ts': '2026-06-11 09:15:45.506009', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.46, 'ltq': 5, 'vol': 104642, 'bid': 262.4, 'ask': 262.45, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.62, 'chg_pct': -0.24}, {'ts': '2026-06-11 09:15:46.004087', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.45, 'ltq': 1, 'vol': 104642, 'bid': 262.4, 'ask': 262.45, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.63, 'chg_pct': -0.24}, {'ts': '2026-06-11 09:15:46.505940', 'ltt': '11/06/2026 09:15:45', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.44, 'ltq': 20, 'vol': 104689, 'bid': 262.4, 'ask': 262.44, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.64, 'chg_pct': -0.24}, {'ts': '2026-06-11 09:15:47.004261', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.44, 'ltq': 17, 'vol': 104689, 'bid': 262.4, 'ask': 262.44, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.64, 'chg_pct': -0.24}, {'ts': '2026-06-11 09:15:47.505130', 'ltt': '11/06/2026 09:15:46', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.4, 'ltq': 1, 'vol': 105143, 'bid': 262.4, 'ask': 262.44, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.68, 'chg_pct': -0.26}, {'ts': '2026-06-11 09:15:48.004034', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.44, 'ltq': 21, 'vol': 105143, 'bid': 262.4, 'ask': 262.44, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.64, 'chg_pct': -0.24}, {'ts': '2026-06-11 09:15:48.504876', 'ltt': '11/06/2026 09:15:47', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.44, 'ltq': 21, 'vol': 105254, 'bid': 262.4, 'ask': 262.47, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.64, 'chg_pct': -0.24}, {'ts': '2026-06-11 09:15:49.004098', 'ltt': '11/06/2026 09:15:48', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.48, 'ltq': 1, 'vol': 105385, 'bid': 262.4, 'ask': 262.48, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.6, 'chg_pct': -0.23}, {'ts': '2026-06-11 09:15:50.006451', 'ltt': '11/06/2026 09:15:49', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.48, 'ltq': 55, 'vol': 105939, 'bid': 262.4, 'ask': 262.48, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.6, 'chg_pct': -0.23}, {'ts': '2026-06-11 09:15:51.006248', 'ltt': '11/06/2026 09:15:50', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.4, 'ltq': 38, 'vol': 106785, 'bid': 262.4, 'ask': 262.47, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.68, 'chg_pct': -0.26}, {'ts': '2026-06-11 09:15:52.006114', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.48, 'ltq': 2, 'vol': 107022, 'bid': 262.4, 'ask': 262.48, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.6, 'chg_pct': -0.23}, {'ts': '2026-06-11 09:15:53.007448', 'ltt': '11/06/2026 09:15:51', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.47, 'ltq': 1, 'vol': 107066, 'bid': 262.4, 'ask': 262.47, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.61, 'chg_pct': -0.23}, {'ts': '2026-06-11 09:15:53.509110', 'ltt': '11/06/2026 09:15:53', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.39, 'ltq': 2100, 'vol': 109532, 'bid': 262.37, 'ask': 262.47, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.69, 'chg_pct': -0.26}, {'ts': '2026-06-11 09:16:00.243304', 'ltt': '11/06/2026 09:15:59', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.44, 'ltq': 100, 'vol': 121146, 'bid': 262.4, 'ask': 262.44, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.64, 'chg_pct': -0.24}, {'ts': '2026-06-11 09:16:00.753446', 'ltt': '11/06/2026 09:16:00', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.47, 'ltq': 3, 'vol': 122154, 'bid': 262.4, 'ask': 262.47, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.61, 'chg_pct': -0.23}, {'ts': '2026-06-11 09:16:01.243624', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.46, 'ltq': 1, 'vol': 122154, 'bid': 262.4, 'ask': 262.47, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.62, 'chg_pct': -0.24}, {'ts': '2026-06-11 09:16:01.747254', 'ltt': '11/06/2026 09:16:01', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.42, 'ltq': 1, 'vol': 123694, 'bid': 262.37, 'ask': 262.42, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.66, 'chg_pct': -0.25}, {'ts': '2026-06-11 09:16:02.244778', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.4, 'ltq': 10, 'vol': 123694, 'bid': 262.37, 'ask': 262.42, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.68, 'chg_pct': -0.26}, {'ts': '2026-06-11 09:16:02.747894', 'ltt': '11/06/2026 09:16:02', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.4, 'ltq': 28, 'vol': 123796, 'bid': 262.37, 'ask': 262.4, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.68, 'chg_pct': -0.26}, {'ts': '2026-06-11 09:16:03.247217', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.37, 'ltq': 20, 'vol': 123796, 'bid': 262.37, 'ask': 262.4, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.71, 'chg_pct': -0.27}, {'ts': '2026-06-11 09:16:03.746604', 'ltt': '11/06/2026 09:16:03', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.36, 'ltq': 3, 'vol': 126490, 'bid': 262.3, 'ask': 262.36, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.72, 'chg_pct': -0.27}, {'ts': '2026-06-11 09:16:04.247919', 'ltt': '11/06/2026 09:16:04', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.39, 'ltq': 5, 'vol': 127408, 'bid': 262.3, 'ask': 262.39, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.69, 'chg_pct': -0.26}, {'ts': '2026-06-11 09:16:05.014116', 'ltt': '11/06/2026 09:16:04', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.39, 'ltq': 5, 'vol': 127408, 'bid': 262.3, 'ask': 262.39, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.69, 'chg_pct': -0.26}, {'ts': '2026-06-11 09:16:05.247737', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.3, 'ltq': 1, 'vol': 127621, 'bid': 262.29, 'ask': 262.3, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.78, 'chg_pct': -0.3}, {'ts': '2026-06-11 09:16:05.515706', 'ltt': '', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.3, 'ltq': 1, 'vol': 127621, 'bid': 262.29, 'ask': 262.3, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.78, 'chg_pct': -0.3}, {'ts': '2026-06-11 09:16:05.824082', 'ltt': '11/06/2026 09:16:04', 'symbol': 'NIFTYBEES-EQ', 'token': '10576', 'pre_market': False, 'ltp': 262.3, 'ltq': 1, 'vol': 127621, 'bid': 262.29, 'ask': 262.3, 'open': 263.08, 'high': 263.08, 'low': 261.35, 'close': 263.08, 'chg': -0.78, 'chg_pct': -0.3}, ...]</td>
+      <td>5460</td>
+      <td>2026-06-11 10:13:07</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+<div style="
+margin-top:20px;
+font-size:12px;
+color:gray;
+text-align:right;
+">
+
+Last Updated: 2026-06-12 12:03:51.298074
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

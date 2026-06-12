@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Banknifty Pe Ticks 20260610</title>
+
+<link rel="stylesheet"
+href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<style>
+
+body {
+    margin:0;
+    font-family:'Segoe UI';
+    background:#f1f5f9;
+}
+
+.container {
+    display:flex;
+}
+
+.sidebar {
+    width:260px;
+    background:#0f172a;
+    color:white;
+    height:100vh;
+    padding:20px;
+    overflow-y:auto;
+}
+
+.sidebar a {
+    display:block;
+    color:#cbd5f5;
+    padding:10px;
+    text-decoration:none;
+    border-radius:6px;
+    margin-bottom:5px;
+}
+
+.sidebar a:hover {
+    background:#1e293b;
+}
+
+.content {
+    flex:1;
+    padding:20px;
+}
+
+.dashboard {
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.stat {
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.stat p {
+    font-size:18px;
+    font-weight:bold;
+}
+
+.green {
+    color:green;
+}
+
+.red {
+    color:red;
+}
+
+.card {
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    overflow-x:auto;
+}
+
+.menu-btn {
+    display:none;
+    font-size:20px;
+    cursor:pointer;
+    margin-bottom:10px;
+}
+
+table.dataTable {
+    width:100% !important;
+}
+
+@media (max-width: 768px) {
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position:absolute;
+        transform:translateX(-100%);
+        z-index:1000;
+        transition:0.3s;
+    }
+
+    .sidebar.active {
+        transform:translateX(0);
+    }
+
+    .menu-btn {
+        display:block;
+    }
+
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+</style>
+
+<script>
+
+$(document).ready(function () {
+    $('table').DataTable();
+});
+
+function updateDateTime() {
+
+    const now = new Date();
+
+    const options = {
+        weekday:'long',
+        year:'numeric',
+        month:'long',
+        day:'numeric'
+    };
+
+    const date = now.toLocaleDateString(
+        'en-IN',
+        options
+    );
+
+    const time = now.toLocaleTimeString('en-IN');
+
+    document.getElementById("datetime").innerHTML =
+        "📅 " + date + " | ⏰ " + time;
+}
+
+setInterval(updateDateTime, 1000);
+
+updateDateTime();
+
+function toggleMenu() {
+    document
+        .querySelector('.sidebar')
+        .classList
+        .toggle('active');
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="sidebar">
+
+<h2>📊 Strategies</h2>
+
+<a href="BANKNIFTY_CE_ticks_20260610.html">Banknifty Ce Ticks 20260610</a><a href="BANKNIFTY_CE_ticks_20260611.html">Banknifty Ce Ticks 20260611</a><a href="BANKNIFTY_PE_ticks_20260610.html">Banknifty Pe Ticks 20260610</a><a href="BANKNIFTY_PE_ticks_20260611.html">Banknifty Pe Ticks 20260611</a><a href="NIFTYBEES_ticks_20260610.html">Niftybees Ticks 20260610</a><a href="NIFTYBEES_ticks_20260611.html">Niftybees Ticks 20260611</a><a href="bajfinance_strategy_log.html">Bajaj Finance Strategy</a><a href="banknifty_atm_V1.html">Banknifty Atm V1</a><a href="banknifty_atm_V2.html">Banknifty Atm V2</a><a href="banknifty_atm_V3.html">Banknifty Atm V3</a><a href="banknifty_atm_V4.html">Banknifty Atm V4</a><a href="banknifty_atm_V5.html">Banknifty Atm V5</a><a href="banknifty_atm_V6.html">Banknifty Atm V6</a><a href="banknifty_atm_strategy.html">BN ATM Strategy V1</a><a href="banknifty_atm_strategyv2.html">BN ATM Strategy V2</a><a href="banknifty_conditions.html">Banknifty Conditions</a><a href="banknifty_straddle_v3_trades.html">BN Straddle V3</a><a href="banknifty_trades.html">Banknifty Trades</a><a href="nifty50_atm_V6.html">Nifty50 Atm V6</a><a href="nifty50_atm_V7.html">Nifty50 Atm V7</a><a href="nifty_niftybees_strategy_log.html">Nifty Bees Strategy</a><a href="session.html">Session</a><a href="traffic_light_trades.html">Traffic Light Trades</a>
+
+<a href="history_summary.html">
+📅 History Summary
+</a>
+
+</div>
+
+<div class="content">
+
+<div class="menu-btn"
+onclick="toggleMenu()">
+☰ Menu
+</div>
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+">
+
+<h1>Banknifty Pe Ticks 20260610</h1>
+
+<div id="datetime"
+style="
+font-size:14px;
+color:#475569;
+">
+</div>
+
+</div>
+
+<div class="dashboard">
+
+<div class="stat">
+<h3>Total Trades</h3>
+<p>0</p>
+</div>
+
+<div class="stat">
+<h3>Total P&L</h3>
+
+<p class="green">
+
+0
+
+</p>
+</div>
+
+<div class="stat">
+<h3>Win Rate</h3>
+<p>0%</p>
+</div>
+
+<div class="stat">
+<h3>Winners</h3>
+<p class="green">0</p>
+</div>
+
+<div class="stat">
+<h3>Losers</h3>
+<p class="red">0</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<table border="1" class="dataframe display">
+  <thead>
+    <tr style="text-align: right;">
+      <th>symbol</th>
+      <th>token</th>
+      <th>strike</th>
+      <th>opt_type</th>
+      <th>date</th>
+      <th>ticks</th>
+      <th>tick_count</th>
+      <th>last_saved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BANKNIFTY26JUN55300PE</td>
+      <td>75607</td>
+      <td>55300</td>
+      <td>PE</td>
+      <td>2026-06-10</td>
+      <td>[{'ts': '2026-06-10 10:12:52.722307', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 0.0, 'ltq': 0, 'vol': 0, 'bid': 980.15, 'ask': 982.55, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 0.0, 'chg_pct': 0.0}, {'ts': '2026-06-10 10:13:04.234569', 'ltt': '10/06/2026 10:13:03', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 0.0, 'ltq': 0, 'vol': 526200, 'bid': 987.0, 'ask': 988.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 0.0, 'chg_pct': 0.0}, {'ts': '2026-06-10 10:13:21.748279', 'ltt': '10/06/2026 10:13:21', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 981.45, 'ltq': 0, 'vol': 528060, 'bid': 981.0, 'ask': 982.45, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 21.5, 'chg_pct': 2.24}, {'ts': '2026-06-10 10:13:27.759145', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 981.45, 'ltq': 0, 'vol': 528060, 'bid': 981.0, 'ask': 982.45, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 21.5, 'chg_pct': 2.24}, {'ts': '2026-06-10 10:13:33.272030', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 981.45, 'ltq': 0, 'vol': 528060, 'bid': 981.0, 'ask': 982.45, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 21.5, 'chg_pct': 2.24}, {'ts': '2026-06-10 10:13:38.782656', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 987.9, 'ltq': 0, 'vol': 528060, 'bid': 984.3, 'ask': 986.9, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 27.95, 'chg_pct': 2.91}, {'ts': '2026-06-10 10:13:39.282386', 'ltt': '10/06/2026 10:13:38', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 987.9, 'ltq': 0, 'vol': 528720, 'bid': 985.75, 'ask': 988.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 27.95, 'chg_pct': 2.91}, {'ts': '2026-06-10 10:13:43.787713', 'ltt': '10/06/2026 10:13:43', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 985.7, 'ltq': 0, 'vol': 528780, 'bid': 985.9, 'ask': 987.9, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 25.75, 'chg_pct': 2.68}, {'ts': '2026-06-10 10:13:44.789857', 'ltt': '10/06/2026 10:13:44', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 990.0, 'ltq': 0, 'vol': 529860, 'bid': 988.6, 'ask': 990.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 30.05, 'chg_pct': 3.13}, {'ts': '2026-06-10 10:13:48.796411', 'ltt': '10/06/2026 10:13:48', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 989.95, 'ltq': 60, 'vol': 530190, 'bid': 988.0, 'ask': 990.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 30.0, 'chg_pct': 3.13}, {'ts': '2026-06-10 10:13:50.297058', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 989.95, 'ltq': 60, 'vol': 530190, 'bid': 988.0, 'ask': 990.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 30.0, 'chg_pct': 3.13}, {'ts': '2026-06-10 10:13:52.298540', 'ltt': '10/06/2026 10:13:51', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 989.0, 'ltq': 60, 'vol': 530340, 'bid': 989.8, 'ask': 991.9, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 29.05, 'chg_pct': 3.03}, {'ts': '2026-06-10 10:13:58.306711', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 996.85, 'ltq': 60, 'vol': 530340, 'bid': 989.8, 'ask': 991.9, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 36.9, 'chg_pct': 3.84}, {'ts': '2026-06-10 10:13:58.807552', 'ltt': '10/06/2026 10:13:58', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 996.95, 'ltq': 60, 'vol': 531300, 'bid': 994.75, 'ask': 997.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 37.0, 'chg_pct': 3.85}, {'ts': '2026-06-10 10:14:02.311064', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 996.15, 'ltq': 60, 'vol': 531300, 'bid': 994.75, 'ask': 997.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 36.2, 'chg_pct': 3.77}, {'ts': '2026-06-10 10:14:04.316254', 'ltt': '10/06/2026 10:14:03', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 996.05, 'ltq': 60, 'vol': 531660, 'bid': 994.75, 'ask': 995.9, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 36.1, 'chg_pct': 3.76}, {'ts': '2026-06-10 10:14:04.817460', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 996.05, 'ltq': 60, 'vol': 531660, 'bid': 994.75, 'ask': 995.9, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 36.1, 'chg_pct': 3.76}, {'ts': '2026-06-10 10:14:06.821571', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 996.05, 'ltq': 60, 'vol': 531660, 'bid': 994.75, 'ask': 995.85, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 36.1, 'chg_pct': 3.76}, {'ts': '2026-06-10 10:14:08.820674', 'ltt': '10/06/2026 10:14:08', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 996.2, 'ltq': 60, 'vol': 532740, 'bid': 994.75, 'ask': 996.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 36.25, 'chg_pct': 3.78}, {'ts': '2026-06-10 10:14:10.823363', 'ltt': '10/06/2026 10:14:10', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 996.0, 'ltq': 60, 'vol': 533940, 'bid': 994.95, 'ask': 997.45, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 36.05, 'chg_pct': 3.76}, {'ts': '2026-06-10 10:14:12.824348', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 995.5, 'ltq': 60, 'vol': 534150, 'bid': 995.5, 'ask': 997.3, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 35.55, 'chg_pct': 3.7}, {'ts': '2026-06-10 10:14:13.324190', 'ltt': '10/06/2026 10:14:12', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 997.4, 'ltq': 60, 'vol': 534210, 'bid': 995.2, 'ask': 997.25, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 37.45, 'chg_pct': 3.9}, {'ts': '2026-06-10 10:14:15.326417', 'ltt': '10/06/2026 10:14:14', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 997.15, 'ltq': 60, 'vol': 535260, 'bid': 997.35, 'ask': 997.25, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 37.2, 'chg_pct': 3.88}, {'ts': '2026-06-10 10:14:16.327543', 'ltt': '10/06/2026 10:14:15', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 997.35, 'ltq': 60, 'vol': 535290, 'bid': 997.65, 'ask': 999.3, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 37.4, 'chg_pct': 3.9}, {'ts': '2026-06-10 10:14:17.827774', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 997.65, 'ltq': 60, 'vol': 535290, 'bid': 997.65, 'ask': 999.3, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 37.7, 'chg_pct': 3.93}, {'ts': '2026-06-10 10:14:19.329129', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 997.65, 'ltq': 60, 'vol': 535290, 'bid': 997.65, 'ask': 999.3, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 37.7, 'chg_pct': 3.93}, {'ts': '2026-06-10 10:14:23.833225', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 997.65, 'ltq': 60, 'vol': 535290, 'bid': 996.9, 'ask': 998.65, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 37.7, 'chg_pct': 3.93}, {'ts': '2026-06-10 10:14:25.835191', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 996.95, 'ltq': 60, 'vol': 535290, 'bid': 997.2, 'ask': 999.75, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 37.0, 'chg_pct': 3.85}, {'ts': '2026-06-10 10:14:26.836060', 'ltt': '10/06/2026 10:14:25', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 996.95, 'ltq': 60, 'vol': 537840, 'bid': 997.25, 'ask': 999.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 37.0, 'chg_pct': 3.85}, {'ts': '2026-06-10 10:14:28.837743', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 996.95, 'ltq': 60, 'vol': 537900, 'bid': 997.2, 'ask': 1000.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 37.0, 'chg_pct': 3.85}, {'ts': '2026-06-10 10:14:33.345281', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1000.0, 'ltq': 60, 'vol': 537900, 'bid': 997.2, 'ask': 1000.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 40.05, 'chg_pct': 4.17}, {'ts': '2026-06-10 10:14:35.345198', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 999.95, 'ltq': 60, 'vol': 537900, 'bid': 997.2, 'ask': 1000.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 40.0, 'chg_pct': 4.17}, {'ts': '2026-06-10 10:14:36.348928', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1000.0, 'ltq': 60, 'vol': 537900, 'bid': 997.2, 'ask': 1000.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 40.05, 'chg_pct': 4.17}, {'ts': '2026-06-10 10:14:37.350281', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 999.85, 'ltq': 60, 'vol': 537900, 'bid': 997.2, 'ask': 1000.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 39.9, 'chg_pct': 4.16}, {'ts': '2026-06-10 10:14:40.355314', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 999.85, 'ltq': 60, 'vol': 537900, 'bid': 997.2, 'ask': 1000.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 39.9, 'chg_pct': 4.16}, {'ts': '2026-06-10 10:14:40.856393', 'ltt': '10/06/2026 10:14:39', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 997.05, 'ltq': 60, 'vol': 539670, 'bid': 997.05, 'ask': 999.95, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 37.1, 'chg_pct': 3.86}, {'ts': '2026-06-10 10:14:44.862059', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 997.05, 'ltq': 60, 'vol': 541020, 'bid': 1000.15, 'ask': 1003.2, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 37.1, 'chg_pct': 3.86}, {'ts': '2026-06-10 10:14:45.863279', 'ltt': '10/06/2026 10:14:45', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 999.05, 'ltq': 60, 'vol': 541410, 'bid': 999.35, 'ask': 1002.15, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 39.1, 'chg_pct': 4.07}, {'ts': '2026-06-10 10:14:46.363105', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1002.1, 'ltq': 60, 'vol': 541410, 'bid': 999.35, 'ask': 1002.15, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 42.15, 'chg_pct': 4.39}, {'ts': '2026-06-10 10:14:50.870236', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1002.1, 'ltq': 60, 'vol': 541410, 'bid': 1001.1, 'ask': 1003.6, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 42.15, 'chg_pct': 4.39}, {'ts': '2026-06-10 10:15:09.893141', 'ltt': '10/06/2026 10:15:09', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1014.5, 'ltq': 60, 'vol': 549330, 'bid': 1014.5, 'ask': 1017.15, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 54.55, 'chg_pct': 5.68}, {'ts': '2026-06-10 10:15:10.394633', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1014.5, 'ltq': 60, 'vol': 549330, 'bid': 1014.5, 'ask': 1017.15, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 54.55, 'chg_pct': 5.68}, {'ts': '2026-06-10 10:15:11.394885', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1017.95, 'ltq': 60, 'vol': 549330, 'bid': 1014.5, 'ask': 1017.15, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 58.0, 'chg_pct': 6.04}, {'ts': '2026-06-10 10:15:11.894950', 'ltt': '10/06/2026 10:15:11', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1022.75, 'ltq': 60, 'vol': 551280, 'bid': 1019.35, 'ask': 1021.95, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 62.8, 'chg_pct': 6.54}, {'ts': '2026-06-10 10:15:12.394713', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1019.1, 'ltq': 60, 'vol': 551280, 'bid': 1019.35, 'ask': 1021.95, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 59.15, 'chg_pct': 6.16}, {'ts': '2026-06-10 10:15:12.895802', 'ltt': '10/06/2026 10:15:12', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1019.0, 'ltq': 60, 'vol': 551580, 'bid': 1019.15, 'ask': 1022.35, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 59.05, 'chg_pct': 6.15}, {'ts': '2026-06-10 10:15:13.395606', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1019.0, 'ltq': 60, 'vol': 551580, 'bid': 1019.15, 'ask': 1022.35, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 59.05, 'chg_pct': 6.15}, {'ts': '2026-06-10 10:15:16.396807', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1015.9, 'ltq': 60, 'vol': 551580, 'bid': 1019.15, 'ask': 1022.35, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 55.95, 'chg_pct': 5.83}, {'ts': '2026-06-10 10:15:16.898228', 'ltt': '10/06/2026 10:15:16', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1017.6, 'ltq': 30, 'vol': 553020, 'bid': 1014.75, 'ask': 1018.05, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 57.65, 'chg_pct': 6.01}, {'ts': '2026-06-10 10:15:22.401508', 'ltt': '10/06/2026 10:15:21', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1015.3, 'ltq': 30, 'vol': 557790, 'bid': 1015.4, 'ask': 1018.3, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 55.35, 'chg_pct': 5.77}, {'ts': '2026-06-10 10:15:31.410248', 'ltt': '10/06/2026 10:15:30', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1018.95, 'ltq': 30, 'vol': 560820, 'bid': 1017.9, 'ask': 1020.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 59.0, 'chg_pct': 6.15}, {'ts': '2026-06-10 10:15:36.913094', 'ltt': '10/06/2026 10:15:36', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1019.0, 'ltq': 30, 'vol': 561990, 'bid': 1015.15, 'ask': 1017.6, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 59.05, 'chg_pct': 6.15}, {'ts': '2026-06-10 10:15:38.414028', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1018.05, 'ltq': 30, 'vol': 561990, 'bid': 1015.15, 'ask': 1017.6, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 58.1, 'chg_pct': 6.05}, {'ts': '2026-06-10 10:15:38.915130', 'ltt': '10/06/2026 10:15:38', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1015.05, 'ltq': 30, 'vol': 562440, 'bid': 1012.65, 'ask': 1015.05, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 55.1, 'chg_pct': 5.74}, {'ts': '2026-06-10 10:15:39.414865', 'ltt': '10/06/2026 10:15:39', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1014.0, 'ltq': 30, 'vol': 562530, 'bid': 1014.05, 'ask': 1017.05, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 54.05, 'chg_pct': 5.63}, {'ts': '2026-06-10 10:15:44.920030', 'ltt': '10/06/2026 10:15:44', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1015.45, 'ltq': 60, 'vol': 563400, 'bid': 1016.55, 'ask': 1019.35, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 55.5, 'chg_pct': 5.78}, {'ts': '2026-06-10 10:15:49.922179', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1015.45, 'ltq': 60, 'vol': 563400, 'bid': 1016.55, 'ask': 1019.35, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 55.5, 'chg_pct': 5.78}, {'ts': '2026-06-10 10:15:50.923503', 'ltt': '10/06/2026 10:15:50', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1017.0, 'ltq': 60, 'vol': 563970, 'bid': 1016.55, 'ask': 1017.1, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 57.05, 'chg_pct': 5.94}, {'ts': '2026-06-10 10:15:57.433433', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1017.0, 'ltq': 60, 'vol': 563970, 'bid': 1016.55, 'ask': 1017.1, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 57.05, 'chg_pct': 5.94}, {'ts': '2026-06-10 10:15:59.434682', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1013.95, 'ltq': 60, 'vol': 563970, 'bid': 1016.55, 'ask': 1017.1, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 54.0, 'chg_pct': 5.63}, {'ts': '2026-06-10 10:16:01.435190', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1016.45, 'ltq': 60, 'vol': 563970, 'bid': 1016.55, 'ask': 1017.1, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 56.5, 'chg_pct': 5.89}, {'ts': '2026-06-10 10:16:01.934602', 'ltt': '10/06/2026 10:16:01', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1017.05, 'ltq': 60, 'vol': 566640, 'bid': 1014.45, 'ask': 1017.2, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 57.1, 'chg_pct': 5.95}, {'ts': '2026-06-10 10:16:03.435783', 'ltt': '10/06/2026 10:16:03', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1010.4, 'ltq': 60, 'vol': 567240, 'bid': 1011.3, 'ask': 1014.2, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 50.45, 'chg_pct': 5.26}, {'ts': '2026-06-10 10:16:04.436577', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1012.75, 'ltq': 60, 'vol': 567240, 'bid': 1011.3, 'ask': 1014.2, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 52.8, 'chg_pct': 5.5}, {'ts': '2026-06-10 10:16:10.939922', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1012.75, 'ltq': 60, 'vol': 567240, 'bid': 1012.5, 'ask': 1015.15, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 52.8, 'chg_pct': 5.5}, {'ts': '2026-06-10 10:16:13.939879', 'ltt': '10/06/2026 10:16:13', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1012.0, 'ltq': 60, 'vol': 568320, 'bid': 1012.4, 'ask': 1015.45, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 52.05, 'chg_pct': 5.42}, {'ts': '2026-06-10 10:16:14.939917', 'ltt': '10/06/2026 10:16:14', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1013.95, 'ltq': 60, 'vol': 568380, 'bid': 1014.05, 'ask': 1016.9, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 54.0, 'chg_pct': 5.63}, {'ts': '2026-06-10 10:16:15.941729', 'ltt': '10/06/2026 10:16:15', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1013.85, 'ltq': 60, 'vol': 568410, 'bid': 1011.05, 'ask': 1014.45, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 53.9, 'chg_pct': 5.61}, {'ts': '2026-06-10 10:16:16.942267', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1015.05, 'ltq': 60, 'vol': 568410, 'bid': 1012.3, 'ask': 1015.2, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 55.1, 'chg_pct': 5.74}, {'ts': '2026-06-10 10:16:18.442753', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1015.65, 'ltq': 60, 'vol': 568410, 'bid': 1012.3, 'ask': 1015.2, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 55.7, 'chg_pct': 5.8}, {'ts': '2026-06-10 10:16:18.943959', 'ltt': '10/06/2026 10:16:17', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1014.6, 'ltq': 30, 'vol': 568590, 'bid': 1014.45, 'ask': 1017.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 54.65, 'chg_pct': 5.69}, {'ts': '2026-06-10 10:16:19.444376', 'ltt': '10/06/2026 10:16:18', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1014.6, 'ltq': 30, 'vol': 568770, 'bid': 1014.6, 'ask': 1017.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 54.65, 'chg_pct': 5.69}, {'ts': '2026-06-10 10:16:21.444192', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1015.45, 'ltq': 30, 'vol': 568770, 'bid': 1014.6, 'ask': 1017.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 55.5, 'chg_pct': 5.78}, {'ts': '2026-06-10 10:16:22.944872', 'ltt': '10/06/2026 10:16:22', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1016.85, 'ltq': 60, 'vol': 569040, 'bid': 1013.95, 'ask': 1016.85, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 56.9, 'chg_pct': 5.93}, {'ts': '2026-06-10 10:16:24.446182', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1016.85, 'ltq': 60, 'vol': 569040, 'bid': 1013.95, 'ask': 1016.85, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 56.9, 'chg_pct': 5.93}, {'ts': '2026-06-10 10:16:26.947147', 'ltt': '10/06/2026 10:16:26', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1013.7, 'ltq': 60, 'vol': 569190, 'bid': 1011.05, 'ask': 1013.75, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 53.75, 'chg_pct': 5.6}, {'ts': '2026-06-10 10:16:28.948052', 'ltt': '10/06/2026 10:16:27', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1013.0, 'ltq': 60, 'vol': 569550, 'bid': 1012.05, 'ask': 1014.6, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 53.05, 'chg_pct': 5.53}, {'ts': '2026-06-10 10:16:29.448404', 'ltt': '10/06/2026 10:16:29', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1014.0, 'ltq': 60, 'vol': 569670, 'bid': 1011.05, 'ask': 1013.95, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 54.05, 'chg_pct': 5.63}, {'ts': '2026-06-10 10:16:32.453171', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1011.9, 'ltq': 60, 'vol': 570090, 'bid': 1008.55, 'ask': 1011.4, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 51.95, 'chg_pct': 5.41}, {'ts': '2026-06-10 10:16:32.953829', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1007.85, 'ltq': 60, 'vol': 570090, 'bid': 1008.55, 'ask': 1011.4, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 47.9, 'chg_pct': 4.99}, {'ts': '2026-06-10 10:16:35.455258', 'ltt': '10/06/2026 10:16:34', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1005.75, 'ltq': 60, 'vol': 570570, 'bid': 1003.4, 'ask': 1005.75, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 45.8, 'chg_pct': 4.77}, {'ts': '2026-06-10 10:16:37.959045', 'ltt': '10/06/2026 10:16:37', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1001.7, 'ltq': 60, 'vol': 571320, 'bid': 1001.65, 'ask': 1004.2, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 41.75, 'chg_pct': 4.35}, {'ts': '2026-06-10 10:16:39.961930', 'ltt': '10/06/2026 10:16:39', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1000.8, 'ltq': 60, 'vol': 571620, 'bid': 1001.2, 'ask': 1003.4, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 40.85, 'chg_pct': 4.26}, {'ts': '2026-06-10 10:16:40.461310', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1000.8, 'ltq': 60, 'vol': 571620, 'bid': 1001.2, 'ask': 1003.4, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 40.85, 'chg_pct': 4.26}, {'ts': '2026-06-10 10:16:40.962065', 'ltt': '10/06/2026 10:16:40', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 998.5, 'ltq': 60, 'vol': 571680, 'bid': 1000.15, 'ask': 1002.65, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 38.55, 'chg_pct': 4.02}, {'ts': '2026-06-10 10:16:42.963783', 'ltt': '10/06/2026 10:16:42', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 995.9, 'ltq': 120, 'vol': 572460, 'bid': 995.2, 'ask': 998.15, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 35.95, 'chg_pct': 3.74}, {'ts': '2026-06-10 10:16:43.464280', 'ltt': '10/06/2026 10:16:43', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 994.9, 'ltq': 30, 'vol': 572730, 'bid': 994.95, 'ask': 997.8, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 34.95, 'chg_pct': 3.64}, {'ts': '2026-06-10 10:16:53.472574', 'ltt': '10/06/2026 10:16:53', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 995.75, 'ltq': 30, 'vol': 575280, 'bid': 992.35, 'ask': 995.2, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 35.8, 'chg_pct': 3.73}, {'ts': '2026-06-10 10:16:54.472830', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 996.4, 'ltq': 30, 'vol': 575280, 'bid': 992.35, 'ask': 995.2, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 36.45, 'chg_pct': 3.8}, {'ts': '2026-06-10 10:16:58.481049', 'ltt': '10/06/2026 10:16:57', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 996.4, 'ltq': 30, 'vol': 575490, 'bid': 997.95, 'ask': 999.9, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 36.45, 'chg_pct': 3.8}, {'ts': '2026-06-10 10:17:03.485620', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1004.2, 'ltq': 30, 'vol': 575490, 'bid': 997.95, 'ask': 999.9, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 44.25, 'chg_pct': 4.61}, {'ts': '2026-06-10 10:17:06.486247', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1004.2, 'ltq': 30, 'vol': 575490, 'bid': 997.95, 'ask': 999.9, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 44.25, 'chg_pct': 4.61}, {'ts': '2026-06-10 10:17:07.489339', 'ltt': '10/06/2026 10:17:06', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1003.35, 'ltq': 30, 'vol': 576630, 'bid': 1002.55, 'ask': 1005.2, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 43.4, 'chg_pct': 4.52}, {'ts': '2026-06-10 10:17:08.489247', 'ltt': '10/06/2026 10:17:08', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1003.7, 'ltq': 60, 'vol': 577560, 'bid': 1004.25, 'ask': 1007.5, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 43.75, 'chg_pct': 4.56}, {'ts': '2026-06-10 10:17:09.490788', 'ltt': '', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1008.75, 'ltq': 30, 'vol': 577620, 'bid': 1005.5, 'ask': 1008.6, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 48.8, 'chg_pct': 5.08}, {'ts': '2026-06-10 10:17:12.490514', 'ltt': '10/06/2026 10:17:11', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1006.25, 'ltq': 30, 'vol': 577830, 'bid': 1004.25, 'ask': 1006.8, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 46.3, 'chg_pct': 4.82}, {'ts': '2026-06-10 10:17:13.492423', 'ltt': '10/06/2026 10:17:12', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1005.7, 'ltq': 30, 'vol': 577860, 'bid': 1005.7, 'ask': 1007.7, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 45.75, 'chg_pct': 4.77}, {'ts': '2026-06-10 10:17:15.493828', 'ltt': '10/06/2026 10:17:14', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1002.85, 'ltq': 30, 'vol': 578100, 'bid': 1005.7, 'ask': 1007.3, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 42.9, 'chg_pct': 4.47}, {'ts': '2026-06-10 10:17:15.993862', 'ltt': '10/06/2026 10:17:15', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1000.95, 'ltq': 30, 'vol': 578700, 'bid': 998.15, 'ask': 1001.0, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 41.0, 'chg_pct': 4.27}, {'ts': '2026-06-10 10:17:16.994153', 'ltt': '10/06/2026 10:17:16', 'opt_type': 'PE', 'symbol': 'BANKNIFTY26JUN55300PE', 'strike': 55300, 'token': '75607', 'ltp': 1000.55, 'ltq': 30, 'vol': 578970, 'bid': 998.0, 'ask': 999.95, 'open': 0.0, 'high': 0.0, 'low': 0.0, 'close': 0.0, 'chg': 40.6, 'chg_pct': 4.23}, ...]</td>
+      <td>5752</td>
+      <td>2026-06-10 15:30:28</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+<div style="
+margin-top:20px;
+font-size:12px;
+color:gray;
+text-align:right;
+">
+
+Last Updated: 2026-06-12 12:03:50.861201
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
